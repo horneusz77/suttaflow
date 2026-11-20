@@ -7,7 +7,43 @@
  const read=(key,fallback)=>{try{return JSON.parse(localStorage.getItem(key))??fallback}catch{return fallback}};
  const href=(slug,id='')=>'b.html?tekst='+encodeURIComponent(slug)+(id?'#'+encodeURIComponent(id):'');
  const bookmarks=()=>{const saved=read('sf-reader-library-bookmarks',[]);return Array.isArray(saved)?saved.filter(s=>s&&catalog.some(d=>d.slug===s.slug)&&typeof s.id==='string'&&typeof s.quote==='string'):[]};
+ const batchSize=10;
+ const more=document.getElementById('library-more');
+
+ function catalogRow(d){
+  const id=encodeURIComponent(d.slug),description=d.description?.trim();
+  const pali=d.paliTitle?`<span class="catalog-pali" lang="pi">${escape(d.paliTitle)}</span>`:'';
+  const language=d.hasPali?'Polski + pāḷi':'Polski';
+  return `<li><a class="catalog-link" href="${href(d.slug)}" aria-labelledby="code-${id} title-${id}"${description?` aria-describedby="description-${id}"`:''}>
+   <span class="catalog-heading"><span class="catalog-code" id="code-${id}">${escape(d.code)}</span><strong class="catalog-title" id="title-${id}">${escape(d.title)}</strong>${pali}<span class="catalog-language">${language}</span>${arrow}</span>
+   ${description?`<span class="catalog-description" id="description-${id}">${escape(description)}</span>`:''}
+  </a></li>`;
+ }
+
+ function showBatches(items,row,emptyMessage){
+  const count=document.getElementById('results-count');
+  if(!items.length){
+   count.textContent='0';
+   results.innerHTML='<p class="library-state">'+emptyMessage+'</p>';
+   return;
+  }
+  const list=document.createElement('ul');
+  list.className='catalog-list';
+  results.replaceChildren(list);
+  function appendBatch(moveFocus){
+   const start=list.children.length;
+   list.insertAdjacentHTML('beforeend',items.slice(start,start+batchSize).map(row).join(''));
+   const shown=list.children.length,remaining=items.length-shown;
+   count.textContent=shown+' z '+items.length;
+   more.hidden=remaining===0;
+   more.textContent=remaining===1?'Pokaż ostatni wynik':'Pokaż kolejne '+Math.min(batchSize,remaining);
+   if(moveFocus)list.children[start].querySelector('a').focus({preventScroll:true});
+  }
+  more.onclick=()=>appendBatch(true);
+  appendBatch(false);
+ }
  function render(){
+  more.hidden=true;more.onclick=null;
   const saved=bookmarks();document.getElementById('bookmark-count').textContent=saved.length||'';
   document.getElementById('show-library').setAttribute('aria-current',view==='library'?'page':'false');document.getElementById('show-bookmarks').setAttribute('aria-current',view==='bookmarks'?'page':'false');
   document.querySelector('.library-search').hidden=view==='bookmarks';document.getElementById('collection-filters').hidden=view==='bookmarks';document.querySelector('.collection-help').hidden=view==='bookmarks';
@@ -18,28 +54,17 @@
   }
   document.querySelectorAll('[data-filter]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.filter===collection)));
   document.getElementById('clear-search').hidden=!query;
-  document.getElementById('results-title').textContent=query?'Wyniki wyszukiwania':collection==='all'?'Biblioteka':names[collection];
+  document.getElementById('results-title').textContent=query?'Wyniki wyszukiwania':collection==='all'?'Ostatnio dodane':names[collection];
   if(query&&searchState==='loading'){results.setAttribute('aria-busy','true');document.getElementById('results-count').textContent='';results.innerHTML='<p class="library-state" role="status">Szukanie w tekstach…</p>';return}
   if(query&&searchState==='error'){document.getElementById('results-count').textContent='';results.innerHTML='<p class="library-state" role="alert">Nie udało się przeszukać tekstów. Sprawdź połączenie i wybierz ponownie „Szukaj”.</p>';return}
   if(query&&matches){
-   const filtered=matches.filter(m=>collection==='all'||m.collection===collection);document.getElementById('results-count').textContent='Fragmenty: '+filtered.length;
-   results.innerHTML=filtered.length?'<ul class="catalog-list">'+filtered.map(m=>'<li><a class="search-hit" href="'+href(m.slug,m.id)+'"><span>'+escape(m.code)+' · '+escape(m.label)+'</span><strong>'+escape(m.title)+'</strong><p>'+escape(m.text.slice(0,260))+(m.text.length>260?'…':'')+'</p></a></li>').join('')+'</ul>':'<p class="library-state">Brak wyników. Spróbuj krótszej frazy, wybierz inny zbiór lub uwzględnij pāḷi i przypisy.</p>';return;
+   const filtered=matches.filter(m=>collection==='all'||m.collection===collection);
+   showBatches(filtered,m=>'<li><a class="search-hit" href="'+href(m.slug,m.id)+'"><span>'+escape(m.code)+' · '+escape(m.label)+'</span><strong>'+escape(m.title)+'</strong><p>'+escape(m.text.slice(0,260))+'</p></a></li>','Brak wyników. Spróbuj krótszej frazy, wybierz inny zbiór lub uwzględnij pāḷi i przypisy.');
+   return;
   }
-  const docs=catalog.filter(d=>collection==='all'||d.collection===collection);document.getElementById('results-count').textContent='Teksty: '+docs.length;
-  results.innerHTML=docs.length?Object.keys(names).map(group=>{
-   const list=docs.filter(d=>d.collection===group);
-   if(!list.length)return '';
-   const rows=list.map(d=>{
-    const id=encodeURIComponent(d.slug),description=d.description?.trim();
-    return `<li><a class="catalog-link" href="${href(d.slug)}" aria-labelledby="code-${id} title-${id}"${description?` aria-describedby="description-${id}"`:''}>
-     <span class="catalog-code" id="code-${id}">${escape(d.code)}</span>
-     <span><strong class="catalog-title" id="title-${id}">${escape(d.title)}</strong>${d.paliTitle?`<span class="catalog-pali" lang="pi">${escape(d.paliTitle)}</span>`:''}</span>
-     <span class="catalog-language">${d.hasPali?'Polski + pāḷi':'Polski'}</span>${arrow}
-     ${description?`<span class="catalog-description" id="description-${id}">${escape(description)}</span>`:''}
-    </a></li>`;
-   }).join('');
-   return `<section class="catalog-group" aria-label="${names[group]}"><h3>${names[group]}</h3><ul class="catalog-list">${rows}</ul></section>`;
-  }).join(''):'<p class="library-state">Nie ma jeszcze przekładów w tym zbiorze. Wybierz „Wszystkie”, aby wrócić do biblioteki.</p>';
+  const docs=catalog.filter(d=>collection==='all'||d.collection===collection);
+  if(collection==='all')docs.sort((a,b)=>(b.addedOn||'').localeCompare(a.addedOn||''));
+  showBatches(docs,catalogRow,'Nie ma jeszcze przekładów w tym zbiorze. Wybierz „Wszystkie”, aby wrócić do biblioteki.');
  }
  async function showContinue(){
   const last=read('sf-reader-last-document',null),doc=last&&catalog.find(d=>d.slug===last.slug);if(!doc||typeof last.id!=='string')return;

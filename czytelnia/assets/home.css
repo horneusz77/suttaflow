@@ -19,3 +19,15 @@
 @media(max-width:480px){.catalog-description{grid-column:1/-1}}
 .library-home .home-search-row input{font-size:1rem}
 @media(max-width:360px){.library-home .topbar{padding-inline:13px;gap:10px}.library-home .home-nav{gap:12px}.library-home .brand-inline{font-size:20px}}
+
+.catalog-list .catalog-link{display:block;min-height:0;padding:13px 0 14px}
+.catalog-heading{display:flex;align-items:baseline;gap:.25rem .7rem;flex-wrap:wrap}
+.catalog-heading .catalog-title{display:inline;font-size:1.25rem;line-height:1.25}
+.catalog-heading .catalog-pali{display:inline;margin:0;font-size:.9375rem}
+.catalog-heading .catalog-language{display:inline;margin-left:auto;font-size:.875rem}
+.catalog-heading .row-arrow{width:.8rem;align-self:center}
+.catalog-link .catalog-description{display:block;max-inline-size:none;margin-top:.38rem;font-size:1rem;line-height:1.45;text-wrap:wrap}
+@media(max-width:600px){.catalog-heading{gap:.2rem .55rem}.catalog-heading .catalog-pali{order:4;flex-basis:100%}.catalog-heading .catalog-language{display:none}.catalog-heading .row-arrow{margin-left:auto}.catalog-link .catalog-description{line-height:1.45}}
+#library-more{margin:1.25rem auto 0;min-height:44px;display:block;color:var(--accent);border:1px solid var(--line);padding:.5rem 1rem;background:transparent}
+#library-more[hidden]{display:none}
+.catalog-heading>*{min-width:0;overflow-wrap:anywhere}
