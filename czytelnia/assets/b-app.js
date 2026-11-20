@@ -210,14 +210,22 @@ function closestUnit() {return [...document.querySelectorAll('.unit')].find(u=>u
 function toggleSaved(id) {const found=saved.some(s=>s.slug===data.slug&&s.id===id),u=data.units.find(u=>u.id===id);if(!u)return;saved=found?saved.filter(s=>!(s.slug===data.slug&&s.id===id)):[...saved,{slug:data.slug,id,quote:u.pl.slice(0,170)}];saveStorage('sf-reader-library-bookmarks',saved);updateSaved();announce(found?'Usunięto zakładkę.':'Dodano zakładkę.');renderBookmarks();}
 function renderBookmarks(){document.getElementById('bookmarks-list').innerHTML=saved.length?saved.map(s=>{const doc=catalog.find(d=>d.slug===s.slug);return `<a class="saved-result" data-close-drawer href="b.html?tekst=${encodeURIComponent(s.slug)}#${encodeURIComponent(s.id)}"><span>${escapeHtml(doc.code)} · ${escapeHtml(doc.title)}</span><p>${escapeHtml(s.quote)}…</p></a>`}).join(''):'<p class="empty-state">Nie masz jeszcze zakładek. Użyj symbolu zakładki przy wybranym fragmencie, aby do niego wrócić.</p>';}
 const loadDocument=slug=>SuttaLibrary.loadDocument(slug);
-async function search(query, extra=false) {
+async function search(query, extra=false, forceText=false) {
  const version=++searchVersion;
  const norm=s=>plain(s).normalize('NFD').replace(/\p{M}/gu,'').replace(/ł/g,'l').replace(/Ł/g,'L').toLowerCase();
  const q=norm(query.trim()); const results=document.getElementById('search-results');
  if(!q){results.innerHTML='<p>Wpisz numer sutty, słowo lub frazę.</p>';return;}
  results.innerHTML='<p>Przeszukiwanie biblioteki…</p>';
- const matches=await SuttaLibrary.find(catalog,query,extra);if(version!==searchVersion)return;
- results.innerHTML=`<p class="result-count">Znaleziono: ${matches.length}${matches.length>30?' · pierwszych 30 wyników':''}</p>`+matches.slice(0,30).map(({slug,code,id,text,label})=>`<a class="search-result" href="b.html?tekst=${encodeURIComponent(slug)}#${encodeURIComponent(id)}"><span>${escapeHtml(code)} · ${escapeHtml(label)}</span><p>${escapeHtml(text.slice(0,240))}…</p></a>`).join('')+(!matches.length?'<p class="empty-state">Brak pasujących fragmentów. Spróbuj krótszej frazy albo uwzględnij pāḷi i przypisy.</p>':'');
+ let found;
+ try{found=await SuttaLibrary.lookup(catalog,query,extra,forceText)}
+ catch{if(version===searchVersion)results.textContent='Nie udało się przeszukać biblioteki. Spróbuj ponownie.';return}
+ if(version!==searchVersion)return;
+ const {matches,titlesOnly}=found;
+ results.innerHTML=`<p class="result-count">Znaleziono: ${matches.length}${matches.length>30?' · pierwszych 30 wyników':''}</p>`+matches.slice(0,30).map(({slug,code,id,text,label})=>`<a class="search-result" href="b.html?tekst=${encodeURIComponent(slug)}${id?'#'+encodeURIComponent(id):''}"><span>${escapeHtml(code)} · ${escapeHtml(label)}</span><p>${escapeHtml(text.slice(0,240))}…</p></a>`).join('')+(!matches.length?'<p class="empty-state">Brak pasujących fragmentów. Spróbuj krótszej frazy albo uwzględnij pāḷi i przypisy.</p>':'');
+ if(titlesOnly){
+  const button=document.createElement('button');button.type='button';button.className='text-button';
+  button.textContent='Szukaj też w treści';button.onclick=()=>search(query,extra,true);results.append(button);
+ }
 }
 function notesOverview(){activeNote=null;document.getElementById('note-title').textContent='Objaśnienia';document.getElementById('note-body').innerHTML='<p>Wybierz przypis lub otwórz interpretację tekstu.</p><button class="text-button" data-show-interpretation>Interpretacja '+icon('chevron')+'</button><div class="note-index">'+noteKeys.map((key,i)=>`<button data-note="${escapeHtml(key)}"><span>${i+1}</span>${escapeHtml(data.notes[key].slice(0,95))}…</button>`).join('')+'</div>';}
 function bindReadingBars(){
@@ -300,7 +308,7 @@ async function bind(){
   if(b.dataset.libraryView==='saved')openDrawer('bookmarks-drawer');
   if(b.dataset.libraryView==='all'){document.querySelectorAll('.catalog-entry').forEach(el=>el.hidden=false);document.querySelectorAll('.empty-collection').forEach(el=>el.hidden=true);openDrawer('library-drawer')}
   if(b.dataset.collection){currentCollection=b.dataset.collection;document.querySelectorAll('[data-collection]').forEach(el=>el.classList.toggle('current',el.dataset.collection===currentCollection));document.querySelectorAll('.catalog-entry').forEach(el=>el.hidden=el.dataset.catalogGroup!==currentCollection);document.querySelectorAll('.empty-collection').forEach(el=>el.hidden=catalog.some(d=>d.collection===currentCollection));}
-  if(b.dataset.topic){openSearch();const topicMap={'nietrwałość':'rozpad','pomność':'pomności','schronienie':'schronienie'};document.getElementById('search-input').value=topicMap[b.dataset.topic];search(topicMap[b.dataset.topic]);}
+  if(b.dataset.topic){openSearch();const topicMap={'nietrwałość':'rozpad','pomność':'pomności','schronienie':'schronienie'};document.getElementById('search-input').value=topicMap[b.dataset.topic];search(topicMap[b.dataset.topic],false,true);}
   if(b.hasAttribute('data-show-interpretation')){document.getElementById('note-title').textContent='Interpretacja';document.getElementById('note-body').innerHTML='<button class="notes-return" data-note-overview>'+icon('arrow')+'Wszystkie objaśnienia</button>'+data.interpretationHtml;SuttaBook.refresh(document.getElementById('note-body'));}
  });
  document.addEventListener('click',e=>{if(e.target.closest('[data-note-overview]'))notesOverview()});

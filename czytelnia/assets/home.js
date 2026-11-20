@@ -7,6 +7,8 @@
  const read=(key,fallback)=>{try{return JSON.parse(localStorage.getItem(key))??fallback}catch{return fallback}};
  const href=(slug,id='')=>'b.html?tekst='+encodeURIComponent(slug)+(id?'#'+encodeURIComponent(id):'');
  const bookmarks=()=>{const saved=read('sf-reader-library-bookmarks',[]);return Array.isArray(saved)?saved.filter(s=>s&&catalog.some(d=>d.slug===s.slug)&&typeof s.id==='string'&&typeof s.quote==='string'):[]};
+ const fullSearch=document.getElementById('search-full');
+ let forceText=false,includeExtra=false;
  const batchSize=10;
  const more=document.getElementById('library-more');
 
@@ -44,6 +46,7 @@
  }
  function render(){
   more.hidden=true;more.onclick=null;
+  fullSearch.hidden=true;
   const saved=bookmarks();document.getElementById('bookmark-count').textContent=saved.length||'';
   document.getElementById('show-library').setAttribute('aria-current',view==='library'?'page':'false');document.getElementById('show-bookmarks').setAttribute('aria-current',view==='bookmarks'?'page':'false');
   document.querySelector('.library-search').hidden=view==='bookmarks';document.getElementById('collection-filters').hidden=view==='bookmarks';document.querySelector('.collection-help').hidden=view==='bookmarks';
@@ -58,8 +61,8 @@
   if(query&&searchState==='loading'){results.setAttribute('aria-busy','true');document.getElementById('results-count').textContent='';results.innerHTML='<p class="library-state" role="status">Szukanie w tekstach…</p>';return}
   if(query&&searchState==='error'){document.getElementById('results-count').textContent='';results.innerHTML='<p class="library-state" role="alert">Nie udało się przeszukać tekstów. Sprawdź połączenie i wybierz ponownie „Szukaj”.</p>';return}
   if(query&&matches){
-   const filtered=matches.filter(m=>collection==='all'||m.collection===collection);
-   showBatches(filtered,m=>'<li><a class="search-hit" href="'+href(m.slug,m.id)+'"><span>'+escape(m.code)+' · '+escape(m.label)+'</span><strong>'+escape(m.title)+'</strong><p>'+escape(m.text.slice(0,260))+'</p></a></li>','Brak wyników. Spróbuj krótszej frazy, wybierz inny zbiór lub uwzględnij pāḷi i przypisy.');
+   fullSearch.hidden=!matches.titlesOnly;
+   showBatches(matches.matches,m=>'<li><a class="search-hit" href="'+href(m.slug,m.id)+'"><span>'+escape(m.code)+' · '+escape(m.label)+'</span><strong>'+escape(m.title)+'</strong><p>'+escape(m.text.slice(0,260))+'</p></a></li>','Brak wyników. Spróbuj krótszej frazy, wybierz inny zbiór lub uwzględnij pāḷi i przypisy.');
    return;
   }
   const docs=catalog.filter(d=>collection==='all'||d.collection===collection);
@@ -73,15 +76,22 @@
    document.getElementById('continue-link').href=href(doc.slug);document.getElementById('continue-reading').hidden=false;
   }catch{}
  }
- document.getElementById('collection-filters').addEventListener('click',e=>{const b=e.target.closest('[data-filter]');if(b){collection=b.dataset.filter;render()}});
+ document.getElementById('collection-filters').addEventListener('click',e=>{const b=e.target.closest('[data-filter]');if(b){collection=b.dataset.filter;if(query)runSearch();else render()}});
  document.getElementById('show-bookmarks').onclick=()=>{view='bookmarks';render()};document.getElementById('show-library').onclick=()=>{view='library';render()};
  document.getElementById('clear-search').onclick=()=>{version++;query='';input.value='';matches=null;searchState='idle';render();input.focus()};
- document.getElementById('library-search').onsubmit=async e=>{
-  e.preventDefault();query=input.value.trim();const current=++version;matches=null;if(!query){searchState='idle';render();return}
-  searchState='loading';render();
-  try{const found=await SuttaLibrary.find(catalog,query,document.getElementById('library-extra').checked);if(current!==version)return;matches=found;searchState='success';render()}
-  catch{if(current!==version)return;searchState='error';render()}
+ fullSearch.onclick=()=>{forceText=true;runSearch()};
+ document.getElementById('library-search').onsubmit=e=>{
+  e.preventDefault();query=input.value.trim();forceText=false;
+  includeExtra=document.getElementById('library-extra').checked;
+  runSearch();
  };
+ async function runSearch(){
+  const current=++version;matches=null;if(!query){searchState='idle';render();return}
+  searchState='loading';render();
+  const scope=collection==='all'?catalog:catalog.filter(d=>d.collection===collection);
+  try{const found=await SuttaLibrary.lookup(scope,query,includeExtra,forceText);if(current!==version)return;matches=found;searchState='success';render()}
+  catch{if(current!==version)return;searchState='error';render()}
+ }
  SuttaLibrary.getCatalog().then(list=>{
   catalog=list;document.getElementById('library-total').textContent=(list.length-list.filter(d=>d.collection==='Vinaya').length)+' sutt · '+list.filter(d=>d.collection==='Vinaya').length+' tekst Vinayi';
   document.getElementById('collection-filters').innerHTML=[['all','Wszystkie'],...Object.keys(names).map(key=>[key,key])].map(([key,label])=>'<button type="button" data-filter="'+key+'" aria-pressed="'+(key==='all')+'">'+label+' <span>'+(key==='all'?catalog.length:catalog.filter(d=>d.collection===key).length)+'</span></button>').join('');

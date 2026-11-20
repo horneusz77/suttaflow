@@ -14,6 +14,19 @@ Otwórz [Bibliotekę na swoim komputerze](http://127.0.0.1:8000/). Katalog, teks
 
 Biblioteka pokazuje początkowo dziesięć ostatnio dodanych tekstów. Pole `addedOn` w katalogu oznacza dzień pierwszego dodania do czytelni. Przy tej samej dacie decyduje kolejność kanoniczna. Po wybraniu zbioru teksty są uporządkowane według numerów.
 
+### Wyszukiwanie
+
+Wpisanie numeru lub tytułu pokazuje pasujące sutty z katalogu. Przycisk „Szukaj też w treści” pozwala znaleźć tę samą frazę we fragmentach mów. Przy wyszukiwaniu w treści przeglądarka pobiera indeksy zaznaczonego zbioru. Osobne pliki zawierają pāḷi i przypisy. Nowa wersja indeksu dostaje nazwę zależną od zawartości.
+
+Po aktualizacji katalogu lub przekładów przebuduj indeksy, a potem sprawdź wyniki względem pełnych tekstów. Oba polecenia uruchom z katalogu głównego.
+
+```sh
+python narzedzia/indeks_szukania.py czytelnia/assets
+node narzedzia/test_wyszukiwania.cjs czytelnia/assets
+```
+
+Przy publikacji najpierw udostępnij pliki indeksów, a następnie katalog, który się do nich odwołuje.
+
 ## Silnik tłumaczeniowy
 
 Folder [silnik](silnik/) zawiera kod Pythona z wydania SuttaFlow 2.2.0, reguły redakcyjne, schematy danych, kartę ocen i narzędzia składu. [Standard 2.2.0](silnik/docs/standards/2.2.0/SUTTAFLOW_2_0.md) opisuje pracę nad przekładem. [Rejestr reguł](silnik/docs/standards/2.2.0/RULE_REGISTRY.json) i [słownik decyzji terminologicznych](silnik/docs/standards/2.2.0/TERMINOLOGY.md) dokumentują kryteria używane przy sprawdzaniu tekstu.
