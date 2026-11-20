@@ -1,0 +1,93 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:suttaflow:mn-alignment-input:1",
+  "title": "Generic MN segmentation/alignment input v1",
+  "type": "object",
+  "required": [
+    "schema",
+    "sutta_id",
+    "pali",
+    "pl",
+    "mapping"
+  ],
+  "properties": {
+    "schema": {
+      "const": "suttaflow-mn-alignment-input-v1"
+    },
+    "sutta_id": {
+      "type": "string",
+      "pattern": "^mn[1-9][0-9]*$"
+    },
+    "test_only": {
+      "type": "boolean",
+      "default": false
+    },
+    "pali": {
+      "type": "object",
+      "required": [
+        "path",
+        "sha256",
+        "format"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Relative file inside the evaluation root; runtime resolves containment and hashes actual bytes."
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "format": {
+          "const": "BILARA_JSON"
+        }
+      },
+      "additionalProperties": true
+    },
+    "pl": {
+      "type": "object",
+      "required": [
+        "path",
+        "sha256",
+        "format"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Relative file inside the evaluation root; runtime resolves containment and hashes actual bytes."
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "format": {
+          "const": "UTF8_SECTIONS"
+        }
+      },
+      "additionalProperties": true
+    },
+    "mapping": {
+      "type": "object",
+      "required": [
+        "path",
+        "sha256"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Relative file inside the evaluation root; runtime resolves containment and hashes actual bytes."
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true,
+  "description": "Mechanical alignment only; input pins do not establish authorized source selection, Pali-first order, review or publication permission."
+}

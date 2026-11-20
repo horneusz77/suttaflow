@@ -1,0 +1,31 @@
+{
+  "schema": "suttaflow-sources-v1",
+  "sutta_id": "mn41",
+  "note": "Declared sources. The importer fetches raw bytes; nothing here is trusted until captured and anchored.",
+  "sources": [
+    {"id": "pali_bjt_bd", "role": "PALI_BASE", "edition": "Buddha Jayanti Tripitaka Series, digital 1995 (as adapted by BuddhaDust/OBO)", "carrier": "buddhadust.net", "kind": "web",
+     "url": "https://buddhadust.net/dhamma-vinaya/pali/mn/mn.041.pali.bd.htm", "licence_note": "Site text; BJT edition. Private evidence copy only.", "redistribute": false},
+    {"id": "pali_cst_vri", "role": "PALI_WITNESS", "edition": "Chattha Sangayana Tipitaka 4 (VRI), Majjhima Mulapannasa XML", "carrier": "github.com/VipassanaTech/tipitaka-xml (tipitaka.org)", "kind": "github",
+     "owner": "VipassanaTech", "repo": "tipitaka-xml", "ref": "05d5d3c7cede65195bebf7e99b1943db80057cc5", "path": "romn/s0201m.mul.xml", "redistribute": false},
+    {"id": "pali_ms_sc", "role": "PALI_WITNESS", "edition": "Mahasangiti Tipitaka Buddhavasse 2500 (root-pli-ms), via SuttaCentral bilara-data (technical use only, no Sujato translation)", "carrier": "github.com/suttacentral/bilara-data", "kind": "github",
+     "owner": "suttacentral", "repo": "bilara-data", "ref": "795983655cc7e5c5694184750426b06a6604be21", "path": "root/pli/ms/sutta/mn/mn41_root-pli-ms.json", "redistribute": false},
+    {"id": "att_cst_vri", "role": "COMMENTARY", "edition": "Papancasudani (Majjhima atthakatha), CST4 VRI XML", "carrier": "github.com/VipassanaTech/tipitaka-xml", "kind": "github",
+     "owner": "VipassanaTech", "repo": "tipitaka-xml", "ref": "05d5d3c7cede65195bebf7e99b1943db80057cc5", "path": "romn/s0201a.att.xml", "redistribute": false},
+    {"id": "vin_cst_vri", "role": "CANONICAL_GLOSS", "edition": "Vinaya Parajika pali (Suttavibhanga), CST4 VRI XML", "carrier": "github.com/VipassanaTech/tipitaka-xml", "kind": "github",
+     "owner": "VipassanaTech", "repo": "tipitaka-xml", "ref": "05d5d3c7cede65195bebf7e99b1943db80057cc5", "path": "romn/vin01m.mul.xml", "redistribute": false},
+    {"id": "hh_index", "role": "HH_CATALOGUE", "edition": "Hillside Hermitage official sutta index", "carrier": "suttas.hillsidehermitage.org", "kind": "web",
+     "url": "https://suttas.hillsidehermitage.org/python/generated/available_suttas.json", "redistribute": false},
+    {"id": "hh_mn41_tr", "role": "HH_EN", "edition": "Bhikkhu Aniga, MN 41 translation (segment JSON)", "carrier": "suttas.hillsidehermitage.org", "kind": "web",
+     "url": "https://suttas.hillsidehermitage.org/suttas/translation_en/mn/mn41_translation-en-anigha.json", "redistribute": false},
+    {"id": "hh_mn41_root", "role": "HH_PALI_ROOT", "edition": "Pali root used by HH site (ms)", "carrier": "suttas.hillsidehermitage.org", "kind": "web",
+     "url": "https://suttas.hillsidehermitage.org/suttas/root/mn/mn41_root-pli-ms.json", "redistribute": false},
+    {"id": "hh_mn41_comment", "role": "HH_COMMENT", "edition": "HH comments to MN 41", "carrier": "suttas.hillsidehermitage.org", "kind": "web",
+     "url": "https://suttas.hillsidehermitage.org/suttas/comment/mn/mn41_comment-en-anigha.json", "redistribute": false},
+    {"id": "en_bodhi_obo", "role": "BODHI_EN", "edition": "Nanamoli/Bodhi MLDB MN 41 (mirror text marked (c) 1995)", "carrier": "obo.genaud.net (mirror, licence not verified with publisher)", "kind": "web",
+     "url": "https://obo.genaud.net/dhamma-vinaya/wp/mn/mn.041.ntbb.wp.htm", "redistribute": false},
+    {"id": "en_than", "role": "THANISSARO_EN", "edition": "Thanissaro Bhikkhu, MN 41", "carrier": "dhammatalks.org (official)", "kind": "web",
+     "url": "https://www.dhammatalks.org/suttas/MN/MN41.html", "redistribute": false},
+    {"id": "en_sujato_dep", "role": "DEPENDENCY_PROBE_ONLY", "edition": "Sujato MN 41 (CC0) - used ONLY to measure textual dependency of HH, never as translation source", "carrier": "suttacentral.net API", "kind": "web",
+     "url": "https://suttacentral.net/api/bilarasuttas/mn41/sujato?lang=en", "redistribute": false}
+  ]
+}

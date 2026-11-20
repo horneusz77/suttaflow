@@ -1,0 +1,104 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:suttaflow:issue-resolution:1",
+  "title": "Current issue-resolution evidence v1",
+  "type": "object",
+  "required": [
+    "schema",
+    "issue_id",
+    "status",
+    "reviewer_id",
+    "resolved_at_utc",
+    "subject_sha256",
+    "pali_sha256",
+    "scope",
+    "resolution",
+    "evidence"
+  ],
+  "properties": {
+    "schema": {
+      "const": "suttaflow-issue-resolution-v1"
+    },
+    "issue_id": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^[^\\s\\u0000]+$"
+    },
+    "status": {
+      "const": "RESOLVED"
+    },
+    "reviewer_id": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^[^\\s\\u0000]+$"
+    },
+    "resolved_at_utc": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "subject_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "pali_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "scope": {
+      "type": "object",
+      "required": [
+        "pali",
+        "pl"
+      ],
+      "properties": {
+        "pali": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^[^\\s\\u0000]+$"
+          }
+        },
+        "pl": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^[^\\s\\u0000]+$"
+          }
+        }
+      },
+      "additionalProperties": true
+    },
+    "resolution": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "evidence": {
+      "type": "object",
+      "required": [
+        "path",
+        "sha256"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Relative file inside the evaluation root; runtime resolves containment and hashes actual bytes."
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true,
+  "description": "One item of decisions.issue_resolutions. Runtime also requires the issue record to be RESOLVED, nonempty current evidence bytes, exact current Pali/PL hashes and scope covering every affected relation. This grants no human identity or publication status."
+}

@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:suttaflow:native-product:v1",
+  "title": "Pinned FORMAT_NATIVE content and K1 binding",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "artifact", "tab_id", "components", "claim_ledger", "pieces", "footnote_anchors"],
+  "properties": {
+    "schema": {"const": "suttaflow-native-product-v1"},
+    "artifact": {"$ref": "#/$defs/artifact"},
+    "tab_id": {"type": ["string", "null"], "minLength": 1},
+    "claim_ledger": {"$ref": "#/$defs/artifact"},
+    "components": {
+      "type": "object", "additionalProperties": false,
+      "required": ["core", "apparatus", "interpretation"],
+      "properties": {
+        "core": {"$ref": "#/$defs/artifact"},
+        "apparatus": {"$ref": "#/$defs/artifact"},
+        "interpretation": {"$ref": "#/$defs/artifact"}
+      }
+    },
+    "footnote_anchors": {
+      "type": "array",
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["footnote_id", "component", "byte_offset"],
+        "properties": {
+          "footnote_id": {"type": "string", "minLength": 1},
+          "component": {"enum": ["core", "apparatus", "interpretation"]},
+          "byte_offset": {"type": "integer", "minimum": 0}
+        }
+      }
+    },
+    "pieces": {
+      "type": "array", "minItems": 1,
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["component", "byte_range", "native_ranges"],
+        "properties": {
+          "component": {"enum": ["core", "apparatus", "interpretation"]},
+          "byte_range": {"$ref": "#/$defs/interval"},
+          "native_ranges": {
+            "type": "array", "minItems": 1,
+            "items": {
+              "type": "object", "additionalProperties": false,
+              "required": ["segment_id", "range"],
+              "properties": {
+                "segment_id": {"type": ["string", "null"], "minLength": 1},
+                "range": {"$ref": "#/$defs/interval"}
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "artifact": {
+      "type": "object", "additionalProperties": false,
+      "required": ["path", "sha256", "bytes"],
+      "properties": {
+        "path": {"type": "string", "minLength": 1},
+        "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "bytes": {"type": "integer", "minimum": 1}
+      }
+    },
+    "interval": {
+      "type": "array", "minItems": 2, "maxItems": 2,
+      "items": {"type": "integer", "minimum": 0}
+    }
+  },
+  "$comment": "Runtime also checks exact refs, UTF-8/UTF-16 boundaries, complete partitions, target coverage, region order, K1 roles/page breaks and footnote ownership. Schema success is not FORMAT or publication approval."
+}

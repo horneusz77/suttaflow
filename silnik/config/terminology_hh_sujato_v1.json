@@ -1,0 +1,351 @@
+{
+ "schema": "suttaflow-terminology-v1",
+ "decision": "DEC-03 (approved 2026-10-11)",
+ "author": {
+  "id": "claude-opus-5.5",
+  "type": "AI"
+ },
+ "meaning": "Renderings where Bhikkhu Sujato and HH/Anīgha systematically differ. A Polish match is a REVIEW FLAG, not an error: terminology is decided by HH after checking the Pali and DPD (DEC-03 rule 2). Evidence segments are re-verified against hashed captures on every run.",
+ "captures": [
+  "captures/mn41_2026-10-11",
+  "captures/terminology_2026-10-11"
+ ],
+ "entries": [
+  {
+   "id": "METTA",
+   "pali": "mettā",
+   "pali_rx": "mett",
+   "sujato_en": "love",
+   "sujato_rx": "\\blove\\b",
+   "hh_en": "friendliness",
+   "hh_rx": "friendliness",
+   "pl_flag_rx": "\\bmiło(ść|ści|ścią)\\b|\\bkochając\\w*",
+   "pali_required": true,
+   "evidence": [
+    {
+     "seg": "mn7:13.1",
+     "pali": "pali_ms_mn7",
+     "sujato": "sujato_mn7",
+     "hh": "hh_mn7"
+    },
+    {
+     "seg": "an3.65:42.1",
+     "pali": "pali_ms_an3_65",
+     "sujato": "sujato_an3_65",
+     "hh": "hh_an3_65"
+    }
+   ],
+   "note": "Owner reports HH 'goodwill' (PL życzliwość); in these captures HH has 'friendliness'."
+  },
+  {
+   "id": "VIHARATI_AS_MEDITATE",
+   "pali": "viharati",
+   "pali_rx": "vihar",
+   "sujato_en": "meditate",
+   "sujato_rx": "meditat",
+   "hh_en": "abide",
+   "hh_rx": "abid",
+   "pl_flag_rx": "\\bmedyt\\w*",
+   "pali_required": false,
+   "evidence": [
+    {
+     "seg": "mn7:13.1",
+     "pali": "pali_ms_mn7",
+     "sujato": "sujato_mn7",
+     "hh": "hh_mn7"
+    },
+    {
+     "seg": "mn19:2.2",
+     "pali": "pali_ms_mn19",
+     "sujato": "sujato_mn19",
+     "hh": "hh_mn19"
+    },
+    {
+     "seg": "mn19:3.1",
+     "pali": "pali_ms_mn19",
+     "sujato": "sujato_mn19",
+     "hh": "hh_mn19"
+    }
+   ],
+   "note": "Sujato supplies 'meditate' where the Pali verb is 'dwells/abides'. No Pali word in these passages means 'meditation'; every Polish 'medyt-' is flagged."
+  },
+  {
+   "id": "YOGA_AS_MEDITATION",
+   "pali": "yogo karaṇīyo",
+   "pali_rx": "yogo karaṇīyo",
+   "sujato_en": "you should practice meditation",
+   "sujato_rx": "meditat",
+   "hh_en": "you should exert yourselves",
+   "hh_rx": "exert",
+   "pl_flag_rx": null,
+   "evidence": [
+    {
+     "seg": "sn56.40:3.1",
+     "pali": "pali_ms_sn56_40",
+     "sujato": "sujato_sn56_40",
+     "hh": "hh_sn56_40"
+    }
+   ],
+   "note": "Same Polish flag as VIHARATI_AS_MEDITATE. The sentence exists in the Pali; Sujato narrows yoga (effort) to 'meditation'."
+  },
+  {
+   "id": "JHANA",
+   "pali": "jhāna / jhāyati",
+   "pali_rx": "jhān|jhāy",
+   "sujato_en": "absorption",
+   "sujato_rx": "absorption",
+   "hh_en": "jhāna",
+   "hh_rx": "jhāna",
+   "pl_flag_rx": "\\bpochłoni\\w*|\\babsorpcj\\w*",
+   "pali_required": false,
+   "evidence": [
+    {
+     "seg": "mn19:14.1",
+     "pali": "pali_ms_mn19",
+     "sujato": "sujato_mn19",
+     "hh": "hh_mn19"
+    },
+    {
+     "seg": "mn19:27.2",
+     "pali": "pali_ms_mn19",
+     "sujato": "sujato_mn19",
+     "hh": "hh_mn19"
+    }
+   ]
+  },
+  {
+   "id": "UPAPAJJATI",
+   "pali": "upapajjati",
+   "pali_rx": "upapajj",
+   "sujato_en": "be reborn",
+   "sujato_rx": "reborn",
+   "hh_en": "reappear",
+   "hh_rx": "reappear",
+   "pl_flag_rx": "\\bodr[oa]dz\\w*",
+   "pali_required": true,
+   "evidence": [
+    {
+     "seg": "mn41:4.1",
+     "pali": "pali_ms_sc",
+     "sujato": "en_sujato_dep",
+     "hh": "hh_mn41_tr"
+    },
+    {
+     "seg": "mn19:20.2",
+     "pali": "pali_ms_mn19",
+     "sujato": "sujato_mn19",
+     "hh": "hh_mn19"
+    },
+    {
+     "seg": "an3.65:43.3",
+     "pali": "pali_ms_an3_65",
+     "sujato": "sujato_an3_65",
+     "hh": "hh_an3_65"
+    }
+   ],
+   "note": "In MN 41 Bodhi and Ṭhānissaro also render 'reappear' in the formula. Standard 1.3 notes and HH-PL talk titles use 'odrodzenie' for the general concept of rebirth, so the flag is a question for the owner, not an error."
+  },
+  {
+   "id": "BHIKKHU",
+   "pali": "bhikkhu",
+   "pali_rx": "bhikkh",
+   "sujato_en": "mendicant",
+   "sujato_rx": "mendicant",
+   "hh_en": "bhikkhu",
+   "hh_rx": "bhikkhu",
+   "pl_flag_rx": "\\bżebra\\w*|\\bmendykan\\w*",
+   "pali_required": false,
+   "evidence": [
+    {
+     "seg": "mn41:1.2",
+     "pali": "pali_ms_sc",
+     "sujato": "en_sujato_dep",
+     "hh": "hh_mn41_tr"
+    },
+    {
+     "seg": "sn56.30:1.1",
+     "pali": "pali_ms_sn56_30",
+     "sujato": "sujato_sn56_30",
+     "hh": "hh_sn56_30"
+    }
+   ]
+  },
+  {
+   "id": "BHAGAVA",
+   "pali": "bhagavā",
+   "pali_rx": "bhagav",
+   "sujato_en": "the Buddha",
+   "sujato_rx": "\\bbuddha\\b",
+   "hh_en": "the Auspicious One",
+   "hh_rx": "auspicious one",
+   "pl_flag_rx": "\\bBudd(a|y|zie|ę|ą)\\b",
+   "pali_required": true,
+   "evidence": [
+    {
+     "seg": "mn41:1.2",
+     "pali": "pali_ms_sc",
+     "sujato": "en_sujato_dep",
+     "hh": "hh_mn41_tr"
+    },
+    {
+     "seg": "sn56.30:2.2",
+     "pali": "pali_ms_sn56_30",
+     "sujato": "sujato_sn56_30",
+     "hh": "hh_sn56_30"
+    }
+   ]
+  },
+  {
+   "id": "SAMADHI",
+   "pali": "samādhi",
+   "pali_rx": "samādh",
+   "sujato_en": "immersion",
+   "sujato_rx": "immersion",
+   "hh_en": "composure",
+   "hh_rx": "composure",
+   "pl_flag_rx": "\\bzanurz\\w*|\\bimmersj\\w*",
+   "pali_required": false,
+   "evidence": [
+    {
+     "seg": "mn19:15.1",
+     "pali": "pali_ms_mn19",
+     "sujato": "sujato_mn19",
+     "hh": "hh_mn19"
+    }
+   ],
+   "note": "HH 'composure' = project term 'skomponowanie' (intentional)."
+  },
+  {
+   "id": "SATI",
+   "pali": "sati / sato",
+   "pali_rx": "sat(o|i|imā)\\b",
+   "sujato_en": "mindful",
+   "sujato_rx": "mindful",
+   "hh_en": "recollected",
+   "hh_rx": "recollect",
+   "pl_flag_rx": "\\buważn\\w*",
+   "pali_required": true,
+   "evidence": [
+    {
+     "seg": "mn19:16.1",
+     "pali": "pali_ms_mn19",
+     "sujato": "sujato_mn19",
+     "hh": "hh_mn19"
+    },
+    {
+     "seg": "an3.65:42.1",
+     "pali": "pali_ms_an3_65",
+     "sujato": "sujato_an3_65",
+     "hh": "hh_an3_65"
+    }
+   ]
+  },
+  {
+   "id": "KUSALA",
+   "pali": "kusala / akusala",
+   "pali_rx": "kusal",
+   "sujato_en": "(un)skillful",
+   "sujato_rx": "skil",
+   "hh_en": "(un)beneficial",
+   "hh_rx": "beneficial",
+   "pl_flag_rx": "\\bumiejętn\\w*|\\bzręczn\\w*",
+   "pali_required": true,
+   "evidence": [
+    {
+     "seg": "mn19:14.1",
+     "pali": "pali_ms_mn19",
+     "sujato": "sujato_mn19",
+     "hh": "hh_mn19"
+    }
+   ]
+  },
+  {
+   "id": "PITI",
+   "pali": "pīti",
+   "pali_rx": "pīti",
+   "sujato_en": "rapture",
+   "sujato_rx": "rapture",
+   "hh_en": "joy",
+   "hh_rx": "\\bjoy\\b",
+   "pl_flag_rx": "\\bzachwyt\\w*|\\buniesieni\\w*",
+   "pali_required": true,
+   "evidence": [
+    {
+     "seg": "mn19:14.1",
+     "pali": "pali_ms_mn19",
+     "sujato": "sujato_mn19",
+     "hh": "hh_mn19"
+    },
+    {
+     "seg": "mn19:16.1",
+     "pali": "pali_ms_mn19",
+     "sujato": "sujato_mn19",
+     "hh": "hh_mn19"
+    }
+   ]
+  },
+  {
+   "id": "VITAKKA_VICARA",
+   "pali": "vitakka-vicāra (jhāna formula)",
+   "pali_rx": "savitakk",
+   "sujato_en": "placing the mind and keeping it connected",
+   "sujato_rx": "placing the mind",
+   "hh_en": "thinking and pondering",
+   "hh_rx": "thinking",
+   "pl_flag_rx": "umieszcz\\w* umysł|utrzymyw\\w* (go )?połącz",
+   "pali_required": true,
+   "evidence": [
+    {
+     "seg": "mn19:14.1",
+     "pali": "pali_ms_mn19",
+     "sujato": "sujato_mn19",
+     "hh": "hh_mn19"
+    }
+   ]
+  },
+  {
+   "id": "ADHAMMACARIYA",
+   "pali": "adhammacariyā visamacariyā",
+   "pali_rx": "adhammacariy",
+   "sujato_en": "unprincipled and immoral",
+   "sujato_rx": "unprincipled",
+   "hh_en": "conduct not in line with the Dhamma, unsuitable",
+   "hh_rx": "not in line with the dhamma",
+   "pl_flag_rx": "\\bbez zasad\\w*|\\bniemoraln\\w*",
+   "pali_required": true,
+   "evidence": [
+    {
+     "seg": "mn41:5.1",
+     "pali": "pali_ms_sc",
+     "sujato": "en_sujato_dep",
+     "hh": "hh_mn41_tr"
+    }
+   ]
+  },
+  {
+   "id": "BYAPADA",
+   "pali": "byāpāda",
+   "pali_rx": "byāpād",
+   "sujato_en": "malicious / ill will",
+   "sujato_rx": "malic",
+   "hh_en": "averse",
+   "hh_rx": "avers",
+   "pl_flag_rx": "\\bzłośliw\\w*",
+   "pali_required": true,
+   "evidence": [
+    {
+     "seg": "mn19:2.3",
+     "pali": "pali_ms_mn19",
+     "sujato": "sujato_mn19",
+     "hh": "hh_mn19"
+    },
+    {
+     "seg": "mn19:6.3",
+     "pali": "pali_ms_mn19",
+     "sujato": "sujato_mn19",
+     "hh": "hh_mn19"
+    }
+   ]
+  }
+ ]
+}

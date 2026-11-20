@@ -1,0 +1,10 @@
+{
+ "release": "dpd-db v0.4.20260926",
+ "asset": "https://github.com/digitalpalidictionary/dpd-db/releases/download/v0.4.20260926/dpd.db.tar.xz",
+ "asset_sha256_github_digest": "cba32e51a1e0288a256711da0b5c9f0420361c90b6480a00c46ce53ba75ed540",
+ "asset_sha256_local": "cba32e51a1e0288a256711da0b5c9f0420361c90b6480a00c46ce53ba75ed540",
+ "db_sha256": "739fec5c07be47bbe638c5ce2ae4c53c95eeac917dcd4c0744eabee552eceaa1",
+ "db_bytes": 2294112256,
+ "licence": "CC BY-NC-SA 4.0, Digital Pali Dictionary by Bodhirasa Bhikkhu",
+ "trust_note": "Archive digest published by GitHub for the release asset is the external anchor; db hash computed locally from the extracted file."
+}

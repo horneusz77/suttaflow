@@ -1,0 +1,95 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:suttaflow:source-readings:1",
+  "title": "Source reading and actual-use ledger v1",
+  "type": "object",
+  "required": [
+    "schema",
+    "records"
+  ],
+  "properties": {
+    "schema": {
+      "const": "suttaflow-source-readings-v1"
+    },
+    "records": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "capture_id",
+          "status",
+          "source_sha256",
+          "reader_id",
+          "read_at_utc",
+          "scope",
+          "used_in"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "capture_id": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "status": {
+            "const": "READ"
+          },
+          "source_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "reader_id": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "read_at_utc": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "used_in": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            }
+          },
+          "scope": {
+            "type": "object",
+            "required": [
+              "kind",
+              "start",
+              "end"
+            ],
+            "properties": {
+              "kind": {
+                "const": "BYTE_RANGE"
+              },
+              "start": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "end": {
+                "type": "integer",
+                "minimum": 1
+              }
+            },
+            "additionalProperties": true,
+            "description": "Runtime additionally requires 0 <= start < end <= captured byte length, matching captured SHA-256 and a nonfuture aware timestamp."
+          }
+        },
+        "additionalProperties": true,
+        "description": "An attestation of reading and use, not authentication of the reader's identity. CAPTURED alone is not READ."
+      }
+    }
+  },
+  "additionalProperties": true
+}

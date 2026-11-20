@@ -1,0 +1,94 @@
+@font-face {
+  font-family: "Merriweather Trial";
+  src: url("fonts/Merriweather-Regular.ttf");
+  font-style: normal;
+  font-weight: 400;
+}
+@font-face {
+  font-family: "Merriweather Trial";
+  src: url("fonts/Merriweather-Italic.ttf");
+  font-style: italic;
+  font-weight: 400;
+}
+@font-face {
+  font-family: "Merriweather Trial";
+  src: url("fonts/Merriweather-Bold.ttf");
+  font-style: normal;
+  font-weight: 700;
+}
+@font-face {
+  font-family: "Merriweather Trial";
+  src: url("fonts/Merriweather-BoldItalic.ttf");
+  font-style: italic;
+  font-weight: 700;
+}
+@page {
+  size: A4;
+  margin: 56.7pt;
+  @bottom-right {
+    content: counter(page);
+    font: 10.5pt "Merriweather Trial";
+    color: #3c3c3c;
+    line-height: 1.44555;
+    vertical-align: bottom;
+    padding-bottom: 40pt;
+  }
+  @footnote {
+    border-top: 0.75pt solid transparent;
+    border-image-source: linear-gradient(to right, #3c3c3c 0, #3c3c3c 144pt, transparent 144pt, transparent 100%);
+    border-image-slice: 1;
+    padding-top: 4pt;
+    margin-top: 12pt;
+  }
+}
+html {
+  font-family: "Merriweather Trial", serif;
+  font-size: 12pt;
+  /* Google Docs 115% uses Merriweather's 1.257 em natural line height. */
+  line-height: 1.44555;
+  color: #3c3c3c;
+  hyphens: manual;
+}
+body { margin: 0; }
+p { margin: 0 0 4pt; orphans: 2; widows: 2; }
+h1, h2, h3, h4 {
+  break-after: avoid;
+  font-weight: 700;
+  line-height: 1.44555;
+}
+h1 { font-size: 24pt; margin: 0 0 2pt; }
+.subtitle { font-size: 14pt; margin-bottom: 8pt; }
+h2 { font-size: 14pt; margin: 10pt 0 4pt; }
+h3 { font-size: 14pt; margin: 14pt 0 4pt; }
+h4 { font-size: 12pt; margin: 12pt 0 2pt; }
+.intro p { font-style: italic; }
+#jak-powstało-to-tłumaczenie { break-before: page; margin-top: 0; }
+.gatha { margin: 0 0 0 18pt; }
+.gatha p { margin: 0; }
+ul { margin: 0 0 4pt; padding-left: 36pt; list-style: none; }
+li { margin: 0; position: relative; }
+li::before { content: "●"; font-family: Arial, sans-serif; position: absolute; left: -18pt; }
+#źródła ~ ul { font-size: 10pt; }
+.metrics {
+  break-before: page;
+  font-size: 10pt;
+  margin-left: -11pt;
+  border-left: 3pt solid #8c8c8c;
+  padding-left: 8pt;
+  background: #f0f0f0;
+}
+.metrics h3, .metrics h4 { margin: 0; }
+.metrics p { margin: 0; }
+aside[role="doc-footnote"] { font-size: 9.5pt; line-height: 1.257; margin: 0; }
+aside[role="doc-footnote"] p { margin: 0; }
+a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+a[role="doc-noteref"], a[role="doc-backlink"] { text-decoration: none; }
+a[role="doc-backlink"] { margin-right: 2pt; }
+code { font-family: "Merriweather Trial", serif; font-size: 0.95em; }
+
+.keep { break-inside: avoid; }
+#decyzje-tłumaczeniowe + p { font-size: 11pt; }
+.metrics { overflow-wrap: anywhere; }
+.sources h3 { margin: 6pt 0 2pt; }
+.sources ul { font-size: 10pt; }
+.sources li { break-inside: avoid; }

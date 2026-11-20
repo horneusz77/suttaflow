@@ -1,0 +1,100 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:suttaflow:publication-bundle:2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "subject_id",
+    "revision_id",
+    "scope",
+    "core",
+    "apparatus",
+    "interpretation",
+    "target_unit_manifest",
+    "claim_ledger",
+    "publication_metadata"
+  ],
+  "properties": {
+    "schema": {
+      "const": "suttaflow-publication-bundle-v2"
+    },
+    "subject_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "revision_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "scope": {
+      "$ref": "#/$defs/scope"
+    },
+    "core": {
+      "$ref": "#/$defs/artifact"
+    },
+    "apparatus": {
+      "$ref": "#/$defs/artifact"
+    },
+    "interpretation": {
+      "$ref": "#/$defs/artifact"
+    },
+    "target_unit_manifest": {
+      "$ref": "#/$defs/artifact"
+    },
+    "parts_manifest": {
+      "$ref": "#/$defs/artifact",
+      "$comment": "Required by the runtime when CORE or its original review declares a divided package. Whole CORE needs no artificial partition."
+    },
+    "claim_ledger": {
+      "$ref": "#/$defs/artifact"
+    },
+    "publication_metadata": {
+      "$ref": "#/$defs/artifact"
+    },
+    "requested_channels": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "$comment": "Explicit task channel scope, supplied independently of the metadata manifest. Absence means no additional requested channel."
+    }
+  },
+  "$defs": {
+    "artifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "sha256",
+        "bytes"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[^\\u0000]+$"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 1
+        }
+      }
+    },
+    "scope": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "status": "STRUCTURAL_BUILD_ONLY",
+  "version": "2.2.0",
+  "rules": 94,
+  "registry_sha256": "c5dd58a195af24b9778708d8b7552ccde367a4f9dbccbe618ca0ccd7b41dbdeb",
+  "document_sha256": "94cfd36979766ed11954d57ef50870d8ffb624b067992cafda49b6be32c52357",
+  "semantic_review": "REQUIRES_ACTUAL_REVIEW",
+  "activation_performed": false,
+  "change_control": {
+    "status": "CONSISTENCY_REVIEW_RECORDED",
+    "reviewed_targets": 16,
+    "baseline_sha256": "2d8a9c0e1dedc9bee23acf0b041b409babfbfaff54108a490de8cbb92ba4afeb",
+    "candidate_sha256": "c5dd58a195af24b9778708d8b7552ccde367a4f9dbccbe618ca0ccd7b41dbdeb",
+    "reviewer": "Codex /root — własny przegląd dokładnej warunkowej promocji; bez nowej delegacji",
+    "reviewed_at": "2026-10-25T12:38:40.245911+01:00",
+    "semantic_truth_verified": false,
+    "activation_performed": false,
+    "review_sha256": "d5d2199557dc7f2498d029a1d87bd22384ed3d2179ade24df6695a31dea0fab9"
+  }
+}

@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="pl">
+<head>
+ <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+ <meta name="robots" content="noindex,nofollow"><meta name="color-scheme" content="light dark"><script>try{const t=localStorage.getItem("sf-reader-theme");if(t==="light"||t==="dark"){document.documentElement.dataset.theme=t;document.querySelector("meta[name=color-scheme]").content=t}}catch{}</script><meta name="theme-color" content="#f6efdf">
+ <title>Sutty i Vinaya — SuttaFlow</title>
+ <link rel="icon" href="assets/tipitaka-pl-brown.svg" type="image/svg+xml">
+ <link rel="stylesheet" href="assets/style.css"><link rel="stylesheet" href="assets/b-monastic.css?v=0.7.6"><link rel="stylesheet" href="assets/home.css?v=0.7.5">
+ <link rel="stylesheet" href="assets/metoda.css?v=0.7.9"><link rel="stylesheet" href="assets/theme.css?v=0.3.0"><script src="assets/theme.js?v=0.7.4" defer></script><script src="assets/library-data.js?v=0.7.8" defer></script><script src="assets/home.js?v=0.7.8" defer></script>
+</head>
+<body class="variant-b library-home">
+ <a class="skip" href="#library">Przejdź do biblioteki</a>
+ <header class="topbar">
+  <a class="brand brand-inline" href="index.html"><img class="brand-mark" data-theme-logo src="assets/tipitaka-pl-brown.svg" alt="" title="Tipitaka PL" width="44" height="44"><span>SuttaFlow</span></a>
+  <div class="home-header-tools"><nav class="home-nav" aria-label="Czytelnia"><button id="show-library" aria-current="page">Biblioteka</button><button id="show-bookmarks">Zakładki <span id="bookmark-count"></span></button></nav><button type="button" class="icon-button theme-toggle" aria-label="Włącz ciemny motyw"><svg class="icon theme-moon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 13A8.5 8.5 0 0 1 11 3.5 8.5 8.5 0 1 0 20.5 13Z"/></svg><svg class="icon theme-sun" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></svg></button></div>
+ </header>
+ <main id="library" class="home-main" tabindex="-1">
+  <div class="library-heading"><div><h1>Sutty i Vinaya</h1><p>SuttaFlow to eksperymentalny projekt tłumaczenia kanonu palijskiego na język polski z pomocą sztucznej inteligencji.</p><p><a class="method-link" href="jak-powstaja-tlumaczenia.html">Dowiedz się, jak powstają tłumaczenia</a></p></div><span id="library-total"></span></div>
+  <section id="continue-reading" class="continue-reading" aria-label="Kontynuuj czytanie" hidden>
+   <div><h2>Kontynuuj czytanie</h2><p id="continue-title"></p><span id="continue-position"></span></div>
+   <a id="continue-link" class="continue-link" href="b.html">Wróć do tekstu <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15m-6-6 6 6-6 6"/></svg></a>
+  </section>
+  <search class="library-search" aria-label="Szukaj w bibliotece">
+   <form id="library-search">
+    <label for="library-query">Szukaj w bibliotece</label>
+    <div class="home-search-row"><input id="library-query" name="q" type="search" placeholder="Numer, tytuł lub fragment tekstu"><button class="primary" type="submit">Szukaj</button></div>
+    <div class="search-options"><label><input id="library-extra" type="checkbox"> Uwzględnij pāḷi i przypisy</label><button id="clear-search" type="button" hidden>Wyczyść wyszukiwanie</button></div>
+   </form>
+  </search>
+  <nav id="collection-filters" class="collection-filters" aria-label="Filtruj według zbioru"></nav>
+  <details class="collection-help">
+   <summary>Co oznaczają skróty i nazwy zbiorów?</summary>
+   <div class="collection-help-content">
+    <p><strong>Nikāya</strong> oznacza zbiór. Pięć skrótów poniżej odnosi się do zbiorów Sutta Piṭaki — części kanonu zawierającej mowy i inne teksty nauczania.</p>
+    <dl>
+     <div><dt>DN · Dīgha Nikāya</dt><dd>Zbiór długich mów.</dd></div>
+     <div><dt>MN · Majjhima Nikāya</dt><dd>Zbiór mów średniej długości.</dd></div>
+     <div><dt>SN · Saṃyutta Nikāya</dt><dd>Mowy połączone w grupy tematyczne.</dd></div>
+     <div><dt>AN · Aṅguttara Nikāya</dt><dd>Mowy uporządkowane według liczby omawianych elementów: od jednego do jedenastu.</dd></div>
+     <div><dt>KN · Khuddaka Nikāya</dt><dd>Zbiór mniejszych tekstów i zbiorów, m.in. Dhammapady i Sutta Nipāty.</dd></div>
+     <div><dt>Vinaya · dyscyplina monastyczna</dt><dd>Część kanonu dotycząca życia mnichów i mniszek: reguł, ich objaśnień, okoliczności ich powstania oraz funkcjonowania wspólnoty.</dd></div>
+    </dl>
+    <p><strong>Jak czytać oznaczenia?</strong> „SN 47.13” oznacza trzynastą suttę w czterdziestej siódmej grupie zbioru SN. W „Vin Mv I.6” skrót „Vin” wskazuje Vinayę, „Mv” — Mahāvaggę, a „I.6” — miejsce tekstu w tej księdze.</p>
+    <a href="https://www.accesstoinsight.org/tipitaka/index.html" target="_blank" rel="noopener noreferrer">Więcej o podziale kanonu — Access to Insight</a>
+   </div>
+  </details>
+  <div class="results-heading"><h2 id="results-title">Biblioteka</h2><p id="results-count" role="status"></p></div>
+  <div id="library-results" aria-busy="true"><p class="library-state" role="status">Otwieranie biblioteki…</p></div>
+  <noscript><p>Włącz JavaScript, aby otwierać teksty i korzystać z wyszukiwarki.</p></noscript>
+ </main>
+ <footer class="home-footer"><span>SuttaFlow · Czytelnia</span><p>Zakładki i miejsce czytania zapisują się w tej przeglądarce.</p><button class="text-button theme-system" data-theme-system hidden>Używaj motywu urządzenia</button></footer>
+</body>
+</html>

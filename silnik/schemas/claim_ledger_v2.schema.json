@@ -1,0 +1,1432 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:suttaflow:claim-ledger:2",
+  "$comment": "Shape only. N1 34.1–34.9 / APP-001 / INT-002. Runtime reads every current apparatus/interpretation byte, checks complete role/sentence/subclaim coverage and three independently recorded review inventories, source/read/process bindings and chronology. It never certifies semantic completeness, reading truth, philology, independence of model training or owner authority. bundle.claim_ledger pins this manifest. The manifest must not contain bundle/report hashes; external reports pin both manifest and bundle. $defs ikReview/idReview/irReview describe the claim_review extension to verified RE.report records. NOT_APPLICABLE is additionally constrained at runtime by claim type and region role.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "subject_id",
+    "revision_id",
+    "scope",
+    "components",
+    "basis",
+    "author",
+    "prepared_at",
+    "inventory",
+    "claims"
+  ],
+  "properties": {
+    "schema": {
+      "const": "suttaflow-claim-ledger-v2"
+    },
+    "subject_id": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "revision_id": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "scope": {
+      "$ref": "#/$defs/scope"
+    },
+    "components": {
+      "$ref": "#/$defs/components"
+    },
+    "basis": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_id",
+        "edition",
+        "language"
+      ],
+      "properties": {
+        "source_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "edition": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "language": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        }
+      }
+    },
+    "author": {
+      "$ref": "#/$defs/actor"
+    },
+    "prepared_at": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?(?:Z|[+-]\\d{2}:\\d{2})$"
+    },
+    "inventory": {
+      "$ref": "#/$defs/inventory"
+    },
+    "claims": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "oneOf": [
+          {
+            "$ref": "#/$defs/contentClaim"
+          },
+          {
+            "$ref": "#/$defs/processClaim"
+          }
+        ]
+      }
+    }
+  },
+  "$defs": {
+    "artifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "sha256",
+        "bytes"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[^\\u0000]+$"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 1
+        }
+      }
+    },
+    "scope": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "pattern": "\\S"
+      },
+      "uniqueItems": true
+    },
+    "ids": {
+      "type": "array",
+      "minItems": 0,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "pattern": "\\S"
+      },
+      "uniqueItems": true
+    },
+    "actor": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "model",
+        "context_id"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "model": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "context_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        }
+      }
+    },
+    "range": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "items": {
+        "type": "integer",
+        "minimum": 0
+      }
+    },
+    "components": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "core",
+        "apparatus",
+        "interpretation"
+      ],
+      "properties": {
+        "core": {
+          "$ref": "#/$defs/artifact"
+        },
+        "apparatus": {
+          "$ref": "#/$defs/artifact"
+        },
+        "interpretation": {
+          "$ref": "#/$defs/artifact"
+        }
+      }
+    },
+    "claimUnit": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "kind",
+        "byte_range",
+        "text"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "kind": {
+          "const": "CLAIM"
+        },
+        "byte_range": {
+          "$ref": "#/$defs/range"
+        },
+        "text": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "nonClaimUnit": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "kind",
+        "role",
+        "byte_range",
+        "text"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "kind": {
+          "const": "NON_CLAIM"
+        },
+        "role": {
+          "enum": [
+            "HEADING",
+            "FIELD_LABEL"
+          ]
+        },
+        "byte_range": {
+          "$ref": "#/$defs/range"
+        },
+        "text": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "sentence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "byte_range",
+        "text",
+        "units"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "byte_range": {
+          "$ref": "#/$defs/range"
+        },
+        "text": {
+          "type": "string",
+          "minLength": 1
+        },
+        "units": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "oneOf": [
+              {
+                "$ref": "#/$defs/claimUnit"
+              },
+              {
+                "$ref": "#/$defs/nonClaimUnit"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "region": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "component",
+        "role",
+        "byte_range",
+        "text",
+        "sentences"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "component": {
+          "enum": [
+            "apparatus",
+            "interpretation"
+          ]
+        },
+        "role": {
+          "enum": [
+            "DESCRIPTION",
+            "INTERPRETATION",
+            "FOOTNOTE",
+            "PARALLEL",
+            "METHOD",
+            "TRANSLATION_DECISIONS",
+            "METRICS",
+            "OTHER_PUBLIC"
+          ]
+        },
+        "byte_range": {
+          "$ref": "#/$defs/range"
+        },
+        "text": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sentences": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/sentence"
+          }
+        }
+      }
+    },
+    "inventory": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/region"
+      }
+    },
+    "uncapturedReference": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "kind",
+        "source_id",
+        "edition",
+        "locus",
+        "scope",
+        "attribution",
+        "read_event_ref"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "kind": {
+          "const": "SOURCE"
+        },
+        "source_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "edition": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "locus": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "scope": {
+          "$ref": "#/$defs/scope"
+        },
+        "attribution": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "read_event_ref": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        }
+      }
+    },
+    "captureReference": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "kind",
+        "source_id",
+        "edition",
+        "locus",
+        "scope",
+        "attribution",
+        "read_event_ref",
+        "capture",
+        "excerpt"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "kind": {
+          "const": "SOURCE"
+        },
+        "source_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "edition": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "locus": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "scope": {
+          "$ref": "#/$defs/scope"
+        },
+        "attribution": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "read_event_ref": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "capture": {
+          "$ref": "#/$defs/artifact"
+        },
+        "excerpt": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "byte_range",
+            "text"
+          ],
+          "properties": {
+            "byte_range": {
+              "$ref": "#/$defs/range"
+            },
+            "text": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        }
+      }
+    },
+    "sourceReference": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/uncapturedReference"
+        },
+        {
+          "$ref": "#/$defs/captureReference"
+        }
+      ]
+    },
+    "pointer": {
+      "type": "string",
+      "pattern": "^(?:/(?:[^~]|~[01])*)+$"
+    },
+    "processAssertion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "pointer",
+        "value"
+      ],
+      "properties": {
+        "pointer": {
+          "$ref": "#/$defs/pointer"
+        },
+        "value": {}
+      }
+    },
+    "processReference": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "kind",
+        "record_id",
+        "id_pointer",
+        "record_kind",
+        "locus",
+        "attribution",
+        "assertions"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "kind": {
+          "const": "PROCESS"
+        },
+        "record_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "id_pointer": {
+          "$ref": "#/$defs/pointer"
+        },
+        "record_kind": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "locus": {
+          "$ref": "#/$defs/pointer"
+        },
+        "attribution": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "assertions": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/processAssertion"
+          }
+        }
+      }
+    },
+    "contentClaim": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "scope",
+        "attribution",
+        "uncertainty",
+        "dependencies",
+        "kind",
+        "provenance",
+        "references"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "scope": {
+          "$ref": "#/$defs/scope"
+        },
+        "attribution": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "uncertainty": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "dependencies": {
+          "$ref": "#/$defs/ids"
+        },
+        "kind": {
+          "const": "CONTENT"
+        },
+        "provenance": {
+          "enum": [
+            "K",
+            "P",
+            "W",
+            "T",
+            "H"
+          ]
+        },
+        "references": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/sourceReference"
+          }
+        }
+      }
+    },
+    "processClaim": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "scope",
+        "attribution",
+        "uncertainty",
+        "dependencies",
+        "kind",
+        "provenance",
+        "process_type",
+        "references"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "scope": {
+          "$ref": "#/$defs/scope"
+        },
+        "attribution": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "uncertainty": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "dependencies": {
+          "$ref": "#/$defs/ids"
+        },
+        "kind": {
+          "const": "PROCESS"
+        },
+        "provenance": {
+          "type": "null"
+        },
+        "process_type": {
+          "enum": [
+            "METHOD",
+            "OWNER_DECISION",
+            "READING",
+            "REVIEW"
+          ]
+        },
+        "references": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/processReference"
+          }
+        }
+      }
+    },
+    "assessment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "evidence"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "REVIEWED",
+            "NOT_APPLICABLE"
+          ]
+        },
+        "evidence": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        }
+      }
+    },
+    "reviewedAssessment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "evidence"
+      ],
+      "properties": {
+        "status": {
+          "const": "REVIEWED"
+        },
+        "evidence": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        }
+      }
+    },
+    "inventoryChecks": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sentence_inventory",
+        "subclaim_inventory",
+        "role_assignment"
+      ],
+      "properties": {
+        "sentence_inventory": {
+          "$ref": "#/$defs/reviewedAssessment"
+        },
+        "subclaim_inventory": {
+          "$ref": "#/$defs/reviewedAssessment"
+        },
+        "role_assignment": {
+          "$ref": "#/$defs/reviewedAssessment"
+        }
+      }
+    },
+    "nonClaimReview": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "unit_id",
+        "role",
+        "text",
+        "reason"
+      ],
+      "properties": {
+        "unit_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "role": {
+          "enum": [
+            "HEADING",
+            "FIELD_LABEL"
+          ]
+        },
+        "text": {
+          "type": "string",
+          "minLength": 1
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        }
+      }
+    },
+    "processRecordReading": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "reference_id",
+        "artifact",
+        "reader_id",
+        "context_id",
+        "read_at",
+        "byte_range"
+      ],
+      "properties": {
+        "reference_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "artifact": {
+          "$ref": "#/$defs/artifact"
+        },
+        "reader_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "context_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "read_at": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?(?:Z|[+-]\\d{2}:\\d{2})$"
+        },
+        "byte_range": {
+          "$ref": "#/$defs/range"
+        }
+      }
+    },
+    "ikClaimReview": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "claim_id",
+        "sentence_id",
+        "text",
+        "scope",
+        "kind",
+        "provenance",
+        "reference_ids",
+        "result",
+        "confidence",
+        "finding_ids",
+        "checks"
+      ],
+      "properties": {
+        "claim_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "sentence_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "text": {
+          "type": "string",
+          "minLength": 1
+        },
+        "scope": {
+          "$ref": "#/$defs/scope"
+        },
+        "kind": {
+          "enum": [
+            "CONTENT",
+            "PROCESS"
+          ]
+        },
+        "provenance": {
+          "enum": [
+            "K",
+            "P",
+            "W",
+            "T",
+            "H",
+            null
+          ]
+        },
+        "reference_ids": {
+          "$ref": "#/$defs/scope"
+        },
+        "result": {
+          "enum": [
+            "PASS",
+            "PASS_WITH_NOTES"
+          ]
+        },
+        "confidence": {
+          "enum": [
+            "HIGH",
+            "MEDIUM",
+            "LOW",
+            "UNKNOWN"
+          ]
+        },
+        "finding_ids": {
+          "$ref": "#/$defs/ids"
+        },
+        "checks": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "claim_type",
+            "canonical_locus_context",
+            "subject_quantifiers",
+            "causality_conditions_negation",
+            "terms_variants",
+            "translation_consistency",
+            "support_scope"
+          ],
+          "properties": {
+            "claim_type": {
+              "$ref": "#/$defs/assessment"
+            },
+            "canonical_locus_context": {
+              "$ref": "#/$defs/assessment"
+            },
+            "subject_quantifiers": {
+              "$ref": "#/$defs/assessment"
+            },
+            "causality_conditions_negation": {
+              "$ref": "#/$defs/assessment"
+            },
+            "terms_variants": {
+              "$ref": "#/$defs/assessment"
+            },
+            "translation_consistency": {
+              "$ref": "#/$defs/assessment"
+            },
+            "support_scope": {
+              "$ref": "#/$defs/assessment"
+            }
+          }
+        }
+      }
+    },
+    "ikReview": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "manifest",
+        "components",
+        "inventory",
+        "inventory_method",
+        "inventory_read_at",
+        "inventory_checks",
+        "claims",
+        "non_claims",
+        "process_records"
+      ],
+      "properties": {
+        "schema": {
+          "const": "suttaflow-claim-review-v2"
+        },
+        "manifest": {
+          "$ref": "#/$defs/artifact"
+        },
+        "components": {
+          "$ref": "#/$defs/components"
+        },
+        "inventory": {
+          "$ref": "#/$defs/inventory"
+        },
+        "inventory_method": {
+          "const": "FULL_COMPONENT_READING"
+        },
+        "inventory_read_at": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?(?:Z|[+-]\\d{2}:\\d{2})$"
+        },
+        "inventory_checks": {
+          "$ref": "#/$defs/inventoryChecks"
+        },
+        "claims": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/ikClaimReview"
+          }
+        },
+        "non_claims": {
+          "type": "array",
+          "minItems": 0,
+          "items": {
+            "$ref": "#/$defs/nonClaimReview"
+          }
+        },
+        "process_records": {
+          "type": "array",
+          "minItems": 0,
+          "items": {
+            "$ref": "#/$defs/processRecordReading"
+          },
+          "maxItems": 0
+        }
+      }
+    },
+    "idClaimReview": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "claim_id",
+        "sentence_id",
+        "text",
+        "scope",
+        "kind",
+        "provenance",
+        "reference_ids",
+        "result",
+        "confidence",
+        "finding_ids",
+        "checks"
+      ],
+      "properties": {
+        "claim_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "sentence_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "text": {
+          "type": "string",
+          "minLength": 1
+        },
+        "scope": {
+          "$ref": "#/$defs/scope"
+        },
+        "kind": {
+          "enum": [
+            "CONTENT",
+            "PROCESS"
+          ]
+        },
+        "provenance": {
+          "enum": [
+            "K",
+            "P",
+            "W",
+            "T",
+            "H",
+            null
+          ]
+        },
+        "reference_ids": {
+          "$ref": "#/$defs/scope"
+        },
+        "result": {
+          "enum": [
+            "PASS",
+            "PASS_WITH_NOTES"
+          ]
+        },
+        "confidence": {
+          "enum": [
+            "HIGH",
+            "MEDIUM",
+            "LOW",
+            "UNKNOWN"
+          ]
+        },
+        "finding_ids": {
+          "$ref": "#/$defs/ids"
+        },
+        "checks": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "claim_type",
+            "provenance",
+            "attribution_actual_reading",
+            "direct_vs_indirect",
+            "alternatives_uncertainty",
+            "support_scope",
+            "process_record_truth"
+          ],
+          "properties": {
+            "claim_type": {
+              "$ref": "#/$defs/assessment"
+            },
+            "provenance": {
+              "$ref": "#/$defs/assessment"
+            },
+            "attribution_actual_reading": {
+              "$ref": "#/$defs/assessment"
+            },
+            "direct_vs_indirect": {
+              "$ref": "#/$defs/assessment"
+            },
+            "alternatives_uncertainty": {
+              "$ref": "#/$defs/assessment"
+            },
+            "support_scope": {
+              "$ref": "#/$defs/assessment"
+            },
+            "process_record_truth": {
+              "$ref": "#/$defs/assessment"
+            }
+          }
+        }
+      }
+    },
+    "idReview": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "manifest",
+        "components",
+        "inventory",
+        "inventory_method",
+        "inventory_read_at",
+        "inventory_checks",
+        "claims",
+        "non_claims",
+        "process_records"
+      ],
+      "properties": {
+        "schema": {
+          "const": "suttaflow-claim-review-v2"
+        },
+        "manifest": {
+          "$ref": "#/$defs/artifact"
+        },
+        "components": {
+          "$ref": "#/$defs/components"
+        },
+        "inventory": {
+          "$ref": "#/$defs/inventory"
+        },
+        "inventory_method": {
+          "const": "FULL_COMPONENT_READING"
+        },
+        "inventory_read_at": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?(?:Z|[+-]\\d{2}:\\d{2})$"
+        },
+        "inventory_checks": {
+          "$ref": "#/$defs/inventoryChecks"
+        },
+        "claims": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/idClaimReview"
+          }
+        },
+        "non_claims": {
+          "type": "array",
+          "minItems": 0,
+          "items": {
+            "$ref": "#/$defs/nonClaimReview"
+          }
+        },
+        "process_records": {
+          "type": "array",
+          "minItems": 0,
+          "items": {
+            "$ref": "#/$defs/processRecordReading"
+          }
+        }
+      }
+    },
+    "irClaimReview": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "claim_id",
+        "sentence_id",
+        "text",
+        "scope",
+        "kind",
+        "provenance",
+        "reference_ids",
+        "result",
+        "confidence",
+        "finding_ids",
+        "checks"
+      ],
+      "properties": {
+        "claim_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "sentence_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "text": {
+          "type": "string",
+          "minLength": 1
+        },
+        "scope": {
+          "$ref": "#/$defs/scope"
+        },
+        "kind": {
+          "enum": [
+            "CONTENT",
+            "PROCESS"
+          ]
+        },
+        "provenance": {
+          "enum": [
+            "K",
+            "P",
+            "W",
+            "T",
+            "H",
+            null
+          ]
+        },
+        "reference_ids": {
+          "$ref": "#/$defs/scope"
+        },
+        "result": {
+          "enum": [
+            "PASS",
+            "PASS_WITH_NOTES"
+          ]
+        },
+        "confidence": {
+          "enum": [
+            "HIGH",
+            "MEDIUM",
+            "LOW",
+            "UNKNOWN"
+          ]
+        },
+        "finding_ids": {
+          "$ref": "#/$defs/ids"
+        },
+        "checks": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "claim_type",
+            "full_polish_reading",
+            "description_neutrality",
+            "interpretation_clarity",
+            "titles_terms_style",
+            "preserved_meaning_attribution_uncertainty",
+            "hidden_claims"
+          ],
+          "properties": {
+            "claim_type": {
+              "$ref": "#/$defs/assessment"
+            },
+            "full_polish_reading": {
+              "$ref": "#/$defs/assessment"
+            },
+            "description_neutrality": {
+              "$ref": "#/$defs/assessment"
+            },
+            "interpretation_clarity": {
+              "$ref": "#/$defs/assessment"
+            },
+            "titles_terms_style": {
+              "$ref": "#/$defs/assessment"
+            },
+            "preserved_meaning_attribution_uncertainty": {
+              "$ref": "#/$defs/assessment"
+            },
+            "hidden_claims": {
+              "$ref": "#/$defs/assessment"
+            }
+          }
+        }
+      }
+    },
+    "irReview": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "manifest",
+        "components",
+        "inventory",
+        "inventory_method",
+        "inventory_read_at",
+        "inventory_checks",
+        "claims",
+        "non_claims",
+        "process_records"
+      ],
+      "properties": {
+        "schema": {
+          "const": "suttaflow-claim-review-v2"
+        },
+        "manifest": {
+          "$ref": "#/$defs/artifact"
+        },
+        "components": {
+          "$ref": "#/$defs/components"
+        },
+        "inventory": {
+          "$ref": "#/$defs/inventory"
+        },
+        "inventory_method": {
+          "const": "FULL_COMPONENT_READING"
+        },
+        "inventory_read_at": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?(?:Z|[+-]\\d{2}:\\d{2})$"
+        },
+        "inventory_checks": {
+          "$ref": "#/$defs/inventoryChecks"
+        },
+        "claims": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/irClaimReview"
+          }
+        },
+        "non_claims": {
+          "type": "array",
+          "minItems": 0,
+          "items": {
+            "$ref": "#/$defs/nonClaimReview"
+          }
+        },
+        "process_records": {
+          "type": "array",
+          "minItems": 0,
+          "items": {
+            "$ref": "#/$defs/processRecordReading"
+          },
+          "maxItems": 0
+        }
+      }
+    },
+    "claimFinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "severity",
+        "status",
+        "scope",
+        "resolution",
+        "claim_id",
+        "sentence_id",
+        "quote",
+        "source_loci",
+        "defect_type",
+        "proposal",
+        "confidence",
+        "actor",
+        "assessed_at"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "severity": {
+          "enum": [
+            "P0",
+            "P1",
+            "P2",
+            "P3",
+            "INFO",
+            "CRITICAL",
+            "MAJOR",
+            "MINOR",
+            "NOTE"
+          ]
+        },
+        "status": {
+          "enum": [
+            "OPEN",
+            "IN_PROGRESS",
+            "RESOLVED",
+            "REJECTED_WITH_EVIDENCE",
+            "ACCEPTED_NONBLOCKING"
+          ]
+        },
+        "scope": {
+          "$ref": "#/$defs/scope"
+        },
+        "resolution": {
+          "$ref": "#/$defs/artifact"
+        },
+        "claim_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "sentence_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "quote": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_loci": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "reference_id",
+              "locus"
+            ],
+            "properties": {
+              "reference_id": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "\\S"
+              },
+              "locus": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "\\S"
+              }
+            }
+          }
+        },
+        "defect_type": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "proposal": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "confidence": {
+          "enum": [
+            "HIGH",
+            "MEDIUM",
+            "LOW",
+            "UNKNOWN"
+          ]
+        },
+        "actor": {
+          "$ref": "#/$defs/actor"
+        },
+        "assessed_at": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?(?:Z|[+-]\\d{2}:\\d{2})$"
+        }
+      }
+    }
+  }
+}

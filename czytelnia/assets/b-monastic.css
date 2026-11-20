@@ -1,0 +1,195 @@
+/* Owner-selected B. The A delivery keeps its original stylesheet and script. */
+/* Interface copy keeps its own readable size when the reader reduces the sutta. */
+.variant-b .library-home-link,.variant-b .back-library{text-decoration:none}
+.variant-b .unit{scroll-margin-top:10px}
+.variant-b .apparatus-content{overflow-wrap:anywhere}
+.variant-b .reading-paragraph{margin:0 0 1em;white-space:normal}.variant-b .reading-unit{display:inline;padding:0}.variant-b .source-anchor{scroll-margin-top:100px}.variant-b .prose-block{margin-block:1em}
+.variant-b.book-layout .reading-paragraph{text-align:justify;text-align-last:start;hyphens:manual;-webkit-hyphens:manual;text-indent:1.2em;margin:0;line-height:1.68;overflow-wrap:break-word}
+.variant-b.book-layout .reading-paragraph:first-of-type{ text-indent:0 }
+.variant-b.book-layout .gatha p{text-indent:0;text-align:start;margin-block:.8em}
+.variant-b.book-layout .polish p{text-align:justify;text-align-last:start;hyphens:manual;-webkit-hyphens:manual;text-indent:1.2em;margin-block:0;line-height:1.68}
+.variant-b.book-layout .polish{overflow-wrap:break-word}
+.variant-b.book-layout [data-unit-index="0"] .polish>p:first-child{ text-indent:0 }
+.variant-b.book-layout .polish blockquote p,.variant-b.book-layout .polish li p{text-indent:0}
+.variant-b.book-layout .pali{margin-top:14px!important;margin-bottom:1.2em}
+.variant-b .catalog-entry.is-current>span:first-child{color:#ffe2b7}.variant-b .catalog-entry.is-current .sutta-pali{color:#f5e2c6}
+.variant-b .note-ref:hover{color:#713b1b}
+.variant-b .library-drawer button:focus-visible,.variant-b .library-drawer a:focus-visible,.variant-b .library-drawer input:focus-visible{outline-color:#edc38e}
+body.variant-b{--ink:#493727;--muted:#786550;--accent:#925024;--paper:#fffaf1;--canvas:#f6efdf;--line:#d9ccb7;--soft:#eee2cf;background:var(--canvas);color:var(--ink)}
+.variant-b .topbar{background:#f8f2e6;border-color:#e1d5c1;height:72px}
+.variant-b .brand-inline{color:#62452e}.variant-b .back-library{color:#765f49}.variant-b .top-actions .compare-link{display:none}
+.variant-b .reading-layout{padding-top:40px}.variant-b h1{color:#4f3826;font-size:46px;margin-top:17px}.variant-b .pali-title{color:#80694f;margin-bottom:25px}
+.variant-b .edition,.variant-b .unit-number{color:#796349}.variant-b .sutta-text{color:#493a2a}.variant-b .introduction{color:#725f4b;text-wrap:pretty}.variant-b .pali{color:#775335;border-color:#dccbb2}
+.variant-b .pali-toggle[aria-pressed=true] .toggle-track{background:#a45c2d;border-color:#a45c2d}.variant-b .toggle-track{border-color:#a18b70}.variant-b .toggle-track>span{background:#8c765d}
+.variant-b .unit:target{background:#f0dfc4}.variant-b .note-ref:hover{background:#ead4b2}.variant-b button[aria-pressed=true] .icon{fill:#ecd2ad}
+.variant-b .reading-dock{background:#fff9ed;border-color:#d8c6a8;box-shadow:0 7px 25px #6241251a;bottom:20px}.variant-b .dock-count{background:#f1dfc3;color:#7b4a24}.variant-b .drawer{background:#fffaf1;border-color:#d8c5aa;box-shadow:-10px 0 40px #68432416}.variant-b .drawer::backdrop{background:#5f3f2310}
+.variant-b .library-drawer{background:#513c2c;color:#fff4df}.variant-b .library-inner .brand{color:#fff0d7}.variant-b .side-search{border-color:#94785b;color:#fff0d7}.variant-b .side-search kbd{color:#e6d1b0}.variant-b .library-drawer button:hover{background:#6b4f38}.variant-b .side-link{color:#f4e5cb}.variant-b .side-link.selected{background:#76583a}.variant-b .collection-heading{color:#d8b993}.variant-b .collection{color:#e7d4b4}.variant-b .collection-code{color:#f7e4c4;border-color:#9e805e}.variant-b .collection-count{color:#e8cfac}.variant-b .collection.current{background:#745437}.variant-b .collection.current .collection-code{background:#e8bd87;border-color:#e8bd87;color:#4f3520}.variant-b .current-sutta{border-color:#a48562;color:#fff1d5}.variant-b .current-sutta>span:first-child{color:#efc796}.variant-b .current-sutta:hover{background:#6b4f38}.variant-b .sutta-pali,.variant-b .side-bottom span span{color:#e3c9a5}.variant-b .side-bottom{color:#f6e6ca}.variant-b .drawer-close{color:#f1dabc}
+.variant-b .search-panel{background:#eee1ca}.variant-b .search-row input{background:#fffaf1;border-color:#b29570}.variant-b .search-result:hover{background:#e6d3b5}.variant-b .primary{background:#8b4c25}.variant-b .primary:hover{background:#713b1b}.variant-b .size-controls{background:#efe2ce}.variant-b .status-message{background:#513c2c;color:#fff7e9}.variant-b .small-line{border-color:#ab8c67}
+.variant-b button:focus-visible,.variant-b a:focus-visible,.variant-b summary:focus-visible,.variant-b input:focus-visible{outline-color:#b5682d}.variant-b ::selection{background:#e8c390;color:#3e2a1a}.variant-b input{caret-color:#925024}
+.variant-b .reading-toolbar{gap:8px}.variant-b .tool,.variant-b .pali-toggle{min-height:44px}.variant-b .note-ref{min-width:24px}.variant-b .unit-bookmark{width:32px;height:38px;right:-36px}.variant-b .unit-bookmark .icon{width:17px;height:17px}.variant-b .reading-dock button{min-height:42px}.variant-b .reader-footer{padding-bottom:18px}
+.variant-b .loading-message{max-width:690px;margin:100px auto;font-family:'Source Serif',Georgia,serif;font-size:21px;line-height:1.7}.variant-b .notes-return{display:flex;align-items:center;gap:7px;margin:12px 0 25px;font-size:12px;color:var(--accent);padding:8px 0}.variant-b .notes-return .icon{width:15px;height:15px}
+.variant-b .catalog-entry{border:0;border-bottom:1px solid #8e7255;border-radius:0;margin:0;padding:15px 11px}.variant-b .catalog-entry.is-current{background:#765437;border-radius:5px;border-bottom-color:transparent}.variant-b .catalog-entry strong{font-size:15px;line-height:1.45}.variant-b .library-list{margin-top:25px}.variant-b .library-inner .empty-collection{color:#f0ddbe}.variant-b .unit h2,.variant-b .unit h3,.variant-b .sutta-text>h3{font-family:inherit;font-size:1.1em;font-weight:600;line-height:1.4;text-align:start;text-wrap:balance;margin:35px 0 20px}.variant-b .apparatus-content h2{font-family:'Segoe UI',Arial,sans-serif;font-size:17px;margin:30px 0 15px}.variant-b .apparatus-content h3{font-family:'Segoe UI',Arial,sans-serif;font-size:14px;margin:25px 0 13px}.variant-b .sutta-text blockquote{margin:18px 0 24px 20px;padding:0}.variant-b .sutta-text ul,.variant-b .sutta-text ol{padding-left:26px}.variant-b .apparatus-content a{overflow-wrap:anywhere}
+@media(max-width:800px){.variant-b .topbar{height:64px}.variant-b .reading-layout{padding-top:30px}.variant-b h1{font-size:40px}.variant-b .unit-bookmark{right:-31px}.variant-b .reading-dock{bottom:14px}}
+@media(max-width:480px){.variant-b .brand-inline{font-size:23px;gap:10px}.variant-b .topbar{padding-inline:19px}.variant-b .top-actions .icon-button{width:40px;height:44px}.variant-b .top-actions .icon{width:19px;height:19px}.variant-b .reading-layout{padding:27px 29px 110px}.variant-b h1{font-size:34px}.variant-b .reading-toolbar .tool{font-size:12px;gap:7px}.variant-b .pali-toggle{font-size:12px}.variant-b .toolbar-divider{margin-inline:1px}.variant-b .reading-toolbar{gap:2px}.variant-b .unit-bookmark{right:-26px;width:26px;height:38px}.variant-b .unit-bookmark .icon{width:14px;height:14px}.variant-b .reading-dock{bottom:12px}.variant-b .reading-dock>button{font-size:12px;padding-inline:9px}.variant-b .introduction{font-size:12px}.variant-b .loading-message{margin:80px 29px}.variant-b .drawer{padding:24px}.variant-b .library-drawer{padding:0}}
+
+/* Reading prose scales together; interface labels retain their own readable size. */
+.variant-b .introduction{font-size:max(1.0625rem,calc(var(--reading-size) - .3125rem));line-height:1.75}
+.variant-b .apparatus-content,.variant-b .all-notes{font-size:max(1.125rem,calc(var(--reading-size) - .25rem))}
+.variant-b #note-body{font-family:'Source Serif',Georgia,serif;font-size:max(1.125rem,calc(var(--reading-size) - .125rem));line-height:1.7}
+.variant-b #note-body p{font-size:inherit}
+.variant-b .introduction,.variant-b .all-notes,.variant-b #note-body{overflow-wrap:anywhere}
+.variant-b .document-meta,.variant-b .edition{font-size:.9375rem;line-height:1.6}
+.variant-b .text-start h2,.variant-b .text-start>span{font-size:1rem}
+.variant-b .pali-toggle,.variant-b .reading-toolbar .tool,.variant-b .reading-dock>button{font-size:1rem}
+.variant-b .reading-dock{white-space:normal}
+.variant-b .reading-dock>button{white-space:nowrap}
+.variant-b .dock-count{font-size:.875rem}
+.variant-b .apparatus summary{font-size:1.0625rem}
+.variant-b .apparatus summary span,.variant-b .reader-footer,.variant-b .notes-return,.variant-b .resume-reading{font-size:.9375rem;line-height:1.6}
+.variant-b .drawer label,.variant-b .check-label,.variant-b .drawer .check-label{font-size:1rem!important}
+.variant-b .drawer .demo-hint,.variant-b .settings-hint,.variant-b .note-source,.variant-b .note-index button,.variant-b .search-panel form>label,.variant-b .search-panel .demo-hint,.variant-b .result-count{font-size:.9375rem!important;line-height:1.65}
+.variant-b .note-index button span,.variant-b .saved-result>span,.variant-b .search-result>span{font-size:.875rem}
+.variant-b .search-row input{font-size:1rem}
+.variant-b .panel-heading h2{font-size:1.125rem}
+.variant-b .reading-toolbar .icon-button,.variant-b .top-actions .icon-button{width:44px;height:44px;flex-shrink:0}
+.variant-b .collection-heading,.variant-b .nav-count,.variant-b .current-sutta>span:first-child,.variant-b .sutta-pali{font-size:.875rem}
+.variant-b .side-link,.variant-b .collection,.variant-b .side-search,.variant-b .empty-collection{font-size:1rem}
+@media(max-width:480px){
+ .variant-b .reading-toolbar{gap:2px;flex-wrap:wrap}
+ .variant-b .reading-toolbar .tool{padding-inline:6px}
+ .variant-b .reading-dock{padding-inline:5px;gap:3px}
+ .variant-b .reading-dock>button{padding-inline:6px;gap:6px}
+ .variant-b .reader-footer{flex-wrap:wrap}
+}
+@media(max-width:360px){
+ .variant-b .reading-layout{padding-inline:20px}
+ .variant-b .reading-toolbar .toolbar-divider{display:none}
+ .variant-b .reading-toolbar .tool{padding-inline:0;gap:5px}
+ .variant-b .pali-toggle{padding-right:3px;gap:6px}
+ .variant-b .reading-toolbar .bookmark-document{width:38px}
+ .variant-b .reading-dock>button{padding-inline:3px;gap:4px}
+}
+
+/* Book typography covers explanatory prose; bibliographic records keep their layout. */
+.variant-b.book-layout .introduction p,.variant-b.book-layout .apparatus-content p,.variant-b.book-layout .all-notes>li,.variant-b.book-layout #note-body p{text-align:justify;text-align-last:start;hyphens:manual;-webkit-hyphens:manual;overflow-wrap:break-word}
+.variant-b.book-layout .introduction p,.variant-b.book-layout .apparatus-content p,.variant-b.book-layout .all-notes p,.variant-b.book-layout #note-body p{margin-block:0;text-indent:0}
+.variant-b.book-layout .introduction p+p,.variant-b.book-layout .apparatus-content p+p,.variant-b.book-layout .all-notes p+p,.variant-b.book-layout #note-body p+p{text-indent:1.2em}
+.variant-b.book-layout #note-body .note-source{margin-top:20px;text-indent:0;text-align:start}
+.variant-b.book-layout .apparatus-content li p,.variant-b.book-layout #zrodla p,.variant-b.book-layout #metryka p,.variant-b.book-layout .gatha p{text-align:start;text-indent:0}
+.variant-b.book-layout .apparatus-content h2,.variant-b.book-layout .apparatus-content h3{text-align:start;hyphens:manual}
+
+/* Keep the note title and close button available while scrolling. */
+.variant-b .notes-drawer{--notes-inset:29px}
+.variant-b .notes-tools{position:sticky;top:calc(0px - var(--notes-inset));z-index:1;background:var(--paper);margin-top:calc(0px - var(--notes-inset));padding-top:var(--notes-inset);padding-bottom:14px;margin-bottom:22px;border-bottom:1px solid var(--line)}
+.variant-b .notes-tools .panel-heading{margin-bottom:0}
+@media(max-width:480px){.variant-b .notes-drawer{--notes-inset:24px}}
+
+/* Reader preferences keep the confirmed typeface and default density. */
+.variant-b[data-reading-leading=compact]{--reading-leading:1.5}
+.variant-b[data-reading-leading=loose]{--reading-leading:1.95}
+.variant-b .sutta-text{line-height:var(--reading-leading,1.75);font-weight:var(--reading-weight,400);overflow-wrap:anywhere}
+.variant-b .introduction{line-height:var(--reading-leading,1.75);font-weight:var(--reading-weight,400)}
+.variant-b .apparatus-content,.variant-b .all-notes,.variant-b #note-body,.variant-b #note-body p{line-height:var(--reading-leading,1.7);font-weight:var(--reading-weight,400)}
+.variant-b.book-layout .reading-paragraph,.variant-b.book-layout .polish p{line-height:var(--reading-leading,1.68)}
+.variant-b[data-reading-weight=strong]{--reading-weight:500}
+.variant-b[data-reading-margins=narrow]{--reading-width:780px;--page-margin:18px}
+.variant-b[data-reading-margins=wide]{--reading-width:600px;--page-margin:40px}
+.variant-b.book-layout[data-book-mode=free] .reading-paragraph,.variant-b.book-layout[data-book-mode=free] .polish p,.variant-b.book-layout[data-book-mode=free] .introduction p,.variant-b.book-layout[data-book-mode=free] .apparatus-content p,.variant-b.book-layout[data-book-mode=free] .all-notes>li,.variant-b.book-layout[data-book-mode=free] #note-body p{text-align:start}
+.variant-b .document-pdf{display:inline-flex;align-items:center;gap:8px;min-height:44px;font-size:1rem;margin:-12px 0 20px}
+.variant-b .pdf-location{font-size:.9375rem;color:var(--muted)}
+.variant-b .apparatus-pdf{display:inline-flex;align-items:center;gap:8px;min-height:44px;font:1rem 'Segoe UI',Arial,sans-serif;margin:14px 0}
+@media(max-width:480px){.variant-b .reading-layout{padding-inline:var(--page-margin,29px)}}
+@media(max-width:360px){.variant-b .reading-layout{padding-inline:var(--page-margin,20px)}}
+
+/* Reserve horizontal touch for dismissal while keeping vertical scroll and zoom. */
+@media(max-width:800px){.variant-b .drawer{touch-action:pan-y pinch-zoom}}
+
+/* Manual top-layer toast remains visible over drawers without taking focus. */
+.variant-b .status-message{inset:auto 24px auto auto;top:calc(env(safe-area-inset-top,0px) + 96px);margin:0;width:auto;max-width:360px;border:0;font-size:1rem;pointer-events:none}
+.variant-b .status-live{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+@media(max-width:800px){.variant-b .status-message{top:calc(env(safe-area-inset-top,0px) + 76px);left:15px;right:15px;max-width:none}}
+
+/* Contents use the approved on-demand panel; progress never changes layout. */
+.variant-b .reading-progress{position:fixed;inset:0 0 auto;height:2px;z-index:20;background:var(--line);pointer-events:none}
+.variant-b .reading-progress span{display:block;width:100%;height:100%;background:var(--accent);transform:scaleX(0);transform-origin:left center}
+.variant-b .contents-drawer{--notes-inset:29px}
+.variant-b .contents-progress{font:1rem/1.5 'Segoe UI',Arial,sans-serif;margin:14px 0 0;color:var(--muted);font-variant-numeric:tabular-nums}
+.variant-b .contents-list a{display:block;min-height:44px;padding:12px 0;border-bottom:1px solid var(--line);font:1rem/1.4 'Segoe UI',Arial,sans-serif;color:var(--ink);text-decoration:none}
+.variant-b .contents-list a:hover{text-decoration:underline;text-underline-offset:3px}
+.variant-b .contents-list a[aria-current=location]{color:var(--accent);font-weight:600}
+.variant-b .contents-list+.contents-list{margin-top:26px}
+.variant-b .contents-list h3{font:600 1rem/1.4 'Segoe UI',Arial,sans-serif;margin:0 0 10px}
+.variant-b .contents-hint{font:1rem/1.5 'Segoe UI',Arial,sans-serif;color:var(--muted);margin:0 0 20px}
+@media(max-width:800px){.variant-b .reading-dock>button{font-size:1rem;padding:9px 10px}.variant-b .reading-dock>button .icon,.variant-b .reading-dock .dock-count{display:none}}
+@media(max-width:480px){.variant-b .contents-drawer{--notes-inset:24px}}
+
+/* The sheet follows touch directly; release uses an interruptible native transition. */
+.variant-b .drawer.drawer-gesture{animation:none;transform:translate3d(0,0,0);transition:transform .18s cubic-bezier(.16,1,.3,1)}
+.variant-b .drawer.drawer-gesture.is-dragging{transition:none}
+@media(max-width:800px){.variant-b .drawer:popover-open,.variant-b .drawer.fallback-open{will-change:transform}}
+@media(prefers-reduced-motion:reduce){.variant-b .drawer.drawer-gesture{transition:none}}
+
+/* Expose the reader only after type, book layout and initial location settle. */
+html.reader-preparing{overflow:hidden}
+.variant-b #app[data-reader-preparing]{visibility:hidden}
+.variant-b #reader-loading{position:fixed;inset:calc(env(safe-area-inset-top,0px) + 96px) 24px auto;margin:0;font:1rem/1.6 'Segoe UI',Arial,sans-serif;color:var(--ink)}
+
+/* Parallel text reserves side gutters for unbroken numbers and bookmark targets. */
+.variant-b .unit-number{right:calc(100% + 6px);width:3ch;min-width:24px;min-height:24px;padding:0;display:flex;align-items:center;justify-content:flex-end;font-size:.75rem;line-height:1;white-space:nowrap;overflow-wrap:normal;word-break:normal;hyphens:none;font-variant-numeric:tabular-nums}
+.variant-b .unit-bookmark{right:-46px;width:44px;height:44px;display:grid;place-items:center}
+.variant-b .unit-bookmark .icon{width:18px;height:18px}
+@media(max-width:800px){.variant-b .reading-layout:has(.unit-number){padding-left:max(var(--page-margin,29px),32px);padding-right:max(var(--page-margin,29px),48px)}}
+@media(max-width:872px){.variant-b[data-reading-margins=narrow] .reading-layout:has(.unit-number){padding-inline-end:48px}}
+
+/* Explicit verse breaks already end the line; ignore formatting newlines in HTML. */
+.variant-b .polish p:has(br){white-space:normal}
+.variant-b.book-layout .polish p:has(br){text-align:start;text-indent:0}
+
+/* Compact, native radio choices follow the approved settings panel. */
+.variant-b .settings-drawer{padding:24px}
+.settings-drawer .panel-heading{position:sticky;top:-24px;z-index:2;margin:-24px -24px 20px;padding:20px 24px;background:var(--paper);border-bottom:1px solid var(--line)}
+.settings-drawer .panel-heading h2{font-size:17px}
+.settings-drawer h3{font:400 1rem/1.4 'Segoe UI',Arial,sans-serif;color:var(--ink);margin:0}
+.settings-drawer .appearance-size{margin-bottom:18px}.appearance-size h3{margin-bottom:9px}
+.settings-drawer .size-controls{min-height:52px}.settings-drawer .size-controls output{font-size:1rem}
+.appearance-row{display:grid;grid-template-columns:minmax(0,1fr) 166px;gap:12px;align-items:center;margin:0;padding:12px 0;border-bottom:1px solid var(--line)}
+.appearance-options{display:grid;grid-template-columns:repeat(var(--count),minmax(0,1fr));gap:5px}
+.settings-drawer .appearance-option{position:relative;display:grid;place-items:center;min-width:44px;min-height:48px;margin:0;border:1px solid var(--theme-input-line);border-radius:5px;cursor:pointer;color:var(--ink);background:transparent}
+.appearance-option input{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:inherit}
+.appearance-option>.icon{display:block;width:26px;height:26px;pointer-events:none}
+.appearance-option:has(input:checked){border-color:var(--accent);background:var(--soft);color:var(--accent)}
+.appearance-option:has(input:focus-visible){outline:2px solid var(--theme-focus);outline-offset:3px}
+.appearance-option:has(input:enabled):hover{border-color:var(--accent)}
+.appearance-selected{position:absolute;top:3px;right:4px;display:none}.appearance-selected .icon{width:12px;height:12px}
+.appearance-option:has(input:checked) .appearance-selected{display:block}
+.appearance-row.is-disabled{opacity:.45}.appearance-row.is-disabled label{cursor:default}
+.variant-b .settings-drawer .settings-hint{font:.9375rem/1.6 'Segoe UI',Arial,sans-serif;margin:16px 0 0;text-align:start;text-indent:0;color:var(--muted)}
+.appearance-reset{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;min-height:48px;border:1px solid var(--theme-input-line);border-radius:5px;margin:22px 0 0;font:1rem 'Segoe UI',Arial,sans-serif}
+.appearance-reset .icon{width:20px;height:20px}
+.variant-b .settings-drawer .demo-hint{font:.9375rem/1.6 'Segoe UI',Arial,sans-serif;margin:18px 0 4px;color:var(--muted)}
+@media(max-width:340px){.appearance-row{grid-template-columns:minmax(0,1fr) 144px;gap:8px}.appearance-options{gap:4px}}
+
+/* The browser anchors the tools; only visibility changes with scroll direction. */
+.variant-b .reading-topbar{position:fixed;z-index:19;top:2px;left:0;right:0;color:var(--ink);background:var(--paper);border-bottom:1px solid var(--line);transition:transform .18s ease-out,visibility 0s;transform:translateY(0);visibility:visible}
+.variant-b .reading-topbar.is-hidden{transform:translateY(calc(-100% - 3px));visibility:hidden;transition:transform .18s ease-out,visibility 0s .18s}
+.reading-topbar-inner{display:flex;align-items:center;gap:12px;max-width:1000px;margin:auto;padding:12px 16px}
+.reading-sutta-name{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-width:0;flex:1;font:600 1rem/1.3 'Segoe UI',Arial,sans-serif}
+.reading-top-actions{display:flex;align-items:center;gap:6px;flex-shrink:0}
+.reading-top-actions button{display:inline-flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;border-radius:5px;color:var(--ink)}
+.reading-top-actions .reading-pali{font:600 1rem 'Segoe UI',Arial,sans-serif;padding:0 9px;border:1px solid var(--theme-input-line)}
+.reading-top-actions .reading-pali[aria-pressed=true]{color:var(--accent);background:var(--soft);border-color:var(--accent)}
+.reading-top-actions .reading-appearance .icon{fill:none}
+@media(prefers-reduced-motion:reduce){.variant-b .reading-topbar{transition:none}}
+
+/* One owner-selected brand mark and one scale for shared navigation controls. */
+body.variant-b .brand-inline,body.variant-b .library-drawer .brand{font-size:25px;gap:12px}
+.variant-b .brand .brand-mark,.variant-b .side-bottom .brand-mark{width:44px;height:44px;flex:none;object-fit:contain}
+.variant-b .back-library{font-size:1rem;min-height:44px}
+.variant-b .theme-toggle{width:44px;height:44px;flex-shrink:0}
+.variant-b .library-drawer{scroll-padding-top:100px}
+.variant-b .library-drawer .library-inner{height:auto}
+.library-drawer-heading{position:sticky;top:0;z-index:2;display:flex;align-items:center;gap:8px;margin:-32px -22px 24px;padding:18px 14px 18px 22px;background:var(--theme-library,#513c2c);color:#fff0d7;border-bottom:1px solid #8e7255}
+.library-drawer-heading .brand{flex:1;min-width:0;padding-right:0;margin:0}
+.library-drawer-heading .icon-button{width:44px;height:44px;flex:none;color:inherit}
+@media(max-width:480px){body.variant-b .brand-inline,body.variant-b .library-drawer .brand{font-size:23px;gap:10px}}
+@media(max-width:360px){body.variant-b .brand-inline,body.variant-b .library-drawer .brand{font-size:20px}}

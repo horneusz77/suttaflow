@@ -1,0 +1,389 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:suttaflow:migration-sidecar:1",
+  "title": "Preserved raw history and proposed reference migration",
+  "description": "Local dry-run sidecar only. UNKNOWN and UNRESOLVED are knowledge metadata, never new active C/D/E enum values or permissions. Runtime additionally verifies pins, hashes, exact offsets and deterministic proposals.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "plan_id",
+    "source_pin",
+    "result"
+  ],
+  "properties": {
+    "schema": {
+      "const": "suttaflow-migration-sidecar-v1"
+    },
+    "plan_id": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "source_pin": {
+      "type": "object",
+      "required": [
+        "key",
+        "kind",
+        "path",
+        "metadata_path",
+        "source_id",
+        "id_pointer",
+        "revision_id",
+        "revision_pointer",
+        "expected_sha256",
+        "metadata_sha256"
+      ],
+      "properties": {
+        "key": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_-]{0,63}$"
+        },
+        "kind": {
+          "enum": [
+            "QUEUE",
+            "LOG",
+            "STATUS_AXES_V1"
+          ]
+        },
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "metadata_path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "id_pointer": {
+          "type": "string",
+          "minLength": 1
+        },
+        "revision_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "revision_pointer": {
+          "type": "string",
+          "minLength": 1
+        },
+        "expected_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "metadata_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "operative_line_ranges": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "prefixItems": [
+              {
+                "type": "integer",
+                "minimum": 1
+              },
+              {
+                "type": "integer",
+                "minimum": 1
+              }
+            ],
+            "items": false,
+            "minItems": 2,
+            "maxItems": 2
+          }
+        }
+      }
+    },
+    "result": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_key",
+        "kind",
+        "raw_original",
+        "new_certification",
+        "native_write",
+        "activation_status",
+        "reference_proposals",
+        "explicit_status_rows",
+        "knowledge"
+      ],
+      "properties": {
+        "source_key": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_-]{0,63}$"
+        },
+        "kind": {
+          "enum": [
+            "QUEUE",
+            "LOG",
+            "STATUS_AXES_V1"
+          ]
+        },
+        "raw_original": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "sha256",
+            "bytes",
+            "base64"
+          ],
+          "properties": {
+            "sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "bytes": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "base64": {
+              "type": "string",
+              "contentEncoding": "base64"
+            }
+          }
+        },
+        "new_certification": {
+          "const": "NOT_EVALUATED"
+        },
+        "native_write": {
+          "const": false
+        },
+        "activation_status": {
+          "const": "NOT_ACTIVATED"
+        },
+        "reference_proposals": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "char_start",
+              "char_end",
+              "byte_start",
+              "byte_end",
+              "line",
+              "source_key",
+              "raw_reference",
+              "old_sections",
+              "rule_ids",
+              "basis",
+              "disposition",
+              "proposed_reference",
+              "activation_status"
+            ],
+            "properties": {
+              "char_start": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "char_end": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "byte_start": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "byte_end": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "line": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "source_key": {
+                "type": "string"
+              },
+              "raw_reference": {
+                "type": "string",
+                "minLength": 1
+              },
+              "old_sections": {
+                "type": "array",
+                "items": {
+                  "enum": [
+                    "16",
+                    "18"
+                  ]
+                },
+                "minItems": 1,
+                "uniqueItems": true
+              },
+              "rule_ids": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "pattern": "^SF-RULE-[A-Z]+-[0-9]{3}$"
+                },
+                "minItems": 1,
+                "uniqueItems": true
+              },
+              "basis": {
+                "type": "object"
+              },
+              "disposition": {
+                "enum": [
+                  "PROPOSE_REFERENCE_ONLY",
+                  "HISTORICAL_REFERENCE_RETAINED"
+                ]
+              },
+              "proposed_reference": {
+                "type": "string"
+              },
+              "activation_status": {
+                "const": "NOT_ACTIVATED"
+              }
+            }
+          }
+        },
+        "explicit_status_rows": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "knowledge": {
+          "type": "object"
+        },
+        "raw_json": {
+          "type": "object"
+        },
+        "raw_text": {
+          "type": "string"
+        },
+        "narrative_axis_projection": {
+          "const": "NOT_PERFORMED"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "const": "STATUS_AXES_V1"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "raw_json"
+            ],
+            "properties": {
+              "knowledge": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "A",
+                  "B",
+                  "C",
+                  "D",
+                  "E"
+                ],
+                "properties": {
+                  "A": {
+                    "$ref": "#/$defs/axis_knowledge"
+                  },
+                  "B": {
+                    "$ref": "#/$defs/axis_knowledge"
+                  },
+                  "C": {
+                    "$ref": "#/$defs/axis_knowledge"
+                  },
+                  "D": {
+                    "$ref": "#/$defs/axis_knowledge"
+                  },
+                  "E": {
+                    "$ref": "#/$defs/axis_knowledge"
+                  }
+                }
+              }
+            }
+          },
+          "else": {
+            "required": [
+              "raw_text",
+              "narrative_axis_projection"
+            ],
+            "properties": {
+              "knowledge": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "document"
+                ],
+                "properties": {
+                  "document": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "knowledge_state",
+                      "raw_present",
+                      "reason"
+                    ],
+                    "properties": {
+                      "knowledge_state": {
+                        "const": "RECORDED"
+                      },
+                      "raw_present": {
+                        "const": true
+                      },
+                      "reason": {
+                        "const": "COMPLETE_PINNED_DOCUMENT_PRESERVED"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "$defs": {
+    "axis_knowledge": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "knowledge_state",
+        "raw_present",
+        "raw_value",
+        "source_pointer",
+        "proposed_native_value",
+        "native_write",
+        "reason"
+      ],
+      "properties": {
+        "knowledge_state": {
+          "enum": [
+            "RECORDED",
+            "UNKNOWN",
+            "UNRESOLVED"
+          ]
+        },
+        "raw_present": {
+          "type": "boolean"
+        },
+        "raw_value": {},
+        "source_pointer": {
+          "type": "string",
+          "pattern": "^/[ABCDE]$"
+        },
+        "proposed_native_value": {},
+        "native_write": {
+          "const": false
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    }
+  }
+}

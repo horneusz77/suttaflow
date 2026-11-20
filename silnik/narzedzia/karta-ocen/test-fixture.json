@@ -1,0 +1,198 @@
+{
+  "card_id": "MN53-R9-KO1",
+  "subject": "MN53",
+  "revision": "R9",
+  "source_path": "prace/20261024-mn53-terminologia/wyniki/MN53-R9.md",
+  "source_sha256": "a06e1340b6ec3963de3384c4a233a1b8bf9c882541ef9f5126d6b84147108ee5",
+  "audit_path": "audyty/20261024-mn53-znaczenie-r9/USTALENIA.json",
+  "audit_sha256": "6087113ee8006236bc13c7bd9eae5927fac3e8f1922a656b34420409fb8d6742",
+  "standard_version": "2.1.0",
+  "standard_sha256": "2d8a9c0e1dedc9bee23acf0b041b409babfbfaff54108a490de8cbb92ba4afeb",
+  "scope": "MN53_ONLY",
+  "schema": "suttaflow-choice-export-v1",
+  "status": "DRAFT_FOR_OWNER_REVIEW",
+  "created_at": "2026-10-25T00:00:00Z",
+  "saved_at": "2026-10-25T00:00:00Z",
+  "approval_evidence": null,
+  "issues": [
+    {
+      "id": "MN53-S01",
+      "locus": "MN53:21.1 i 24.2 · trzy wystąpienia w rozwinięciu i podsumowaniu",
+      "original": "Rozpoznaje, że istoty podążają zgodnie ze swoimi czynami",
+      "option": "A",
+      "status": "DRAFT_CHOICE",
+      "wording": "Rozpoznaje, jak istoty pojawiają się ponownie zgodnie ze swoimi czynami.",
+      "note": "",
+      "comment": "",
+      "implemented": false
+    },
+    {
+      "id": "MN53-S02",
+      "locus": "MN53:13.1 · w zestawieniu z hirī w 12.1",
+      "original": "Ma skrupuły.",
+      "option": "A",
+      "status": "DRAFT_CHOICE",
+      "wording": "Ma skrupuły.",
+      "note": "Chodzi o moralną obawę przed dopuszczeniem się zła, powstrzymującą przed złym działaniem, nie tylko o żal po jego popełnieniu. Poprzednia cecha, hirī, podkreśla wstyd wobec zła.",
+      "comment": "",
+      "implemented": false
+    },
+    {
+      "id": "MN53-S03",
+      "locus": "MN53:9.2–9.3 · umiarkowanie w jedzeniu",
+      "original": "W ten sposób usunę dawne odczucie i nie wywołam nowego.",
+      "option": "A",
+      "status": "DRAFT_CHOICE",
+      "wording": "W ten sposób usunę dawne odczucie i nie wywołam nowego.",
+      "note": "W kontekście przyjmowania pokarmu chodzi o uśmierzenie dolegliwości głodu bez wywoływania nowych dolegliwości nadmiarem jedzenia. To kontekstowe objaśnienie, nie dodatkowe słowa Pali. Wygoda oznacza tu stan pozwalający podtrzymać ciało i praktykę.",
+      "comment": "",
+      "implemented": false
+    },
+    {
+      "id": "MN53-S04",
+      "locus": "MN53:8.2–8.9 · ochrona zmysłów",
+      "original": "nie chwyta się jej znaku ani szczegółów",
+      "option": "A",
+      "status": "DRAFT_CHOICE",
+      "wording": "nie chwyta się jej znaku ani szczegółów",
+      "note": "Znak (nimitta) i szczegóły (anubyañjana) to tu rozpoznawane cechy przedmiotu doświadczenia. Nie chodzi o utratę zdolności rozpoznawania, lecz o niechwytanie się ich w sposób dopuszczający pożądliwość i przygnębienie, o których mówi dalsze zdanie.",
+      "comment": "Testowa postać.",
+      "implemented": false
+    },
+    {
+      "id": "MN53-S05",
+      "locus": "MN53:18.2 · pierwsza jhāna",
+      "original": "odosobniony od przyjemności zmysłowych",
+      "option": "A",
+      "status": "DRAFT_CHOICE",
+      "wording": "odosobniony od zmysłowości, odosobniony od stanów niekorzystnych…",
+      "note": "Zmysłowość obejmuje tu pragnienie związane z przyjemnościami zmysłów. Samo fizyczne oddalenie przyjemnych przedmiotów nie wyczerpuje sensu tego odosobnienia. Pomocniczym objaśnieniem jest rozróżnienie pragnienia i przedmiotów zmysłów w AN6.63.",
+      "comment": "",
+      "implemented": false
+    },
+    {
+      "id": "MN53-S06",
+      "locus": "MN53:18.4 · trzecia jhāna",
+      "original": "Gdy radość blednie",
+      "option": "A",
+      "status": "DRAFT_CHOICE",
+      "wording": "Wraz z zanikiem tej radości przebywa w równowadze…",
+      "note": "",
+      "comment": "",
+      "implemented": false
+    },
+    {
+      "id": "MN53-S07",
+      "locus": "MN53:19.1 i 19.5",
+      "original": "niezrównanego bezpieczeństwa od jarzma",
+      "option": "B",
+      "status": "DRAFT_CHOICE",
+      "wording": "niezrównanej wolności od jarzma",
+      "note": "Jarzmo jest obrazem zniewolenia. AN4.10 wymienia jarzma zmysłowości, stawania się, poglądów i niewiedzy. „Wolność od jarzma” jest tu parafrazą palijskiego yogakkhema, dosłownie bezpieczeństwa od jarzma.",
+      "comment": "",
+      "implemented": false
+    },
+    {
+      "id": "MN53-S08",
+      "locus": "MN53:22.1 i 24.3 · także pierwsze użycie terminu w objaśnieniach",
+      "original": "dzięki zniszczeniu skaz",
+      "option": "A",
+      "status": "DRAFT_CHOICE",
+      "wording": "dzięki zniszczeniu skaz",
+      "note": "Skazy (āsava) to tu szczególna nazwa tego, czego zniszczenie wiąże się z pełnym wyzwoleniem. AN6.63 wymienia skazy zmysłowości, stawania się i niewiedzy. Nie chodzi jedynie o przemijające złe samopoczucie lub drobne wady charakteru.",
+      "comment": "",
+      "implemented": false
+    },
+    {
+      "id": "MN53-S09",
+      "locus": "Przypisy expansions / divine oraz opis podstawy przekładu",
+      "original": "W tym przekładzie zachowano ich pełne brzmienie na podstawie cyfrowego wydania BJT",
+      "option": "A",
+      "status": "DRAFT_CHOICE",
+      "wording": "Rozwinięcia formuł dotyczących zmysłów, jhān i poprzednich żyć sprawdzono w cyfrowej adaptacji BJT. Podstawę rozwinięcia formuły boskiego oka podano w osobnym przypisie.",
+      "note": "",
+      "comment": "",
+      "implemented": false
+    },
+    {
+      "id": "MN53-S10",
+      "locus": "MN53:22.1 i 24.3 oraz opis podstawy przekładu",
+      "original": "Pełne brzmienia skróconych formuł sprawdzono w cyfrowym wydaniu BJT",
+      "option": "A",
+      "status": "DRAFT_CHOICE",
+      "wording": "CST/MS pozostają podstawą przekładu. Cyfrową adaptację BJT wykorzystano pomocniczo do wskazanych rozwinięć. W opisie trzeciej wiedzy zachowano krótszy tekst CST/MS; nie przejęto dodatkowej rozbudowanej formuły obecnej w tej adaptacji.",
+      "note": "",
+      "comment": "",
+      "implemented": false
+    }
+  ],
+  "draft": {
+    "schema": "suttaflow-choice-draft-v1",
+    "card_id": "MN53-R9-KO1",
+    "source_sha256": "a06e1340b6ec3963de3384c4a233a1b8bf9c882541ef9f5126d6b84147108ee5",
+    "saved_at": "2026-10-25T00:00:00Z",
+    "choices": {
+      "MN53-S01": {
+        "option": "A",
+        "text": "",
+        "note": "",
+        "comment": ""
+      },
+      "MN53-S02": {
+        "option": "A",
+        "text": "",
+        "note": "",
+        "comment": ""
+      },
+      "MN53-S03": {
+        "option": "A",
+        "text": "",
+        "note": "",
+        "comment": ""
+      },
+      "MN53-S04": {
+        "option": "A",
+        "text": "",
+        "note": "",
+        "comment": "Testowa postać."
+      },
+      "MN53-S05": {
+        "option": "A",
+        "text": "",
+        "note": "",
+        "comment": ""
+      },
+      "MN53-S06": {
+        "option": "A",
+        "text": "",
+        "note": "",
+        "comment": ""
+      },
+      "MN53-S07": {
+        "option": "B",
+        "text": "",
+        "note": "",
+        "comment": ""
+      },
+      "MN53-S08": {
+        "option": "A",
+        "text": "",
+        "note": "",
+        "comment": ""
+      },
+      "MN53-S09": {
+        "option": "A",
+        "text": "",
+        "note": "",
+        "comment": ""
+      },
+      "MN53-S10": {
+        "option": "A",
+        "text": "",
+        "note": "",
+        "comment": ""
+      }
+    }
+  },
+  "fixture_notice": "SYNTHETIC TEST DATA; no owner decisions or approval"
+}

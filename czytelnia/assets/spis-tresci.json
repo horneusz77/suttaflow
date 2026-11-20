@@ -1,0 +1,416 @@
+{
+  "schemaVersion": 1,
+  "documents": {
+    "mn-13": {
+      "sourceSha256": "700b9fc186cf6f187990f82f6fe8cec328ccf4271624c403e42e23bf780e5198",
+      "sections": [
+        {
+          "id": "mn13:1.1",
+          "label": "Rozmowa z wędrowcami"
+        },
+        {
+          "id": "mn13:7.1",
+          "label": "Powab zmysłowości"
+        },
+        {
+          "id": "mn13:8.1",
+          "label": "Niebezpieczeństwo zmysłowości"
+        },
+        {
+          "id": "mn13:16.1",
+          "label": "Wyjście ze zmysłowości"
+        },
+        {
+          "id": "mn13:18.1",
+          "label": "Cielesna postać"
+        },
+        {
+          "id": "mn13:32.1",
+          "label": "Odczucia"
+        }
+      ]
+    },
+    "mn-14": {
+      "sourceSha256": "13c71b1809ee58611aea041b5d5ac9493efc92abefd654384994088fa87805fc",
+      "sections": [
+        {
+          "id": "mn14:1.1",
+          "label": "Rozmowa z Mahānāmą"
+        },
+        {
+          "id": "mn14:3.1",
+          "label": "Nieporzucone stany umysłu"
+        },
+        {
+          "id": "mn14:6.1",
+          "label": "Powab zmysłowości"
+        },
+        {
+          "id": "mn14:7.1",
+          "label": "Niebezpieczeństwo zmysłowości"
+        },
+        {
+          "id": "mn14:15.1",
+          "label": "Rozmowa z nigaṇṭhami"
+        },
+        {
+          "id": "mn14:20.1",
+          "label": "Przyjemność i cierpienie"
+        }
+      ]
+    },
+    "mn-53": {
+      "sourceSha256": "856d042440bdee0e05aaf3acc12e1fc9147b8b9912f899d891ad7f8f944577e5",
+      "sections": [
+        {
+          "id": "mn-53-g1",
+          "label": "Zgromadzenie w Kapilavatthu"
+        },
+        {
+          "id": "mn-53-g15",
+          "label": "Moralność"
+        },
+        {
+          "id": "mn-53-g16",
+          "label": "Strzeżenie bram zmysłów"
+        },
+        {
+          "id": "mn-53-g23",
+          "label": "Miara w jedzeniu"
+        },
+        {
+          "id": "mn-53-g24",
+          "label": "Czuwanie"
+        },
+        {
+          "id": "mn-53-g26",
+          "label": "Siedem dobrych cech"
+        },
+        {
+          "id": "mn-53-g33",
+          "label": "Cztery jhāny"
+        },
+        {
+          "id": "mn-53-g42",
+          "label": "Trzy wiedze"
+        },
+        {
+          "id": "mn-53-g52",
+          "label": "Wiedza i postępowanie"
+        },
+        {
+          "id": "mn-53-g66",
+          "label": "Zakończenie nauki Ānandy"
+        }
+      ]
+    },
+    "mn-54": {
+      "sourceSha256": "e575efd53b7b0b1e0b0f4289a755eb355d2512af202d631e3808c93a594fd29b",
+      "sections": [
+        {
+          "id": "mn54:1.1",
+          "label": "Spotkanie z Potaliyą"
+        },
+        {
+          "id": "mn54:4.1",
+          "label": "Zerwanie ze sprawami"
+        },
+        {
+          "id": "mn54:15.1",
+          "label": "Porównania przyjemności zmysłowych"
+        },
+        {
+          "id": "mn54:22.1",
+          "label": "Trzy wiedze"
+        },
+        {
+          "id": "mn54:25.1",
+          "label": "Pełne zerwanie ze sprawami"
+        },
+        {
+          "id": "mn54:26.1",
+          "label": "Odpowiedź Potaliyi"
+        }
+      ]
+    },
+    "mn-62": {
+      "sourceSha256": "e09283c21c94d6ae0b88c5094594e5aa0a2fa72e45fc6ac2bc02af8ba94e091a",
+      "sections": [
+        {
+          "id": "mn-62-g1",
+          "label": "Pouczenie Rāhuli"
+        },
+        {
+          "id": "mn-62-g19",
+          "label": "Elementy i nieprzywłaszczanie"
+        },
+        {
+          "id": "mn-62-g39",
+          "label": "Praktyka podobna do elementów"
+        },
+        {
+          "id": "mn-62-g54",
+          "label": "Życzliwość i inne praktyki"
+        },
+        {
+          "id": "mn-62-g66",
+          "label": "Pomność oddychania"
+        }
+      ]
+    },
+    "mn-140": {
+      "sourceSha256": "a37c3d1c9c0f1e12de829a015b093026d334aee929b42931f3b60cf8162c3c68",
+      "sections": [
+        {
+          "id": "mn-140-g1",
+          "label": "Spotkanie z Pukkusātim"
+        },
+        {
+          "id": "mn-140-g24",
+          "label": "Zarys nauki o człowieku"
+        },
+        {
+          "id": "mn-140-g45",
+          "label": "Rozróżnienie elementów"
+        },
+        {
+          "id": "mn-140-g71",
+          "label": "Świadomość i odczucia"
+        },
+        {
+          "id": "mn-140-g80",
+          "label": "Równowaga"
+        },
+        {
+          "id": "mn-140-g96",
+          "label": "Cztery oparcia"
+        },
+        {
+          "id": "mn-140-g106",
+          "label": "Spokojny mędrzec"
+        },
+        {
+          "id": "mn-140-g112",
+          "label": "Rozpoznanie nauczyciela"
+        }
+      ]
+    },
+    "mn-143": {
+      "sourceSha256": "beec56061c5c8491aa1fa79b7ada83ce33a569a8ae70233a961afb3ffe71b5cd",
+      "sections": [
+        {
+          "id": "P001",
+          "label": "Choroba Anāthapiṇḍiki"
+        },
+        {
+          "id": "P020",
+          "label": "Nieprzywiązywanie się"
+        },
+        {
+          "id": "P043",
+          "label": "Łzy Anāthapiṇḍiki"
+        },
+        {
+          "id": "P047",
+          "label": "Nauka dla świeckich"
+        },
+        {
+          "id": "P049",
+          "label": "Śmierć i odrodzenie Anāthapiṇḍiki"
+        }
+      ]
+    },
+    "an-3-69": {
+      "sourceSha256": "27116a687b151000a796fc3a29437ddb7b8861aca6dbb37c56b97e3efa5ba200",
+      "sections": [
+        {
+          "id": "an-3-69-g1",
+          "label": "Trzy korzenie niekorzystnego"
+        },
+        {
+          "id": "an-3-69-g27",
+          "label": "Porównanie drzewa oplecionego pnączami"
+        },
+        {
+          "id": "an-3-69-g34",
+          "label": "Trzy korzenie korzystnego"
+        },
+        {
+          "id": "an-3-69-g60",
+          "label": "Usunięcie pnączy z korzeniami"
+        }
+      ]
+    },
+    "sn-55-7": {
+      "sourceSha256": "39737c0c228e7a12c941a4cb7deddb4b7bc27f4410dd9b10db6b6469ac5ef570",
+      "sections": [
+        {
+          "id": "P01",
+          "label": "Rozmowa z gospodarzami"
+        },
+        {
+          "id": "P06",
+          "label": "Odnoszenie nauki do siebie"
+        },
+        {
+          "id": "P08",
+          "label": "Powstrzymanie się od kradzieży"
+        },
+        {
+          "id": "P10",
+          "label": "Powstrzymanie się od niewłaściwego postępowania seksualnego"
+        },
+        {
+          "id": "P12",
+          "label": "Mowa bez krzywdzenia"
+        },
+        {
+          "id": "P18",
+          "label": "Niezachwiane zaufanie i cnoty"
+        },
+        {
+          "id": "P22",
+          "label": "Oznajmienie wejścia w strumień"
+        }
+      ]
+    },
+    "vin-mv-i-6": {
+      "sourceSha256": "8216f2871cf2877314d91a1fba79112c1a0f138dc696c7d7ad0d869f36d7e1f5",
+      "sections": [
+        {
+          "id": "MvI.6.1.1",
+          "label": "Poszukiwanie pierwszych słuchaczy"
+        },
+        {
+          "id": "MvI.6.7.1",
+          "label": "Spotkanie z Upaką"
+        },
+        {
+          "id": "MvI.6.10.1",
+          "label": "Przybycie do pięciu mnichów"
+        },
+        {
+          "id": "MvI.6.17.1",
+          "label": "Dwie skrajności i Droga Środka"
+        },
+        {
+          "id": "MvI.6.19.1",
+          "label": "Cztery Szlachetne Prawdy"
+        },
+        {
+          "id": "MvI.6.23.1",
+          "label": "Trzy obroty i dwanaście aspektów"
+        },
+        {
+          "id": "MvI.6.30.1",
+          "label": "Wprawienie w ruch koła Dhammy"
+        },
+        {
+          "id": "MvI.6.32.1",
+          "label": "Przyjęcie Koṇḍaññi do wspólnoty"
+        },
+        {
+          "id": "MvI.6.33.1",
+          "label": "Nauczanie pozostałych mnichów"
+        },
+        {
+          "id": "MvI.6.38.1",
+          "label": "Nauka o tym, co nie jest „ja”"
+        },
+        {
+          "id": "MvI.6.46.1",
+          "label": "Wyzwolenie"
+        }
+      ]
+    },
+    "dn-1": {
+      "sourceSha256": "d8a060db9365f3ebe4ee5a7efef426064a0421ecb5ff5cd6da6041d4cbab3dc6",
+      "sections": [
+        {
+          "id": "cst-dn1:p005",
+          "label": "Rozmowa o wędrowcach"
+        },
+        {
+          "id": "cst-dn1:p012",
+          "label": "Krótka część o moralnym postępowaniu"
+        },
+        {
+          "id": "cst-dn1:p041",
+          "label": "Średnia część o moralnym postępowaniu"
+        },
+        {
+          "id": "cst-dn1:p053",
+          "label": "Długa część o moralnym postępowaniu"
+        },
+        {
+          "id": "cst-dn1:p063",
+          "label": "Poglądy o przeszłości"
+        },
+        {
+          "id": "cst-dn1:p066",
+          "label": "Pogląd o wieczności"
+        },
+        {
+          "id": "cst-dn1:p079",
+          "label": "Pogląd o wieczności jednych rzeczy i niewieczności innych"
+        },
+        {
+          "id": "cst-dn1:p099",
+          "label": "Poglądy o skończoności i nieskończoności"
+        },
+        {
+          "id": "cst-dn1:p111",
+          "label": "Uchylanie się od odpowiedzi"
+        },
+        {
+          "id": "cst-dn1:p118",
+          "label": "Pogląd o przypadkowym powstaniu"
+        },
+        {
+          "id": "cst-dn1:p127",
+          "label": "Poglądy o przyszłości"
+        },
+        {
+          "id": "cst-dn1:p129",
+          "label": "Pogląd o posiadaniu postrzegania"
+        },
+        {
+          "id": "cst-dn1:p133",
+          "label": "Pogląd o braku postrzegania"
+        },
+        {
+          "id": "cst-dn1:p137",
+          "label": "Pogląd ani o posiadaniu, ani o braku postrzegania"
+        },
+        {
+          "id": "cst-dn1:p141",
+          "label": "Pogląd o unicestwieniu"
+        },
+        {
+          "id": "cst-dn1:p151",
+          "label": "Pogląd o wygaszeniu w tym życiu"
+        },
+        {
+          "id": "cst-dn1:p164",
+          "label": "Część o niepokoju i miotaniu się"
+        },
+        {
+          "id": "cst-dn1:p178",
+          "label": "Część o uwarunkowaniu kontaktem"
+        },
+        {
+          "id": "cst-dn1:p192",
+          "label": "Część o tym, co jest niemożliwe"
+        },
+        {
+          "id": "cst-dn1:p206",
+          "label": "Wywód o kręgu opartym na poglądach"
+        },
+        {
+          "id": "cst-dn1:p208",
+          "label": "Wywód o wyjściu z kręgu i dalsze objaśnienia"
+        }
+      ]
+    }
+  }
+}

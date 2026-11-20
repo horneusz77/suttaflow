@@ -1,0 +1,157 @@
+{
+  "schema": "suttaflow-2.0.0-activation-manifest-v1",
+  "status": "ACTIVATED_VERIFIED",
+  "version": "2.0.0",
+  "release_mode": "SINGLE_OPERATOR",
+  "activation_performed": true,
+  "coordinator_started": false,
+  "prepared_utc": "2026-10-21T12:28:12.607032+00:00",
+  "accepted_manifest_sha256": "8c2ac8e3f29d3bfae5df022ab23ba6ac63ceda3b81ef6b091f1cd88d80999ac3",
+  "accepted_zip_sha256": "57225214a722d49903e39de2c28051fde365c178f3d4b3ea2977350f7cfababd",
+  "owner_approval": {
+    "path": "prace\\20261021-wydanie-reczne\\OWNER_APPROVAL.md",
+    "sha256": "ca60ff829daf01c8b384fbcf2ce32bc4161203aa910366e34eccf0c4f805de67"
+  },
+  "base_commit": "fa19a6c781929eec6897518ff4b3d90987d46e35",
+  "candidate_commit": "e76fedda7e5bfe67a2554bb0b79bc8e9ddddd799",
+  "branch": "release/sf-2.0-resume-20261020",
+  "release_tag": "suttaflow-2.0.0",
+  "release_completion": "RELEASED only after commit/push, annotated tag push and matching remote readback in RELEASE_RECEIPT.json. Receipt generated after tag, delivered separately to avoid self-reference.",
+  "active_contract": {
+    "registry": {
+      "path": "docs/standards/2.0.0/RULE_REGISTRY.json",
+      "sha256": "396608f0759d377a1fbfee134b4124ab1400a3a51e830f6b5bec29dd2e44a77d"
+    },
+    "view": {
+      "path": "docs/standards/2.0.0/SUTTAFLOW_2_0.md",
+      "sha256": "f8137a453a1dfae195e3881ef09c0bf04621683c0a45a72749644af1cdb5e459"
+    },
+    "rules": 89
+  },
+  "documents": {
+    "STANDARD": {
+      "document_id": "1rmoAoa2U8DTOdAuDl4ozvEcz7KMqtv6DujG6AXRPZfw",
+      "url": "https://docs.google.com/document/d/1rmoAoa2U8DTOdAuDl4ozvEcz7KMqtv6DujG6AXRPZfw",
+      "revision_id": "AHj4eMRxoMvl0nh4biYePwZmC-ENxLIwORbvBvZmXjkRxOsYzFHv5-dxGuqcidnlLn6QYxASM88v9NCEvtc-5thNYrwhASSLgiB9L3KOPpan",
+      "tabs": [
+        {
+          "tab_id": "t.z1xs32uqh2zg",
+          "title": "Standard 2.0.0",
+          "index": 0
+        },
+        {
+          "tab_id": "t.0",
+          "title": "ARCHIWUM 1.13",
+          "index": 1
+        }
+      ],
+      "readback": "EXACT_EXPECTED_TEXT_AND_NATIVE_PRESERVATION_VERIFIED",
+      "backup_id": "1fgtJm2cZPG2RYT81LB8K-sOipmt85LpB_a3Lk4iZ70Y"
+    },
+    "QUEUE": {
+      "document_id": "1OYftSe43oq7a6xGGxuukbN-q6GeNcBu9Ipws-9o5du4",
+      "url": "https://docs.google.com/document/d/1OYftSe43oq7a6xGGxuukbN-q6GeNcBu9Ipws-9o5du4",
+      "revision_id": "AHj4eMQ_csGeS3suMsTVTev5OU0CvkyrgbZ7vedaDIQ3COSsggtCK4Ur3b2paWLGk-EzBg1h0k5W8uvJMCKNS1zA_RRDPqf4J2A_LLjA1SUn",
+      "tabs": [
+        {
+          "tab_id": "t.0",
+          "title": "Tab 1",
+          "index": 0
+        }
+      ],
+      "readback": "EXACT_EXPECTED_TEXT_AND_NATIVE_PRESERVATION_VERIFIED",
+      "backup_id": "1k0cUIPmd4-6OWXvDhlsvXc_46ygiYiLCbriw8sMyJOw"
+    },
+    "LOG": {
+      "document_id": "1Ur7At14TrljgA1le8RnI3TwOaYtlmJNOo8DmnWsYSAI",
+      "url": "https://docs.google.com/document/d/1Ur7At14TrljgA1le8RnI3TwOaYtlmJNOo8DmnWsYSAI",
+      "revision_id": "AHj4eMSGprl_tqnGA_dz_HflJfo6MkKb6rtE6vg2Hdqn67yn-x8ZSOvsjUO0mZgJifhf-8AXLZOdPAJ1sZWWAGABN7c5-9aGuuhajlEEudiL",
+      "tabs": [
+        {
+          "tab_id": "t.0",
+          "title": "Tab 1",
+          "index": 0
+        }
+      ],
+      "readback": "EXACT_EXPECTED_TEXT_AND_NATIVE_PRESERVATION_VERIFIED",
+      "backup_id": "1j6eO5hzIs-QdwW7mCiiPfSFkTWXktfjdksWNwMNKfeA"
+    }
+  },
+  "local_entrypoints": {
+    "status": "APPLIED_READBACK_VERIFIED",
+    "entrypoints": [
+      {
+        "target": "J:\\Dev\\suttaflow-pali-engine\\START_SUTTAFLOW.md",
+        "sha256": "dd5bcf5d16982a48c6095971686d05542cb5529bb8388feabcbb497336eb0780",
+        "matches_approved_AFTER": true
+      },
+      {
+        "target": "J:\\Dev\\suttaflow-pali-engine\\rozwoj\\sf-2.0-v6-disjoint\\AGENTS.md",
+        "sha256": "56743c0b32d47f7e36896d097570767b27bd782d8370741328b9da042e4e70ea",
+        "matches_approved_AFTER": true
+      },
+      {
+        "target": "J:\\Dev\\suttaflow-pali-engine\\rozwoj\\beginner-suttas-10\\AGENTS.md",
+        "sha256": "997d53e8468611450978474f8b3caaf4172eea8432bf533835f2cdbdef7a3bad",
+        "matches_approved_AFTER": true
+      }
+    ],
+    "preserved_protocols_verified": [
+      {
+        "path": "J:\\Dev\\suttaflow-pali-engine\\rozwoj\\beginner-suttas-10\\SUTTAFLOW_TLUMACZENIE.md",
+        "sha256": "81ede4901cc16f3e86bdb5579205f2c7a5aabc62025d675e6d6eb7cdcb126406"
+      },
+      {
+        "path": "J:\\Dev\\suttaflow-pali-engine\\rozwoj\\beginner-suttas-10\\SUTTAFLOW_TLUMACZENIE_1_1.md",
+        "sha256": "ba025e7a85eabf4e34d35d5a2d106bf31a6a000a8adb52f4f90c3684f08f5455"
+      },
+      {
+        "path": "J:\\Dev\\suttaflow-pali-engine\\rozwoj\\beginner-suttas-10\\SUTTAFLOW_REDAKCJA.md",
+        "sha256": "52b9dbfa51c863bc4fe144f7d0bd3e1d918a20d35ba5bc0dfb4af8c46df111fa"
+      },
+      {
+        "path": "J:\\Dev\\suttaflow-pali-engine\\rozwoj\\beginner-suttas-10\\SUTTAFLOW_TERMINOLOGIA.md",
+        "sha256": "284ad09a0fb50820823e0221f6e292cb481917bf6c15c30b888fcadf708a2cae"
+      },
+      {
+        "path": "J:\\Dev\\suttaflow-pali-engine\\rozwoj\\beginner-suttas-10\\SUTTAFLOW_JEZYK.md",
+        "sha256": "4b28f6e5c4c0026ec202ee4260694d49bb1d851c9e5e9b2812a41faff22944b7"
+      },
+      {
+        "path": "J:\\Dev\\suttaflow-pali-engine\\rozwoj\\beginner-suttas-10\\SUTTAFLOW_SAMADHI.md",
+        "sha256": "4e6b76c89b135ef147e238476e8a4c0ba1fd1259193fb4867ec89ec960cd0bd5"
+      },
+      {
+        "path": "J:\\Dev\\suttaflow-pali-engine\\rozwoj\\beginner-suttas-10\\SUTTAFLOW_DOSTAWA.md",
+        "sha256": "6175eddafe9a7f7fed545a5918017f6e53f9a2baf7ec4ea9159d590a8bc06735"
+      },
+      {
+        "path": "J:\\Dev\\suttaflow-pali-engine\\rozwoj\\beginner-suttas-10\\profil\\SUTTAFLOW_STYL_1_0.md",
+        "sha256": "22a9d5e60c6d8457b0e9b38b3186fbcdba2a69be06985406b075c309680e89b8"
+      }
+    ]
+  },
+  "tests": {
+    "scoped": 13,
+    "result": "OK",
+    "log": "prace\\20261021-wydanie-reczne\\wdrozenie\\active-unit.log",
+    "full_suite_reused": "636 tests, 8 skips on preceding freeze; no new full-suite run claimed"
+  },
+  "reviews": {
+    "normative": "prace\\20261021-wydanie-reczne\\recenzje\\normatywna\\MANUAL_RELEASE_FINAL_RECHECK.md",
+    "technical": "prace\\20261021-wydanie-reczne\\recenzje\\techniczna\\MANUAL_RELEASE_RECHECK_FINAL.md",
+    "open_P0_P1_reviewed_delta": 0
+  },
+  "limitations": [
+    "Single operator; no automatic coordinator, lease, protected-history or concurrency guarantee",
+    "MN53 R4 pilot by same agent on owner instruction; no independent pilot review claim; future normal review roles retained",
+    "T04/P2 runtime stack enforcement deferred; installed stack recorded in prior evidence",
+    "No sutta publication/audio consent; no MN53 DONE; queue order and phase unchanged"
+  ],
+  "history_preserved": [
+    "1.13 native archived tab and 3 verified native backups",
+    "R04/A01-A05 and original TEST restoration complete; not repeated",
+    "8 historical local protocols unchanged"
+  ],
+  "evidence": "prace\\20261021-wydanie-reczne\\wdrozenie"
+}

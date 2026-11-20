@@ -1,0 +1,172 @@
+{
+ "schema": "suttaflow-sources-v1",
+ "sutta_id": "terminology-evidence",
+ "note": "Evidence for config/terminology_hh_sujato_v1.json (DEC-03). Suttas chosen because they contain mettā (MN 7, AN 3.65), jhāyatha (MN 19) and yogo karaṇīyo (SN 56.40; SN 56.30 captured first and found not to contain it — kept as recorded).",
+ "sources": [
+  {
+   "id": "pali_ms_mn7",
+   "role": "PALI_WITNESS",
+   "edition": "Mahasangiti root-pli-ms mn7",
+   "carrier": "github.com/suttacentral/bilara-data",
+   "kind": "github",
+   "owner": "suttacentral",
+   "repo": "bilara-data",
+   "ref": "795983655cc7e5c5694184750426b06a6604be21",
+   "path": "root/pli/ms/sutta/mn/mn7_root-pli-ms.json",
+   "redistribute": false
+  },
+  {
+   "id": "sujato_mn7",
+   "role": "SUJATO_EN",
+   "edition": "Bhikkhu Sujato mn7 (CC0), bilara-data",
+   "carrier": "github.com/suttacentral/bilara-data",
+   "kind": "github",
+   "owner": "suttacentral",
+   "repo": "bilara-data",
+   "ref": "795983655cc7e5c5694184750426b06a6604be21",
+   "path": "translation/en/sujato/sutta/mn/mn7_translation-en-sujato.json",
+   "redistribute": false
+  },
+  {
+   "id": "hh_mn7",
+   "role": "HH_EN",
+   "edition": "Bhikkhu Anigha mn7 (segment JSON)",
+   "carrier": "suttas.hillsidehermitage.org",
+   "kind": "web",
+   "url": "https://suttas.hillsidehermitage.org/suttas/translation_en/mn/mn7_translation-en-anigha.json",
+   "redistribute": false
+  },
+  {
+   "id": "pali_ms_mn19",
+   "role": "PALI_WITNESS",
+   "edition": "Mahasangiti root-pli-ms mn19",
+   "carrier": "github.com/suttacentral/bilara-data",
+   "kind": "github",
+   "owner": "suttacentral",
+   "repo": "bilara-data",
+   "ref": "795983655cc7e5c5694184750426b06a6604be21",
+   "path": "root/pli/ms/sutta/mn/mn19_root-pli-ms.json",
+   "redistribute": false
+  },
+  {
+   "id": "sujato_mn19",
+   "role": "SUJATO_EN",
+   "edition": "Bhikkhu Sujato mn19 (CC0), bilara-data",
+   "carrier": "github.com/suttacentral/bilara-data",
+   "kind": "github",
+   "owner": "suttacentral",
+   "repo": "bilara-data",
+   "ref": "795983655cc7e5c5694184750426b06a6604be21",
+   "path": "translation/en/sujato/sutta/mn/mn19_translation-en-sujato.json",
+   "redistribute": false
+  },
+  {
+   "id": "hh_mn19",
+   "role": "HH_EN",
+   "edition": "Bhikkhu Anigha mn19 (segment JSON)",
+   "carrier": "suttas.hillsidehermitage.org",
+   "kind": "web",
+   "url": "https://suttas.hillsidehermitage.org/suttas/translation_en/mn/mn19_translation-en-anigha.json",
+   "redistribute": false
+  },
+  {
+   "id": "pali_ms_sn56_30",
+   "role": "PALI_WITNESS",
+   "edition": "Mahasangiti root-pli-ms sn56.30",
+   "carrier": "github.com/suttacentral/bilara-data",
+   "kind": "github",
+   "owner": "suttacentral",
+   "repo": "bilara-data",
+   "ref": "795983655cc7e5c5694184750426b06a6604be21",
+   "path": "root/pli/ms/sutta/sn/sn56/sn56.30_root-pli-ms.json",
+   "redistribute": false
+  },
+  {
+   "id": "sujato_sn56_30",
+   "role": "SUJATO_EN",
+   "edition": "Bhikkhu Sujato sn56.30 (CC0), bilara-data",
+   "carrier": "github.com/suttacentral/bilara-data",
+   "kind": "github",
+   "owner": "suttacentral",
+   "repo": "bilara-data",
+   "ref": "795983655cc7e5c5694184750426b06a6604be21",
+   "path": "translation/en/sujato/sutta/sn/sn56/sn56.30_translation-en-sujato.json",
+   "redistribute": false
+  },
+  {
+   "id": "hh_sn56_30",
+   "role": "HH_EN",
+   "edition": "Bhikkhu Anigha sn56.30 (segment JSON)",
+   "carrier": "suttas.hillsidehermitage.org",
+   "kind": "web",
+   "url": "https://suttas.hillsidehermitage.org/suttas/translation_en/sn/sn56/sn56.30_translation-en-anigha.json",
+   "redistribute": false
+  },
+  {
+   "id": "pali_ms_an3_65",
+   "role": "PALI_WITNESS",
+   "edition": "Mahasangiti root-pli-ms an3.65",
+   "carrier": "github.com/suttacentral/bilara-data",
+   "kind": "github",
+   "owner": "suttacentral",
+   "repo": "bilara-data",
+   "ref": "795983655cc7e5c5694184750426b06a6604be21",
+   "path": "root/pli/ms/sutta/an/an3/an3.65_root-pli-ms.json",
+   "redistribute": false
+  },
+  {
+   "id": "sujato_an3_65",
+   "role": "SUJATO_EN",
+   "edition": "Bhikkhu Sujato an3.65 (CC0), bilara-data",
+   "carrier": "github.com/suttacentral/bilara-data",
+   "kind": "github",
+   "owner": "suttacentral",
+   "repo": "bilara-data",
+   "ref": "795983655cc7e5c5694184750426b06a6604be21",
+   "path": "translation/en/sujato/sutta/an/an3/an3.65_translation-en-sujato.json",
+   "redistribute": false
+  },
+  {
+   "id": "hh_an3_65",
+   "role": "HH_EN",
+   "edition": "Bhikkhu Anigha an3.65 (segment JSON)",
+   "carrier": "suttas.hillsidehermitage.org",
+   "kind": "web",
+   "url": "https://suttas.hillsidehermitage.org/suttas/translation_en/an/an3/an3.65_translation-en-anigha.json",
+   "redistribute": false
+  },
+  {
+   "id": "pali_ms_sn56_40",
+   "role": "PALI_WITNESS",
+   "edition": "Mahasangiti root-pli-ms sn56.40",
+   "carrier": "github.com/suttacentral/bilara-data",
+   "kind": "github",
+   "owner": "suttacentral",
+   "repo": "bilara-data",
+   "ref": "795983655cc7e5c5694184750426b06a6604be21",
+   "path": "root/pli/ms/sutta/sn/sn56/sn56.40_root-pli-ms.json",
+   "redistribute": false
+  },
+  {
+   "id": "sujato_sn56_40",
+   "role": "SUJATO_EN",
+   "edition": "Bhikkhu Sujato sn56.40 (CC0), bilara-data",
+   "carrier": "github.com/suttacentral/bilara-data",
+   "kind": "github",
+   "owner": "suttacentral",
+   "repo": "bilara-data",
+   "ref": "795983655cc7e5c5694184750426b06a6604be21",
+   "path": "translation/en/sujato/sutta/sn/sn56/sn56.40_translation-en-sujato.json",
+   "redistribute": false
+  },
+  {
+   "id": "hh_sn56_40",
+   "role": "HH_EN",
+   "edition": "Bhikkhu Anigha sn56.40 (segment JSON)",
+   "carrier": "suttas.hillsidehermitage.org",
+   "kind": "web",
+   "url": "https://suttas.hillsidehermitage.org/suttas/translation_en/sn/sn56/sn56.40_translation-en-anigha.json",
+   "redistribute": false
+  }
+ ]
+}

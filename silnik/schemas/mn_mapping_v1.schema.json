@@ -1,0 +1,131 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:suttaflow:mn-mapping:1",
+  "title": "Generic MN mapping and repeated-formula rules v1",
+  "type": "object",
+  "required": [
+    "sutta_id",
+    "groups"
+  ],
+  "properties": {
+    "sutta_id": {
+      "type": "string",
+      "pattern": "^mn[1-9][0-9]*$"
+    },
+    "groups": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "pali",
+          "pl",
+          "status"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^[^\\s\\u0000]+$"
+          },
+          "pali": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^[^\\s\\u0000]+$"
+            }
+          },
+          "pl": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^[^\\s\\u0000]+$"
+            }
+          },
+          "status": {
+            "enum": [
+              "OK",
+              "OK_NOTE",
+              "MINOR",
+              "VARIANT",
+              "OPEN",
+              "CHECK_FAILED"
+            ],
+            "description": "CHECK_FAILED is a valid failure marker and always blocks completeness. OPEN/VARIANT/MINOR require decision accounting in Evidence QA."
+          },
+          "issue": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^[^\\s\\u0000]+$"
+          }
+        },
+        "additionalProperties": true,
+        "description": "Extension annotations grant no authority. Runtime rejects duplicate group IDs, unknown source IDs and units mapped twice across groups."
+      }
+    },
+    "formula_rules": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "pali_anchor",
+          "pali_contains",
+          "pl_contains",
+          "group_ids"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^[^\\s\\u0000]+$"
+          },
+          "pali_anchor": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "pali_contains": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            }
+          },
+          "pl_contains": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            }
+          },
+          "group_ids": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^[^\\s\\u0000]+$"
+            }
+          }
+        },
+        "additionalProperties": true,
+        "description": "The literal anchor must occur once in each listed group and inside one Pali segment. Every occurrence in the source must be accounted for; each instance is checked separately. This is not automatic linguistic identification of all formulas."
+      }
+    }
+  },
+  "additionalProperties": true
+}

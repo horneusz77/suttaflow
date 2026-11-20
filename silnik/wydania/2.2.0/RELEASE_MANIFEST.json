@@ -1,0 +1,147 @@
+{
+  "schema": "suttaflow-single-operator-release-v1",
+  "version": "2.2.0",
+  "activation": "ACTIVE",
+  "release_mode": "SINGLE_OPERATOR",
+  "activation_performed": true,
+  "coordinator_started": false,
+  "recorded_at": "2026-10-25T13:54:45.406294+01:00",
+  "accepted_manifest_sha256": "7e8ed820c5b3f9c59f4a40e6b31fb12ec0f377730ac69686584ae4478dac97fb",
+  "accepted_zip_sha256": "dbe5215019c58c5b70bde622cae6bcb404c9e74fdb33bbeb8b481541e54c82bb",
+  "owner_approval": {
+    "path": "prace/20261025-wydanie-2.2.0/aktywacja/OWNER_APPROVAL.md",
+    "sha256": "d09bd1cef8f2dacddbbc234357b923c8f8bdab1a0a6d1747e95ba0d28088ff45",
+    "bytes": 758
+  },
+  "base_commit": "65dd5c3ea959c93c7904450affdf90f3bb7a0009",
+  "branch": "release/sf-2.2.0-candidate-20261025",
+  "release_tag": "suttaflow-2.2.0",
+  "release_completion": "Actual activation and native/local readbacks verified. Commit, push, annotated tag and GitHub release are recorded later in RELEASE_RECEIPT.json only after real operations.",
+  "active_contract": {
+    "registry": {
+      "path": "docs/standards/2.2.0/RULE_REGISTRY.json",
+      "sha256": "c5dd58a195af24b9778708d8b7552ccde367a4f9dbccbe618ca0ccd7b41dbdeb",
+      "bytes": 293243
+    },
+    "view": {
+      "path": "docs/standards/2.2.0/SUTTAFLOW_2_0.md",
+      "sha256": "94cfd36979766ed11954d57ef50870d8ffb624b067992cafda49b6be32c52357",
+      "bytes": 130700
+    },
+    "terminology_view": {
+      "path": "docs/standards/2.2.0/TERMINOLOGY.md",
+      "sha256": "c1280c3d3bbcd60715de5b40d23ff8b43328f0a451d1f0a10958283a92df9bbd",
+      "bytes": 25535
+    },
+    "build": {
+      "path": "docs/standards/2.2.0/CONTRACT_BUILD.json",
+      "sha256": "d677532b5f1c1ec83f4b5a5121ddb5d4d1052f42bd69a7accfec6fe44810c624",
+      "bytes": 959
+    },
+    "rules": 94,
+    "change_review": {
+      "path": "prace/20261025-wydanie-2.2.0/aktywacja/PROMOTION_CONSISTENCY_REVIEW.json",
+      "sha256": "d5d2199557dc7f2498d029a1d87bd22384ed3d2179ade24df6695a31dea0fab9",
+      "bytes": 13610
+    }
+  },
+  "documents": {
+    "STANDARD": {
+      "id": "1rmoAoa2U8DTOdAuDl4ozvEcz7KMqtv6DujG6AXRPZfw",
+      "revision": "AHj4eMRz-OPGth7GDPYD1UmfM-sRUj3un0plG-2ONpS8O2STMZmwNQ0IUertr9uD0G60YD5QtmJWIO1YezcZX5N4gMSffM45oD58RO_iTBpH",
+      "readback": {
+        "path": "prace/20261025-wydanie-2.2.0/aktywacja/wdrozenie/STANDARD-AFTER.json",
+        "sha256": "42fd81dd862cdb325ec986c1c5617ebcd5ac4d69a8dfc6af4b4f420423562ca3",
+        "bytes": 2022606
+      },
+      "checks": {
+        "path": "prace/20261025-wydanie-2.2.0/aktywacja/wdrozenie/STANDARD-CHECKS.json",
+        "sha256": "e5a5f78dba2d9bc5a82434df42b46b6ffeb63b944bf0d34855020beac551aff5",
+        "bytes": 342
+      }
+    },
+    "QUEUE": {
+      "id": "1OYftSe43oq7a6xGGxuukbN-q6GeNcBu9Ipws-9o5du4",
+      "revision": "AHj4eMSiJfOveL0jvjqGLPBmxgwT5Oc7Q7f82rHKib742BoPikMLHPDkg-PLVFpx6vPcGQmsG-usf00kx0Sn7-jQ6XkTHGlDlEeRt7893cDx",
+      "readback": {
+        "path": "prace/20261025-wydanie-2.2.0/aktywacja/wdrozenie/QUEUE-AFTER.json",
+        "sha256": "97404243f5577a876b966c7b5b6c898156336fbe1acbf7d43eb2e0554b301f3f",
+        "bytes": 33787
+      },
+      "checks": {
+        "path": "prace/20261025-wydanie-2.2.0/aktywacja/wdrozenie/QUEUE-CHECKS.json",
+        "sha256": "7a2f9239a34f08f76ebf2d3bcdb096d864fe2e48d066d54fa5493b7f72ca2ed9",
+        "bytes": 347
+      }
+    },
+    "LOG": {
+      "id": "1Ur7At14TrljgA1le8RnI3TwOaYtlmJNOo8DmnWsYSAI",
+      "revision": "AHj4eMSS0b7Vrodtk3v6OKrttkWPMn3Z2ShHtYxUmxlWzHXenMxbPEPWcGr_lKD209F_UhOhRF3nP7V5dx-akwbvDaiezZmDL998KXoirNFg",
+      "readback": {
+        "path": "prace/20261025-wydanie-2.2.0/aktywacja/wdrozenie/LOG-AFTER.json",
+        "sha256": "2faa317a0a6d2c55c034cce6e8a81fa2425a32f33bb83a64b71904252b74bc5b",
+        "bytes": 331581
+      },
+      "checks": {
+        "path": "prace/20261025-wydanie-2.2.0/aktywacja/wdrozenie/LOG-CHECKS.json",
+        "sha256": "ef543bef18f0850c159242ca0ad7ac949dbc760bcaae6d26ac5f2e73a1014ac8",
+        "bytes": 1246
+      }
+    }
+  },
+  "local_writes": {
+    "path": "prace/20261025-wydanie-2.2.0/aktywacja/wdrozenie/LOCAL_WRITES.json",
+    "sha256": "405a1fb1f81b17c922a9ee47e51f1b97d56957e0de68c3fcf146cfeb0defbadc",
+    "bytes": 2345
+  },
+  "native_test": {
+    "path": "prace/20261025-wydanie-2.2.0/aktywacja/TEST_RESULT.json",
+    "sha256": "63128716351cdc2dc43feda8322308e25c0997ecc4d4395f2f24ffe36167ff86",
+    "bytes": 3230
+  },
+  "native_backups": {
+    "path": "prace/20261025-wydanie-2.2.0/aktywacja/BACKUPS.json",
+    "sha256": "24f8773c92f00e78c664249ca88f7c63f1d31b4f0fcd4642daa5d5bab57419f6",
+    "bytes": 11714
+  },
+  "preflight": {
+    "native": {
+      "path": "prace/20261025-wydanie-2.2.0/aktywacja/wdrozenie/NATIVE_PREFLIGHT.json",
+      "sha256": "5beedc4662aae15fca112ef128302a69e7ccb18088b55ab4ab2ae5ca1343d3eb",
+      "bytes": 790
+    },
+    "local_git": {
+      "path": "prace/20261025-wydanie-2.2.0/aktywacja/wdrozenie/LOCAL_PREFLIGHT.json",
+      "sha256": "5620151317085d7fb8d96f3ef2dc72f96bc2200376ab15dbaaebf9c9e10f85cc",
+      "bytes": 704
+    }
+  },
+  "activation_verification": {
+    "path": "prace/20261025-wydanie-2.2.0/aktywacja/wdrozenie/DEPLOYMENT_VERIFICATION.json",
+    "sha256": "2fd415bf4e1e379be3a5bc214fd811548d8fa180d46a3ab1b435891d54dffcf0",
+    "bytes": 1455
+  },
+  "reviews": {
+    "rc1": {
+      "path": "prace/20261025-wydanie-2.2.0/recenzje/r1/SUMMARY.json",
+      "sha256": "8dde0c36895de52f90873c2d227ec6b50dcdd857c4e593b2f527899c90ec71c3",
+      "bytes": 4918
+    },
+    "rc2": {
+      "path": "prace/20261025-wydanie-2.2.0/recenzje/r2/SUMMARY.json",
+      "sha256": "a27b11aac2a54344bc6d569458c11eb6e973f97b7d3c6b11dbc6acd4ae7ecfae",
+      "bytes": 3977
+    }
+  },
+  "pilot": {
+    "path": "prace/20261025-wydanie-2.2.0/PILOT_BINDINGS.json",
+    "sha256": "c3a987020471fb9a4bb6ca9f59725e5449b61b8722a2314559c6b0c005805b70",
+    "bytes": 3943
+  },
+  "historical_regression": {
+    "status": "EXPLICIT_SCOPED_REGRESSION_WITH_LEGACY_LIMIT",
+    "full_pass_claimed": false,
+    "reason": "The unchanged historical suite required external ignored captures/DPD and timed out previously. This package does not alter its coordinator/legacy transforms. Relevant map/autosave/browser/deployment paths have pinned author and fresh-review evidence. Current user requires no repetition of completed controls. The legacy full-suite limitation is retained for informed approval, not silently treated as PASS."
+  },
+  "publication_or_audio_approval_for_suttas": false
+}

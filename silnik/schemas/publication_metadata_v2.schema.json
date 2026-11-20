@@ -1,0 +1,892 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://suttaflow.invalid/schemas/publication_metadata_v2.schema.json",
+  "title": "SuttaFlow publication metadata evidence v2",
+  "description": "F028/F026 structural evidence manifest. A successful validation never grants publication authority. Whole-bundle PDF/LOG reports remain external to avoid a hash cycle.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema": {
+      "const": "suttaflow-publication-metadata-v2"
+    },
+    "is_synthetic": {
+      "type": "boolean"
+    },
+    "subject_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "revision_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "scope": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "components": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "core": {
+          "$ref": "#/$defs/artifact"
+        },
+        "apparatus": {
+          "$ref": "#/$defs/artifact"
+        },
+        "interpretation": {
+          "$ref": "#/$defs/artifact"
+        }
+      },
+      "required": [
+        "core",
+        "apparatus",
+        "interpretation"
+      ]
+    },
+    "native": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "document_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "revision_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "tab_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "document_id",
+        "revision_id",
+        "tab_id"
+      ]
+    },
+    "dates": {
+      "$ref": "#/$defs/dates"
+    },
+    "bibliography": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "heading_start": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "entries": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/bibliographyEntry"
+          },
+          "minItems": 1
+        }
+      },
+      "required": [
+        "heading_start",
+        "entries"
+      ]
+    },
+    "channels": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/channel"
+      },
+      "minItems": 0,
+      "uniqueItems": true
+    }
+  },
+  "required": [
+    "schema",
+    "is_synthetic",
+    "subject_id",
+    "revision_id",
+    "scope",
+    "components",
+    "native",
+    "dates",
+    "bibliography",
+    "channels"
+  ],
+  "$defs": {
+    "artifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 1
+        }
+      },
+      "required": [
+        "path",
+        "sha256",
+        "bytes"
+      ]
+    },
+    "authenticatedSource": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "actor_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "uri": {
+          "type": "string",
+          "minLength": 1
+        },
+        "record_id": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "actor_id",
+        "uri",
+        "record_id"
+      ]
+    },
+    "dateAttestation": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schema": {
+          "const": "suttaflow-date-attestation-v2"
+        },
+        "kind": {
+          "enum": [
+            "ORIGINAL_COMPLETION",
+            "REVISION"
+          ]
+        },
+        "subject_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "revision_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "day": {
+          "type": "string",
+          "format": "date",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+        },
+        "zone": {
+          "const": "Europe/Warsaw"
+        },
+        "basis": {
+          "enum": [
+            "EXPLICIT_CALENDAR_DAY",
+            "ACTUAL_COMPLETION_EVENT"
+          ]
+        },
+        "event_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "original_completion": {
+          "$ref": "#/$defs/artifact"
+        },
+        "recorded_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "evidence_text": {
+          "type": "string",
+          "minLength": 1
+        },
+        "authenticated_source": {
+          "$ref": "#/$defs/authenticatedSource"
+        }
+      },
+      "required": [
+        "schema",
+        "kind",
+        "subject_id",
+        "revision_id",
+        "day",
+        "zone",
+        "basis",
+        "recorded_at",
+        "evidence_text",
+        "authenticated_source"
+      ],
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "basis": {
+                "const": "ACTUAL_COMPLETION_EVENT"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "event_at"
+            ]
+          },
+          "else": {
+            "not": {
+              "required": [
+                "event_at"
+              ]
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "const": "REVISION"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "original_completion"
+            ]
+          },
+          "else": {
+            "not": {
+              "required": [
+                "original_completion"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "nativeCompletionSelector": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "paragraph_start": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "date_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "label": {
+          "enum": [
+            "Ukończenie:",
+            "Data ukończenia:",
+            "Ukończono:",
+            "Wersja i data:"
+          ]
+        }
+      },
+      "required": [
+        "paragraph_start",
+        "date_id",
+        "label"
+      ]
+    },
+    "nativeRevisionSelector": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "paragraph_start": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "date_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "label": {
+          "enum": [
+            "Rewizja:",
+            "Data rewizji:"
+          ]
+        }
+      },
+      "required": [
+        "paragraph_start",
+        "date_id",
+        "label"
+      ]
+    },
+    "dates": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "original_completion": {
+          "$ref": "#/$defs/artifact"
+        },
+        "revision": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/artifact"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "filename_date_span": {
+          "type": "array",
+          "prefixItems": [
+            {
+              "type": "integer",
+              "minimum": 0
+            },
+            {
+              "type": "integer",
+              "minimum": 1
+            }
+          ],
+          "items": false,
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "native_completion": {
+          "$ref": "#/$defs/nativeCompletionSelector"
+        },
+        "native_revision": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/nativeRevisionSelector"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "original_completion",
+        "revision",
+        "filename_date_span",
+        "native_completion",
+        "native_revision"
+      ],
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "revision": {
+                "type": "null"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "native_revision": {
+                "type": "null"
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "native_revision": {
+                "$ref": "#/$defs/nativeRevisionSelector"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "bibliographyEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "source_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "represented_scope": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "scope_note": {
+          "type": "string"
+        },
+        "scope_note_separator": {
+          "enum": [
+            " — ",
+            " · ",
+            "; ",
+            ". "
+          ]
+        },
+        "text": {
+          "type": "string",
+          "minLength": 1
+        },
+        "additional_link_check_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 0,
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "source_id",
+        "represented_scope",
+        "scope_note",
+        "text",
+        "additional_link_check_refs"
+      ]
+    },
+    "bibliographyBlock": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "text": {
+          "type": "string",
+          "minLength": 1
+        },
+        "urls": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uri",
+            "pattern": "^https?://"
+          },
+          "minItems": 0,
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "text",
+        "urls"
+      ]
+    },
+    "channel": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "channel_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "artifact": {
+          "$ref": "#/$defs/artifact"
+        },
+        "format": {
+          "enum": [
+            "MARKDOWN",
+            "PLAIN_TEXT"
+          ]
+        }
+      },
+      "required": [
+        "channel_id",
+        "artifact",
+        "format"
+      ]
+    },
+    "visualActor": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "model": {
+          "type": "string",
+          "minLength": 1
+        },
+        "context_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "kind": {
+          "enum": [
+            "AI",
+            "HUMAN",
+            "SYNTHETIC"
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "model",
+        "context_id",
+        "kind"
+      ]
+    },
+    "renderedPage": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "page": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "artifact": {
+          "$ref": "#/$defs/artifact"
+        },
+        "rendered_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "available_at": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "page",
+        "artifact"
+      ],
+      "oneOf": [
+        {
+          "required": [
+            "rendered_at"
+          ],
+          "not": {
+            "required": [
+              "available_at"
+            ]
+          }
+        },
+        {
+          "required": [
+            "available_at"
+          ],
+          "not": {
+            "required": [
+              "rendered_at"
+            ]
+          }
+        }
+      ]
+    },
+    "visualReview": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "PUBLICATION_METADATA_VISUAL_REVIEW"
+        },
+        "result": {
+          "const": "PASS"
+        },
+        "native_artifact": {
+          "$ref": "#/$defs/artifact"
+        },
+        "pdf_artifact": {
+          "$ref": "#/$defs/artifact"
+        },
+        "document_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "document_revision_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "completion_date": {
+          "type": "string",
+          "format": "date",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+        },
+        "revision_date": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date",
+              "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "completion_display_text": {
+          "type": "string",
+          "minLength": 1
+        },
+        "revision_display_text": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "completion_page": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "revision_page": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "sources_pages": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "source_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "bibliography_blocks": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/bibliographyBlock"
+          },
+          "minItems": 1
+        },
+        "rendered_pages": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/renderedPage"
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "completed_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "actor": {
+          "$ref": "#/$defs/visualActor"
+        },
+        "evidence_text": {
+          "type": "string",
+          "minLength": 1
+        },
+        "authenticated_source": {
+          "$ref": "#/$defs/authenticatedSource"
+        }
+      },
+      "required": [
+        "kind",
+        "result",
+        "native_artifact",
+        "pdf_artifact",
+        "document_id",
+        "document_revision_id",
+        "completion_date",
+        "revision_date",
+        "completion_display_text",
+        "revision_display_text",
+        "completion_page",
+        "revision_page",
+        "sources_pages",
+        "source_ids",
+        "bibliography_blocks",
+        "rendered_pages",
+        "completed_at",
+        "actor",
+        "evidence_text",
+        "authenticated_source"
+      ],
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "revision_date": {
+                "type": "null"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "revision_display_text": {
+                "type": "null"
+              },
+              "revision_page": {
+                "type": "null"
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "revision_display_text": {
+                "type": "string",
+                "minLength": 1
+              },
+              "revision_page": {
+                "type": "integer",
+                "minimum": 1
+              }
+            }
+          }
+        }
+      ]
+    },
+    "pdfMetadata": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "source_evidence_index": {
+          "$ref": "#/$defs/artifact"
+        },
+        "visual_review": {
+          "$ref": "#/$defs/visualReview"
+        }
+      },
+      "required": [
+        "source_evidence_index",
+        "visual_review"
+      ]
+    },
+    "logMetadata": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "tab_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "entry_paragraph_starts": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "completion_date": {
+          "type": "string",
+          "format": "date",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+        },
+        "revision_date": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date",
+              "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "completion_label": {
+          "enum": [
+            "Ukończenie:",
+            "Data ukończenia:",
+            "Ukończono:",
+            "Wersja i data:"
+          ]
+        },
+        "revision_label": {
+          "anyOf": [
+            {
+              "enum": [
+                "Rewizja:",
+                "Data rewizji:"
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "tab_id",
+        "entry_paragraph_starts",
+        "completion_date",
+        "revision_date",
+        "completion_label",
+        "revision_label"
+      ],
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "revision_date": {
+                "type": "null"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "revision_label": {
+                "type": "null"
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "revision_label": {
+                "enum": [
+                  "Rewizja:",
+                  "Data rewizji:"
+                ]
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

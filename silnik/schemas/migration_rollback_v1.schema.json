@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:suttaflow:migration-rollback:1",
+  "title": "Trusted local rollback progress v1",
+  "description": "A genuine successful-unlink prefix bound to the exact creation receipt. Runtime checks the original plan, directory, full creation receipt hash, deletion prefix, remaining suffix and actual filesystem before deleting. This plain JSON does not authenticate ownership. Historical rollback summaries without this binding are not resumable progress.",
+  "type": "object",
+  "required": ["schema", "plan_id", "output_directory", "creation_receipt_sha256", "removed", "remaining", "completed", "source_mutations"],
+  "properties": {
+    "schema": {"const": "suttaflow-migration-rollback-v1"},
+    "plan_id": {"$ref": "#/$defs/sha256"},
+    "output_directory": {"type": "string", "minLength": 1, "pattern": "^[^\u0000]+$"},
+    "creation_receipt_sha256": {"$ref": "#/$defs/sha256"},
+    "removed": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "required": ["filename", "sha256"],
+        "properties": {
+          "filename": {"$ref": "#/$defs/filename"},
+          "sha256": {"$ref": "#/$defs/sha256"}
+        },
+        "additionalProperties": true
+      }
+    },
+    "remaining": {"type": "array", "uniqueItems": true, "items": {"$ref": "#/$defs/filename"}},
+    "completed": {"type": "boolean"},
+    "source_mutations": {"type": "integer", "const": 0}
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "filename": {"type": "string", "pattern": "^[a-z][a-z0-9_-]{0,63}\\.migration-[0-9a-f]{16}\\.json$"}
+  },
+  "allOf": [{
+    "if": {"properties": {"completed": {"const": true}}},
+    "then": {"properties": {"remaining": {"maxItems": 0}}},
+    "else": {"properties": {"remaining": {"minItems": 1}}}
+  }],
+  "additionalProperties": true
+}

@@ -1,0 +1,559 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:suttaflow:pali-first-declaration:2",
+  "title": "Declared historical method evidence, existing axis B",
+  "oneOf": [
+    {
+      "$ref": "#/$defs/declaration"
+    },
+    {
+      "$ref": "#/$defs/workflow"
+    },
+    {
+      "$ref": "#/$defs/historicalTranslation"
+    },
+    {
+      "$ref": "#/$defs/publicDisclosure"
+    }
+  ],
+  "$defs": {
+    "artifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "sha256",
+        "bytes"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 1
+        }
+      }
+    },
+    "authenticatedSource": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "actor_id",
+        "uri",
+        "record_id"
+      ],
+      "properties": {
+        "actor_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "uri": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "record_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        }
+      }
+    },
+    "declaration": {
+      "type": "object",
+      "properties": {
+        "kind": {
+          "const": "PALI_FIRST_DECLARATION"
+        },
+        "subject_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "revision_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "content_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "scope": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          }
+        },
+        "authenticated_source": {
+          "$ref": "#/$defs/authenticatedSource"
+        },
+        "profile": {
+          "enum": [
+            "MN",
+            "DN",
+            "KN_SNP",
+            "KN_UD",
+            "KN_ITI",
+            "KN_DHP",
+            "KN_KHP",
+            "KN_THAG",
+            "KN_THIG",
+            "KN_OTHER",
+            "VINAYA_PALI",
+            "VINAYA_OTHER"
+          ]
+        },
+        "work_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "method_axis": {
+          "const": "PALI_FIRST_DEKLAROWANY"
+        },
+        "basis_source_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "limitations": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "lack_of_order_proof": {
+          "const": true
+        },
+        "prior_exposure": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "method_disclosure": {
+          "const": "polskie opracowanie AI z odwołaniem do tekstu palijskiego; pełna niezależność metody nieudokumentowana"
+        },
+        "workflow_evidence_ref": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "public_disclosure_evidence_ref": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "at": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "kind",
+        "subject_id",
+        "revision_id",
+        "content_sha256",
+        "scope",
+        "authenticated_source",
+        "profile",
+        "work_id",
+        "method_axis",
+        "basis_source_id",
+        "limitations",
+        "lack_of_order_proof",
+        "prior_exposure",
+        "method_disclosure",
+        "workflow_evidence_ref",
+        "public_disclosure_evidence_ref",
+        "at"
+      ],
+      "additionalProperties": true
+    },
+    "workflow": {
+      "type": "object",
+      "properties": {
+        "kind": {
+          "const": "TRANSLATION_WORKFLOW_ATTESTATION"
+        },
+        "subject_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "revision_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "content_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "scope": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          }
+        },
+        "authenticated_source": {
+          "$ref": "#/$defs/authenticatedSource"
+        },
+        "profile": {
+          "enum": [
+            "MN",
+            "DN",
+            "KN_SNP",
+            "KN_UD",
+            "KN_ITI",
+            "KN_DHP",
+            "KN_KHP",
+            "KN_THAG",
+            "KN_THIG",
+            "KN_OTHER",
+            "VINAYA_PALI",
+            "VINAYA_OTHER"
+          ]
+        },
+        "work_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "workflow": {
+          "enum": [
+            "CONTINUATION_OF_EXISTING_TRANSLATION",
+            "NEW_TRANSLATION_SECTION_28_2",
+            "UNDETERMINED"
+          ]
+        },
+        "historical_record_ref": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "started_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "evidence_text": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        }
+      },
+      "required": [
+        "kind",
+        "subject_id",
+        "revision_id",
+        "content_sha256",
+        "scope",
+        "authenticated_source",
+        "profile",
+        "work_id",
+        "workflow",
+        "started_at",
+        "evidence_text"
+      ],
+      "additionalProperties": true,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "workflow": {
+                "const": "CONTINUATION_OF_EXISTING_TRANSLATION"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "historical_record_ref"
+            ]
+          }
+        }
+      ]
+    },
+    "historicalTranslation": {
+      "type": "object",
+      "properties": {
+        "kind": {
+          "const": "HISTORICAL_TRANSLATION_RECORD"
+        },
+        "subject_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "revision_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "content_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "scope": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          }
+        },
+        "authenticated_source": {
+          "$ref": "#/$defs/authenticatedSource"
+        },
+        "profile": {
+          "enum": [
+            "MN",
+            "DN",
+            "KN_SNP",
+            "KN_UD",
+            "KN_ITI",
+            "KN_DHP",
+            "KN_KHP",
+            "KN_THAG",
+            "KN_THIG",
+            "KN_OTHER",
+            "VINAYA_PALI",
+            "VINAYA_OTHER"
+          ]
+        },
+        "work_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "translation_ref": {
+          "$ref": "#/$defs/artifact"
+        },
+        "recorded_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "evidence_text": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        }
+      },
+      "required": [
+        "kind",
+        "subject_id",
+        "revision_id",
+        "content_sha256",
+        "scope",
+        "authenticated_source",
+        "profile",
+        "work_id",
+        "translation_ref",
+        "recorded_at",
+        "evidence_text"
+      ],
+      "additionalProperties": true
+    },
+    "publicDisclosure": {
+      "type": "object",
+      "properties": {
+        "kind": {
+          "const": "PUBLIC_SOURCE_DISCLOSURE"
+        },
+        "subject_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "revision_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "content_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "scope": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          }
+        },
+        "authenticated_source": {
+          "$ref": "#/$defs/authenticatedSource"
+        },
+        "profile": {
+          "enum": [
+            "MN",
+            "DN",
+            "KN_SNP",
+            "KN_UD",
+            "KN_ITI",
+            "KN_DHP",
+            "KN_KHP",
+            "KN_THAG",
+            "KN_THIG",
+            "KN_OTHER",
+            "VINAYA_PALI",
+            "VINAYA_OTHER"
+          ]
+        },
+        "work_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "method_axis": {
+          "const": "PALI_FIRST_DEKLAROWANY"
+        },
+        "basis_source_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "limitations": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "lack_of_order_proof": {
+          "const": true
+        },
+        "prior_exposure": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "method_disclosure": {
+          "const": "polskie opracowanie AI z odwołaniem do tekstu palijskiego; pełna niezależność metody nieudokumentowana"
+        },
+        "at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "text": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "ai_used": {
+          "const": true
+        },
+        "human_review_status": {
+          "enum": [
+            "NO_HUMAN_REVIEW",
+            "PARTIAL_HUMAN_REVIEW",
+            "FULL_HUMAN_REVIEW",
+            "UNKNOWN"
+          ]
+        }
+      },
+      "required": [
+        "kind",
+        "subject_id",
+        "revision_id",
+        "content_sha256",
+        "scope",
+        "authenticated_source",
+        "profile",
+        "work_id",
+        "method_axis",
+        "basis_source_id",
+        "limitations",
+        "lack_of_order_proof",
+        "prior_exposure",
+        "method_disclosure",
+        "at",
+        "text",
+        "ai_used",
+        "human_review_status"
+      ],
+      "additionalProperties": true
+    },
+    "workIdentity": {
+      "type": "object",
+      "required": [
+        "profile",
+        "work_id",
+        "units",
+        "evidence_text"
+      ],
+      "properties": {
+        "profile": {
+          "enum": [
+            "MN",
+            "DN",
+            "KN_SNP",
+            "KN_UD",
+            "KN_ITI",
+            "KN_DHP",
+            "KN_KHP",
+            "KN_THAG",
+            "KN_THIG",
+            "KN_OTHER",
+            "VINAYA_PALI",
+            "VINAYA_OTHER"
+          ]
+        },
+        "work_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "evidence_text": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "units": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": [
+              "unit_id",
+              "source_locus"
+            ],
+            "properties": {
+              "unit_id": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "\\S"
+              },
+              "source_locus": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "\\S"
+              }
+            },
+            "additionalProperties": true
+          }
+        }
+      },
+      "additionalProperties": true,
+      "$comment": "Inside the actual SOURCE_READ_ATTESTATION. Runtime checks exact per-read scope and work_id:locus; MN uses canonical mnN without leading zeroes. This shape is not authentication or a canonical catalogue lookup."
+    }
+  },
+  "$comment": "Record shapes only. These records do not grant eligibility, change axes or activate policy. source_contract checks authenticated-intake bindings, exact original/current bytes, chronology, actual read identity, MN53/section 28.2 boundaries and public disclosure. Additional attestation metadata is retained; checked fields cannot be overridden."
+}

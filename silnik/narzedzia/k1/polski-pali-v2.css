@@ -1,0 +1,9 @@
+@import url("polski-pali.css");
+
+/* Approved reader metric; the historical K1 styles remain reproducible. */
+.metrics {
+  background: transparent;
+  border-left: 0;
+  margin-left: 0;
+  padding-left: 0;
+}

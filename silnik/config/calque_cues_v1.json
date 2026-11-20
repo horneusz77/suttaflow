@@ -1,0 +1,56 @@
+{
+ "schema": "suttaflow-calque-cues-v1",
+ "decision": "DEC-03 rule 4",
+ "author": {
+  "id": "claude-opus-5.5",
+  "type": "AI"
+ },
+ "meaning": "Polish cue words whose English counterpart may enter a translation without Pali basis. Flag when the English occurs in HH or Sujato for the section and the gloss pattern occurs in no DPD gloss of any Pali word of that section. Short list; extend only with recorded cases.",
+ "cues": [
+  {
+   "id": "OTHERS",
+   "pl_rx": "\\binn(ym|ych|emu|ymi)\\b",
+   "en_rx": "\\bto others\\b",
+   "gloss_rx": "\\bto others\\b|\\bfor others\\b",
+   "source_case": "M-01 (pl.§2.3)"
+  },
+  {
+   "id": "INSTEAD",
+   "pl_rx": "\\bprzeciwnie\\b|\\bzamiast tego\\b",
+   "en_rx": "\\binstead\\b|\\bon the contrary\\b",
+   "gloss_rx": "\\binstead\\b|\\bcontrary\\b|\\brather\\b",
+   "source_case": "M-06 (pl.§13.7)"
+  },
+  {
+   "id": "LAW",
+   "pl_rx": "\\bpraw(a|o|em|u|ie)?\\b|\\bprawn\\w*",
+   "en_rx": "\\blaws?\\b",
+   "gloss_rx": "\\blaws?\\b|\\blegal",
+   "source_case": "M-03 (pl.§8.6, pl.§12.7)"
+  },
+  {
+   "id": "THATS_WHY",
+   "pl_rx": "\\bdlatego\\b",
+   "en_rx": "that’s why|that is why|\\btherefore\\b",
+   "gloss_rx": "therefore|that is why|for that reason|\\bhence\\b|\\bthus\\b"
+  },
+  {
+   "id": "REALLY",
+   "pl_rx": "\\bnaprawdę\\b|\\brzeczywiście\\b|\\bfaktycznie\\b",
+   "en_rx": "\\breally\\b|\\btruly\\b|\\bactually\\b",
+   "gloss_rx": "\\breally\\b|\\btruly\\b|\\bindeed\\b|\\bcertainly\\b|\\bsurely\\b|\\bactually\\b"
+  },
+  {
+   "id": "MEDITATE",
+   "pl_rx": "\\bmedyt\\w*",
+   "en_rx": "meditat",
+   "gloss_rx": "meditat"
+  },
+  {
+   "id": "LOVE",
+   "pl_rx": "\\bmiło(ść|ści|ścią)\\b",
+   "en_rx": "\\blove\\b",
+   "gloss_rx": "\\blove\\b"
+  }
+ ]
+}

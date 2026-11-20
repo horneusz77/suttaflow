@@ -1,0 +1,882 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<section id="sf-karta-ocen" lang="pl" aria-label="Karta ocen przekładu MN53">
+<style>
+#sf-karta-ocen { color-scheme:light dark; --sf-paper:light-dark(#fff,#171e23); --sf-ink:light-dark(#20313b,#e7edf0); --sf-sub:light-dark(#52636d,#b8c5cd); --sf-line:light-dark(#cbd4d8,#47545d); --sf-soft:light-dark(#f0f5f5,#202c32); --sf-accent:light-dark(#145c59,#94d6cb); --sf-contrast:light-dark(#fff,#102322); --sf-error:light-dark(#9e2727,#ffb2aa); font:16px/1.55 system-ui,sans-serif; color:var(--sf-ink); background:var(--sf-paper); max-width:1000px; margin:auto; padding:clamp(16px,4vw,36px); box-sizing:border-box; }
+#sf-karta-ocen * { box-sizing:border-box; }
+#sf-karta-ocen [hidden] { display:none!important; }
+#sf-karta-ocen header { border-bottom:2px solid var(--sf-ink); padding-bottom:20px; margin-bottom:24px; }
+#sf-karta-ocen .sf-kicker { color:var(--sf-accent); font-size:13px; letter-spacing:.12em; text-transform:uppercase; font-weight:650; margin:0 0 6px; }
+#sf-karta-ocen h1 { font-size:28px; line-height:1.2; margin:0 0 8px; letter-spacing:-.03em; }
+#sf-karta-ocen h2 { font-size:23px; line-height:1.3; margin:20px 0 16px; letter-spacing:-.02em; }
+#sf-karta-ocen p { margin:0 0 12px; }
+#sf-karta-ocen .sf-meta { font-size:14px; color:var(--sf-sub); }
+#sf-karta-ocen .sf-row { display:flex; flex-wrap:wrap; align-items:center; gap:12px; }
+#sf-karta-ocen .sf-status { margin-left:auto; font-size:14px; color:var(--sf-sub); }
+#sf-karta-ocen .sf-picker { flex:1 1 300px; }
+#sf-karta-ocen .sf-picker label { display:block; font-size:14px; margin-bottom:6px; }
+#sf-karta-ocen select, #sf-karta-ocen textarea { font:inherit; color:var(--sf-ink); background:var(--sf-paper); border:1px solid var(--sf-line); border-radius:5px; padding:10px 12px; width:100%; }
+#sf-karta-ocen select { min-height:44px; }
+#sf-karta-ocen textarea { resize:vertical; min-height:90px; }
+#sf-karta-ocen button, #sf-karta-ocen .sf-download { font:inherit; border:1px solid var(--sf-line); color:var(--sf-ink); background:var(--sf-paper); padding:9px 14px; border-radius:5px; min-height:44px; text-decoration:none; display:inline-flex; align-items:center; justify-content:center; }
+#sf-karta-ocen button:disabled { opacity:.45; }
+#sf-karta-ocen .sf-primary { color:var(--sf-contrast); background:var(--sf-accent); border-color:var(--sf-accent); }
+#sf-karta-ocen :focus-visible { outline:3px solid var(--sf-accent); outline-offset:3px; }
+#sf-karta-ocen .sf-context { display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-bottom:20px; }
+#sf-karta-ocen .sf-reading { margin:20px 0 24px; padding:20px 0; border-top:1px solid var(--sf-line); border-bottom:1px solid var(--sf-line); }
+#sf-karta-ocen .sf-passage { max-width:76ch; margin:18px 0 0; }
+#sf-karta-ocen .sf-passage-text { font:18px/1.65 Georgia,serif; }
+#sf-karta-ocen mark { color:var(--sf-ink); background:var(--sf-soft); font-weight:700; text-decoration:underline; text-decoration-color:var(--sf-accent); text-underline-offset:3px; }
+#sf-karta-ocen .sf-label { display:block; font-size:12px; font-weight:650; text-transform:uppercase; letter-spacing:.08em; color:var(--sf-sub); margin-bottom:8px; }
+#sf-karta-ocen blockquote { font:21px/1.5 Georgia,serif; margin:0 0 12px; padding:0; }
+#sf-karta-ocen .sf-pali { font:14px/1.7 ui-monospace,Consolas,monospace; overflow-wrap:anywhere; color:var(--sf-sub); }
+#sf-karta-ocen .sf-evidence { font-size:14px; padding:12px 0; border-top:1px solid var(--sf-line); border-bottom:1px solid var(--sf-line); margin-bottom:24px; }
+#sf-karta-ocen summary { min-height:32px; }
+#sf-karta-ocen details p { margin:12px 0 0; overflow-wrap:anywhere; }
+#sf-karta-ocen fieldset { border:0; padding:0; margin:0; min-width:0; }
+#sf-karta-ocen legend { font-size:17px; font-weight:650; margin-bottom:12px; }
+#sf-karta-ocen .sf-option { display:flex; align-items:flex-start; gap:12px; padding:15px; margin-bottom:10px; border:1px solid var(--sf-line); border-radius:5px; }
+#sf-karta-ocen .sf-option:has(input:checked) { border-color:var(--sf-accent); background:var(--sf-soft); box-shadow:inset 3px 0 var(--sf-accent); }
+#sf-karta-ocen input[type=radio] { accent-color:var(--sf-accent); margin:6px 0 0; flex:none; width:18px; height:18px; }
+#sf-karta-ocen .sf-option-body { min-width:0; }
+#sf-karta-ocen .sf-option-title { font-size:14px; font-weight:650; display:block; margin-bottom:4px; }
+#sf-karta-ocen .sf-wording { display:block; font:20px/1.45 Georgia,serif; margin-bottom:6px; }
+#sf-karta-ocen .sf-effect { display:block; font-size:14px; color:var(--sf-sub); }
+#sf-karta-ocen .sf-quick { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; }
+#sf-karta-ocen .sf-quick .sf-option { padding:12px; margin-bottom:0; font-size:14px; }
+#sf-karta-ocen .sf-field { display:block; margin-top:18px; }
+#sf-karta-ocen .sf-field>span { display:block; font-size:14px; font-weight:650; margin-bottom:6px; }
+#sf-karta-ocen .sf-preview { border-left:3px solid var(--sf-accent); padding:12px 16px; margin-top:20px; background:var(--sf-soft); }
+#sf-karta-ocen .sf-preview p:last-child { margin:0; }
+#sf-karta-ocen #sf-recovery { margin-bottom:24px; }
+#sf-karta-ocen .sf-comparison { border-top:1px solid var(--sf-line); padding-top:18px; margin-top:24px; }
+#sf-karta-ocen .sf-comparison h3 { font-size:19px; margin:0 0 8px; }
+#sf-karta-ocen .sf-compare-columns { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px; }
+#sf-karta-ocen .sf-compare-columns p { font:18px/1.65 Georgia,serif; overflow-wrap:anywhere; white-space:pre-wrap; }
+@media(max-width:736px) { #sf-karta-ocen .sf-compare-columns { grid-template-columns:1fr; } }
+#sf-karta-ocen footer { border-top:1px solid var(--sf-line); margin-top:28px; padding-top:20px; }
+#sf-karta-ocen .sf-error { color:var(--sf-error); margin-top:10px; }
+#sf-karta-ocen .sf-code { font:13px/1.5 ui-monospace,Consolas,monospace; overflow-wrap:anywhere; }
+#sf-karta-ocen #sf-output { min-height:230px; font-size:14px; margin-top:12px; }
+#sf-karta-ocen .sf-print-only { display:none; }
+@media(max-width:600px) { #sf-karta-ocen .sf-context { grid-template-columns:1fr; gap:16px; } #sf-karta-ocen .sf-quick { grid-template-columns:1fr; } #sf-karta-ocen .sf-status { margin-left:0; } #sf-karta-ocen h1 { font-size:25px; } }
+</style>
+<header>
+  <p class="sf-kicker">SuttaFlow · decyzje redakcyjne</p>
+  <h1>Karta ocen przekładu</h1>
+  <div class="sf-row"><span>MN53 · Uczeń w treningu · baza R9</span><span class="sf-status">Przykład · wybory niewdrożone</span></div>
+</header>
+<p class="sf-meta" id="sf-storage" role="status" aria-live="polite">Wybory będą zapisywane automatycznie.</p>
+<section class="sf-preview" id="sf-recovery" hidden aria-labelledby="sf-recovery-title">
+  <h2 id="sf-recovery-title">Zachowany szkic po niepotwierdzonym zapisie</h2>
+  <p>W tej przeglądarce jest nowszy szkic tej karty. Formularz pokazuje JSON z dysku. Możesz przywrócić szkic i zapisać go w JSON albo wyeksportować go bez zmiany pliku.</p>
+  <div class="sf-row">
+    <button type="button" id="sf-recovery-restore">Przywróć szkic i zapisz JSON</button>
+    <button type="button" id="sf-recovery-export">Eksportuj szkic bez zapisu JSON</button>
+  </div>
+</section>
+<div class="sf-row">
+  <div class="sf-picker"><label for="sf-issue">Miejsce wymagające doprecyzowania</label><select id="sf-issue"></select></div>
+  <p class="sf-meta" id="sf-progress" role="status" aria-live="polite"></p>
+</div>
+<article aria-labelledby="sf-title">
+  <h2 id="sf-title"></h2>
+  <p class="sf-meta" id="sf-locus"></p>
+  <section class="sf-reading" id="sf-reading" aria-label="Szerszy kontekst w przekładzie R9">
+    <span class="sf-label">Gdzie występuje oceniany zwrot</span>
+    <p class="sf-meta" id="sf-situation"></p>
+    <div id="sf-passages"></div>
+  </section>
+  <div class="sf-context">
+    <div><span class="sf-label">Oceniany zwrot</span><blockquote id="sf-quote"></blockquote><p class="sf-pali" id="sf-pali"></p></div>
+    <div><span class="sf-label">Co wymaga decyzji</span><p id="sf-risk"></p></div>
+  </div>
+  <details class="sf-evidence"><summary>Podstawa, pewność i zakres zmiany</summary><p id="sf-evidence"></p><p id="sf-certainty"></p><p id="sf-dependencies"></p></details>
+  <fieldset><legend>Wybierz sposób doprecyzowania</legend><div id="sf-options"></div></fieldset>
+  <div id="sf-custom" hidden>
+    <label class="sf-field"><span>Własne brzmienie tekstu lub dyspozycja zmiany</span><textarea id="sf-custom-text" maxlength="1800"></textarea></label>
+    <label class="sf-field"><span>Jak pokazać własny tekst</span><select id="sf-custom-scope"><option value="fragment">Jako zwrot w ocenianym akapicie</option><option value="paragraph">Jako całe nowe zdanie lub akapit</option></select></label>
+    <label class="sf-field"><span>Własne objaśnienie do przypisu — opcjonalnie</span><textarea id="sf-custom-note" maxlength="1800"></textarea></label>
+  </div>
+  <section class="sf-comparison" id="sf-comparison" hidden aria-label="Porównanie obecnego brzmienia i wybranego wariantu">
+    <h3>Porównaj w kontekście</h3>
+    <p class="sf-meta" id="sf-comparison-status" role="status" aria-live="polite"></p>
+    <div class="sf-compare-columns">
+      <div><span class="sf-label" id="sf-current-label">Obecne brzmienie R9</span><p id="sf-current-passage"></p></div>
+      <div><span class="sf-label" id="sf-chosen-label">Wybrany wariant — podgląd</span><p id="sf-chosen-passage"></p></div>
+    </div>
+  </section>
+  <div class="sf-preview" id="sf-preview" hidden><span class="sf-label">Proponowany przypis / objaśnienie</span><p id="sf-preview-note"></p></div>
+  <label class="sf-field"><span>Komentarz lub pytanie do tego miejsca — opcjonalnie</span><textarea id="sf-comment" maxlength="1200" placeholder="Np. wolę prostsze brzmienie, ale chcę zachować metaforę…"></textarea></label>
+  <div class="sf-row" style="margin-top:20px"><button type="button" id="sf-prev" class="cursor-interaction">Poprzednie miejsce</button><button type="button" id="sf-next" class="cursor-interaction">Następne miejsce</button><span class="sf-meta" id="sf-current-status" role="status" aria-live="polite"></span></div>
+</article>
+<footer>
+  <div class="sf-row"><button type="button" id="sf-export" class="sf-primary cursor-interaction">Przygotuj plik z wyborami</button><span class="sf-meta">Zakres: tylko MN53. Zapis wyborów do omówienia.</span></div>
+  <p id="sf-error" class="sf-error" role="alert"></p>
+  <div id="sf-export-panel" hidden>
+    <label class="sf-field"><span>Twoje wybory — do skopiowania lub pobrania</span><textarea id="sf-output" readonly aria-describedby="sf-export-help"></textarea></label>
+    <p class="sf-meta" id="sf-export-help">Pobierz JSON i dołącz go w czacie albo skopiuj poniższy zapis. Sam plik nie zmienia przekładu.</p>
+    <a id="sf-download" class="sf-download cursor-interaction" download="MN53-R9-wybory.json">Pobierz wybory (.json)</a>
+  </div>
+  <details style="margin-top:18px"><summary class="sf-meta">Wersja ocenianego tekstu i zapis decyzji</summary><p class="sf-meta">Karta MN53-R9-KO1. Propozycje z ukończonego audytu znaczenia; Twoje wybory pozostają robocze. Nie wszystkie uwagi oznaczają błąd przekładu. Wybór wymaga sprawdzenia w kontekście przed wdrożeniem.</p><p class="sf-code" id="sf-source-pin"></p><p class="sf-meta">Plik decyzji w folderze przekładu. Automatyczny zapis do niego działa w karcie uruchomionej przez lokalny skrót; stan zapisu jest widoczny nad formularzem.</p><p class="sf-code" id="sf-decision-path"></p></details>
+</footer>
+<script type="application/json" id="sf-card-model">
+{
+  "schema": "suttaflow-choice-card-v1",
+  "card_id": "MN53-R9-KO1",
+  "subject": "MN53",
+  "revision": "R9",
+  "source_sha256": "a06e1340b6ec3963de3384c4a233a1b8bf9c882541ef9f5126d6b84147108ee5",
+  "source_path": "prace/20261024-mn53-terminologia/wyniki/MN53-R9.md",
+  "decision_path": "prace/20261024-mn53-terminologia/karta-ocen/MN53-R9-wybory.json",
+  "audit_path": "audyty/20261024-mn53-znaczenie-r9/USTALENIA.json",
+  "audit_sha256": "6087113ee8006236bc13c7bd9eae5927fac3e8f1922a656b34420409fb8d6742",
+  "standard_version": "2.1.0",
+  "standard_sha256": "2d8a9c0e1dedc9bee23acf0b041b409babfbfaff54108a490de8cbb92ba4afeb",
+  "scope": "MN53_ONLY",
+  "issues": [
+    {
+      "id": "MN53-S01",
+      "title": "Jak czyny wiążą się z ponownym pojawieniem się istot?",
+      "locus": "MN53:21.1 i 24.2 · trzy wystąpienia w rozwinięciu i podsumowaniu",
+      "priority": "Ważne doprecyzowanie",
+      "quote": "Rozpoznaje, że istoty podążają zgodnie ze swoimi czynami",
+      "pali": "… yathākammūpage satte pajānāti · kontekst: cavamāne upapajjamāne",
+      "risk": "„Podążają” może brzmieć jak ogólna uwaga o postępowaniu. W tym fragmencie chodzi o losy istot po śmierci w związku z ich czynami.",
+      "evidence": "MS/CST 21.1 i 24.2; DPD: yathākammūpaga, cavati; HH 21.1, Ñāṇamoli/Bodhi §21; rozwinięcie DN2:95.2 / MN4:29.2.",
+      "certainty": "Niejasność jest dobrze uzasadniona. Obecne zdanie nie zostało uznane za jednoznacznie sprzeczne z Pali.",
+      "dependencies": "Sprawdzić trzy wystąpienia. Słowo „odchodzące” pozostaje odrębną propozycją: ten wybór nie zmienia go automatycznie.",
+      "options": [
+        {
+          "id": "A",
+          "label": "Wyraźniej w tekście — rekomendacja autora",
+          "text": "Rozpoznaje, jak istoty pojawiają się ponownie zgodnie ze swoimi czynami.",
+          "effect": "Ujawnia związek z ponownym pojawieniem się, zachowując przyjęty odpowiednik upapajjati.",
+          "note": "",
+          "preview_edits": [
+            {
+              "from": "Rozpoznaje, że istoty podążają zgodnie ze swoimi czynami",
+              "to": "Rozpoznaje, jak istoty pojawiają się ponownie zgodnie ze swoimi czynami",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "id": "B",
+          "label": "Obecne zdanie + nowy przypis",
+          "text": "Rozpoznaje, że istoty podążają zgodnie ze swoimi czynami.",
+          "effect": "Zachowuje brzmienie R9; związek z ponownym pojawieniem się wyjaśnia przypis.",
+          "note": "Zdanie odnosi się do opisanego tu widzenia istot umierających i pojawiających się ponownie: ich losy są związane z ich czynami.",
+          "preview_edits": []
+        }
+      ],
+      "situation": "Opis drugiej wiedzy w mowie Ānandy do Mahānāmy: widzenie losów istot i ich związku z czynami.",
+      "context": [
+        {
+          "source_line": 122,
+          "label": "Oceniany akapit",
+          "text": "Ten szlachetny uczeń, Mahānāmo, opierając się na tej właśnie niezrównanej czystości pomności i równowagi, boskim okiem, oczyszczonym i przewyższającym ludzkie, widzi istoty odchodzące i pojawiające się ponownie: niższe i wyższe, piękne i brzydkie, doświadczające dobrego i złego losu. Rozpoznaje, że istoty podążają zgodnie ze swoimi czynami:"
+        },
+        {
+          "source_line": 124,
+          "label": "Dalszy ciąg — złe postępowanie",
+          "text": "„Te oto istoty postępowały źle ciałem, mową i umysłem, znieważały szlachetnych, miały błędny pogląd i podejmowały działania zgodne z błędnym poglądem. Po rozpadzie ciała, po śmierci, pojawiły się w stanie niedoli, w złym losie, w upadku, w piekle."
+        },
+        {
+          "source_line": 126,
+          "label": "Dalszy ciąg — dobre postępowanie",
+          "text": "Te zaś istoty postępowały dobrze ciałem, mową i umysłem, nie znieważały szlachetnych, miały właściwy pogląd i podejmowały działania zgodne z właściwym poglądem. Po rozpadzie ciała, po śmierci, pojawiły się w dobrym losie, w świecie niebiańskim”."
+        }
+      ],
+      "comparison": {
+        "source_line": 122,
+        "kind": "translation"
+      }
+    },
+    {
+      "id": "MN53-S02",
+      "title": "Czy „skrupuły” są dostatecznie jasne?",
+      "locus": "MN53:13.1 · w zestawieniu z hirī w 12.1",
+      "priority": "Objaśnienie czytelnicze",
+      "quote": "Ma skrupuły.",
+      "pali": "Ottappī hoti, ottappati kāyaduccaritena vacīduccaritena manoduccaritena…",
+      "risk": "„Skrupuły” mogą kojarzyć się z żalem po czynie. Ottappa obejmuje również moralną obawę, która powstrzymuje przed złem.",
+      "evidence": "CST p7; DPD: ottappī, ottappati, hirī; PED: Ottappa; HH 13.1; Ñāṇamoli/Bodhi §13; Ṭhānissaro Bhikkhu, MN53 [3].",
+      "certainty": "Obecny odpowiednik ma podstawę słownikową. Wybór dotyczy jasności i różnicy hirī/ottappa.",
+      "dependencies": "Zmiana głównego zwrotu wymaga zgodnego dostosowania powtórzeń całej cechy. Nie zmieniać automatycznie innych sutt.",
+      "options": [
+        {
+          "id": "A",
+          "label": "Zachować zwrot + dodać przypis — rekomendacja autora",
+          "text": "Ma skrupuły.",
+          "effect": "Najmniejsza ingerencja; objaśnienie odróżnia skrupuły od samego żalu po fakcie.",
+          "note": "Chodzi o moralną obawę przed dopuszczeniem się zła, powstrzymującą przed złym działaniem, nie tylko o żal po jego popełnieniu. Poprzednia cecha, hirī, podkreśla wstyd wobec zła.",
+          "preview_edits": []
+        },
+        {
+          "id": "B",
+          "label": "Prościej w tekście + ten sam przypis",
+          "text": "Obawia się złego postępowania.",
+          "effect": "Wyraźniej pokazuje funkcję powstrzymującą. Wymaga spójnej redakcji zdań, które następują po tym zwrocie.",
+          "note": "Chodzi o moralną obawę przed dopuszczeniem się zła, powstrzymującą przed złym działaniem, nie tylko o żal po jego popełnieniu. Poprzednia cecha, hirī, podkreśla wstyd wobec zła.",
+          "preview_edits": [
+            {
+              "from": "Ma skrupuły.",
+              "to": "Obawia się złego postępowania.",
+              "count": 1
+            },
+            {
+              "from": "Odczuwa skrupuły wobec",
+              "to": "Obawia się",
+              "count": 2
+            }
+          ]
+        }
+      ],
+      "situation": "Fragment wyliczenia siedmiu dobrych cech. Ānanda mówi do Mahānāmy; poprzednią cechą jest wstyd wobec zła.",
+      "context": [
+        {
+          "source_line": 84,
+          "label": "Poprzednia cecha — wstyd",
+          "text": "Ma poczucie wstydu. Wstydzi się złego postępowania ciałem, złego postępowania mową i złego postępowania umysłem. Wstydzi się popadania w złe, niekorzystne stany."
+        },
+        {
+          "source_line": 86,
+          "label": "Oceniany akapit — skrupuły",
+          "text": "Ma skrupuły. Odczuwa skrupuły wobec złego postępowania ciałem, złego postępowania mową i złego postępowania umysłem. Odczuwa skrupuły wobec popadania w złe, niekorzystne stany."
+        },
+        {
+          "source_line": 88,
+          "label": "Następna cecha — znajomość nauk",
+          "text": "Wiele usłyszał, zachowuje to, co usłyszał, i gromadzi to w pamięci. Nauki piękne na początku, piękne w środku i piękne na końcu, które w znaczeniu i słowach ukazują święte życie w całej jego pełni i czystości — takich nauk wiele usłyszał, zachował je, utrwalił przez wypowiadanie, rozważył umysłem i dobrze przeniknął rozumieniem."
+        }
+      ],
+      "comparison": {
+        "source_line": 86,
+        "kind": "translation"
+      }
+    },
+    {
+      "id": "MN53-S03",
+      "title": "Jakie „dawne odczucie” usuwa przyjmowanie pokarmu?",
+      "locus": "MN53:9.2–9.3 · umiarkowanie w jedzeniu",
+      "priority": "Niejasne odniesienie",
+      "quote": "W ten sposób usunę dawne odczucie i nie wywołam nowego.",
+      "pali": "Iti purāṇañca vedanaṁ paṭihaṅkhāmi, navañca vedanaṁ na uppādessāmi…",
+      "risk": "Bez objaśnienia można odczytać to jako zamiar usunięcia wszelkich odczuć. Także „żyć w wygodzie” wymaga osadzenia w kontekście podtrzymania ciała dla praktyki.",
+      "evidence": "CST p5 / MS 9.3; DPD: vedanā, phāsuvihāra; PED: Phāsu; HH 9.3, Ñāṇamoli/Bodhi §9, Ṭhānissaro Bhikkhu, akapit o pokarmie.",
+      "certainty": "Dosłowne odpowiedniki mają podstawę. Głód i nadmiar pokarmu są objaśnieniem kontekstowym.",
+      "dependencies": "Sprawdzić cały akapit o jedzeniu, w tym słowo „wygoda”; nie zmieniać globalnego odpowiednika vedanā.",
+      "options": [
+        {
+          "id": "A",
+          "label": "Obecne zdanie + przypis — rekomendacja autora",
+          "text": "W ten sposób usunę dawne odczucie i nie wywołam nowego.",
+          "effect": "Zachowuje szerszy termin vedanā; konkretną interpretację podaje jako objaśnienie.",
+          "note": "W kontekście przyjmowania pokarmu chodzi o uśmierzenie dolegliwości głodu bez wywoływania nowych dolegliwości nadmiarem jedzenia. To kontekstowe objaśnienie, nie dodatkowe słowa Pali. Wygoda oznacza tu stan pozwalający podtrzymać ciało i praktykę.",
+          "preview_edits": []
+        },
+        {
+          "id": "B",
+          "label": "Kontekst wyraźniej w zdaniu + przypis",
+          "text": "W ten sposób usunę dotychczasową dolegliwość i nie wywołam nowej.",
+          "effect": "Czytelniejsze w akapicie o pokarmie; „dolegliwość” zawęża szerszy termin vedanā do tego kontekstu.",
+          "note": "W tym akapicie dolegliwość odnosi się do głodu i do nowych dolegliwości, które może wywołać nadmiar jedzenia. Jest to kontekstowe odczytanie szerszego terminu vedanā. Wygoda oznacza tu stan pozwalający podtrzymać ciało i praktykę.",
+          "preview_edits": [
+            {
+              "from": "W ten sposób usunę dawne odczucie i nie wywołam nowego.",
+              "to": "W ten sposób usunę dotychczasową dolegliwość i nie wywołam nowej.",
+              "count": 1
+            }
+          ]
+        }
+      ],
+      "situation": "Ānanda wyjaśnia Mahānāmie, w jaki sposób szlachetny uczeń zachowuje miarę w jedzeniu.",
+      "context": [
+        {
+          "source_line": 76,
+          "label": "Cały akapit o przyjmowaniu pokarmu",
+          "text": "A w jaki sposób, Mahānāmo, szlachetny uczeń zna miarę w jedzeniu? Szlachetny uczeń po gruntownym rozważeniu przyjmuje pokarm nie dla zabawy, nie dla folgowania sobie, nie dla upiększenia ani ozdoby, lecz tylko po to, by podtrzymać to ciało i utrzymać je przy życiu, położyć kres dolegliwościom i wspomóc święte życie. Myśli: „W ten sposób usunę dawne odczucie i nie wywołam nowego. Będę mógł utrzymać się przy życiu, pozostawać bez zarzutu i żyć w wygodzie”. W ten sposób, Mahānāmo, szlachetny uczeń zna miarę w jedzeniu."
+        }
+      ],
+      "comparison": {
+        "source_line": 76,
+        "kind": "translation"
+      }
+    },
+    {
+      "id": "MN53-S04",
+      "title": "Co znaczy „nie chwytać się znaku ani szczegółów”?",
+      "locus": "MN53:8.2–8.9 · ochrona zmysłów",
+      "priority": "Objaśnienie terminu",
+      "quote": "nie chwyta się jej znaku ani szczegółów",
+      "pali": "… na nimittaggāhī hoti nānubyañjanaggāhī.",
+      "risk": "„Znak” może brzmieć jak symbol medytacyjny, a niechwytanie szczegółów jak nieuważne postrzeganie. Dalsze zdanie mówi o niedopuszczaniu pożądliwości i przygnębienia.",
+      "evidence": "CST p4; BJT c52–78; DPD: nimitta, nimittaggāhī, anubyañjana; HH 8, Ñāṇamoli/Bodhi §8; Ṭhānissaro Bhikkhu, ochrona zmysłów.",
+      "certainty": "Zasadne jest objaśnienie konkretnego użycia, nie jedna glosa dla wszystkich wystąpień nimitta.",
+      "dependencies": "Przypis przy pierwszym wystąpieniu, sprawdzenie całej formuły sześciu zmysłów.",
+      "options": [
+        {
+          "id": "A",
+          "label": "Zachować formułę + objaśnić — rekomendacja autora",
+          "text": "nie chwyta się jej znaku ani szczegółów",
+          "effect": "Zachowuje terminologię i wyjaśnia funkcję formuły.",
+          "note": "Znak (nimitta) i szczegóły (anubyañjana) to tu rozpoznawane cechy przedmiotu doświadczenia. Nie chodzi o utratę zdolności rozpoznawania, lecz o niechwytanie się ich w sposób dopuszczający pożądliwość i przygnębienie, o których mówi dalsze zdanie.",
+          "preview_edits": []
+        }
+      ],
+      "situation": "Ānanda objaśnia Mahānāmie strzeżenie zmysłów, najpierw na przykładzie wzroku, następnie słuchu.",
+      "context": [
+        {
+          "source_line": 62,
+          "label": "Oceniany akapit — wzrok",
+          "text": "A w jaki sposób, Mahānāmo, szlachetny uczeń strzeże bram zmysłów? Gdy widzi okiem postać, nie chwyta się jej znaku ani szczegółów. Gdyby pozostawiał władzę wzroku bez powściągnięcia, mogłyby go zalać złe, niekorzystne stany: pożądliwość i przygnębienie. Dlatego praktykuje jej powściąganie, strzeże władzy wzroku i utrzymuje ją w powściągnięciu."
+        },
+        {
+          "source_line": 64,
+          "label": "Dalszy ciąg tej samej formuły — słuch",
+          "text": "Gdy słyszy uchem dźwięk, nie chwyta się jego znaku ani szczegółów. Gdyby pozostawiał władzę słuchu bez powściągnięcia, mogłyby go zalać złe, niekorzystne stany: pożądliwość i przygnębienie. Dlatego praktykuje jej powściąganie, strzeże władzy słuchu i utrzymuje ją w powściągnięciu."
+        }
+      ],
+      "comparison": {
+        "source_line": 62,
+        "kind": "translation"
+      }
+    },
+    {
+      "id": "MN53-S05",
+      "title": "Odosobnienie od przyjemności czy od zmysłowości?",
+      "locus": "MN53:18.2 · pierwsza jhāna",
+      "priority": "Ważne doprecyzowanie",
+      "quote": "odosobniony od przyjemności zmysłowych",
+      "pali": "vivicceva kāmehi …pe… paṭhamaṁ jhānaṁ upasampajja viharati;",
+      "risk": "Brzmienie może sugerować sam brak przyjemnych bodźców. Kontekst wymaga uwzględnienia zmysłowości i pragnienia, a nie tylko fizycznego oddalenia przedmiotów.",
+      "evidence": "MS 18.2; rozwinięcie CST p8 / BJT c153–159; DPD: kāma; HH 18.2, Ñāṇamoli/Bodhi §18; pomocniczo AN6.63 w przekładzie Ṭhānissaro Bhikkhu.",
+      "certainty": "Obecny przekład jest tradycyjny i leksykalnie dopuszczalny; ryzyko dotyczy zawężonego odczytania.",
+      "dependencies": "Sprawdzić pełną formułę pierwszej jhāny i objaśnienia. Ta decyzja nie ustala wszystkich odpowiedników kāma.",
+      "options": [
+        {
+          "id": "A",
+          "label": "„Zmysłowość” + przypis — rekomendacja autora",
+          "text": "odosobniony od zmysłowości, odosobniony od stanów niekorzystnych…",
+          "effect": "Wyraźniej oddziela zmysłowość od samej obecności przedmiotów zmysłów.",
+          "note": "Zmysłowość obejmuje tu pragnienie związane z przyjemnościami zmysłów. Samo fizyczne oddalenie przyjemnych przedmiotów nie wyczerpuje sensu tego odosobnienia. Pomocniczym objaśnieniem jest rozróżnienie pragnienia i przedmiotów zmysłów w AN6.63.",
+          "preview_edits": [
+            {
+              "from": "odosobniony od przyjemności zmysłowych",
+              "to": "odosobniony od zmysłowości",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "id": "B",
+          "label": "Obecny zwrot + ten sam przypis",
+          "text": "odosobniony od przyjemności zmysłowych",
+          "effect": "Zachowuje brzmienie R9, a ryzyko dosłownego odczytania ogranicza przypis.",
+          "note": "Zmysłowość obejmuje tu pragnienie związane z przyjemnościami zmysłów. Samo fizyczne oddalenie przyjemnych przedmiotów nie wyczerpuje sensu tego odosobnienia. Pomocniczym objaśnieniem jest rozróżnienie pragnienia i przedmiotów zmysłów w AN6.63.",
+          "preview_edits": []
+        }
+      ],
+      "situation": "Opis pierwszej z czterech jhān w mowie Ānandy do Mahānāmy.",
+      "context": [
+        {
+          "source_line": 96,
+          "label": "Pytanie wprowadzające",
+          "text": "A w jaki sposób, Mahānāmo, szlachetny uczeń osiąga wedle woli, bez trudności i bez udręki cztery jhāny, związane z wyższym stanem umysłu i będące szczęśliwym przebywaniem już w tym życiu?"
+        },
+        {
+          "source_line": 98,
+          "label": "Cały opis pierwszej jhāny",
+          "text": "Szlachetny uczeń, odosobniony od przyjemności zmysłowych, odosobniony od stanów niekorzystnych, osiąga pierwszą jhānę i w niej przebywa. Towarzyszą jej myślenie i rozważanie oraz radość i przyjemność zrodzone z odosobnienia."
+        }
+      ],
+      "comparison": {
+        "source_line": 98,
+        "kind": "translation"
+      }
+    },
+    {
+      "id": "MN53-S06",
+      "title": "Czy radość tylko słabnie, czy zanika?",
+      "locus": "MN53:18.4 · trzecia jhāna",
+      "priority": "Precyzja redakcyjna",
+      "quote": "Gdy radość blednie",
+      "pali": "pītiyā ca virāgā …pe… tatiyaṁ jhānaṁ upasampajja viharati;",
+      "risk": "„Blednie” może sugerować, że ta sama radość pozostaje, jedynie słabsza. Nie należy też utożsamiać pīti, sukha i somanassa.",
+      "evidence": "BJT c167–178; MS 18.4–18.5; DPD: virāga, pīti, sukha, somanassa; Ñāṇamoli/Bodhi §18; Ṭhānissaro Bhikkhu, cztery jhāny.",
+      "certainty": "Średnia. Metafora „blednie” jest uprawniona; „zanik” jest propozycją precyzyjniejszego brzmienia.",
+      "dependencies": "Sprawdzić sekwencję trzeciej i czwartej jhāny. Zachować odrębne polskie odpowiedniki trzech terminów.",
+      "options": [
+        {
+          "id": "A",
+          "label": "Precyzyjniej w zdaniu — rekomendacja autora",
+          "text": "Wraz z zanikiem tej radości przebywa w równowadze…",
+          "effect": "Utrudnia odczytanie wyłącznie jako zmniejszenia intensywności.",
+          "note": "",
+          "preview_edits": [
+            {
+              "from": "Gdy radość blednie, trwa w równowadze",
+              "to": "Wraz z zanikiem tej radości przebywa w równowadze",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "id": "B",
+          "label": "Zachować metaforę + objaśnić",
+          "text": "Gdy radość blednie…",
+          "effect": "Zachowuje obraz R9; przypis rozróżnia radość od przyjemności.",
+          "note": "Radość oddaje tu pīti, przyjemność — sukha. Tekst trzeciej jhāny mówi o zaniku pīti i o nadal doświadczanej przyjemności. Somanassa, wspomniana osobno przy czwartej jhānie, ma odrębny polski odpowiednik: zadowolenie.",
+          "preview_edits": []
+        }
+      ],
+      "situation": "Kolejne opisy drugiej, trzeciej i czwartej jhāny w mowie Ānandy do Mahānāmy. Oceniane sformułowanie otwiera opis trzeciej.",
+      "context": [
+        {
+          "source_line": 100,
+          "label": "Poprzedni akapit — druga jhāna",
+          "text": "Wraz z uspokojeniem myślenia i rozważania osiąga drugą jhānę i w niej przebywa. Jest ona wewnętrznym uspokojeniem i zjednoczeniem umysłu, bez myślenia i rozważania, z radością i przyjemnością zrodzonymi ze skomponowania umysłu."
+        },
+        {
+          "source_line": 102,
+          "label": "Oceniany akapit — trzecia jhāna",
+          "text": "Gdy radość blednie, trwa w równowadze, zachowuje pomność i jasne rozeznanie, a ciałem odczuwa przyjemność. Osiąga trzecią jhānę i w niej przebywa. O nim szlachetni mówią: „W równowadze i z pomnością przebywa szczęśliwie”."
+        },
+        {
+          "source_line": 104,
+          "label": "Następny akapit — czwarta jhāna",
+          "text": "Porzuciwszy przyjemność i ból, a także po wcześniejszym zaniku zadowolenia i przygnębienia, osiąga czwartą jhānę i w niej przebywa. Nie ma w niej ani bólu, ani przyjemności; cechuje ją czystość pomności i równowagi."
+        }
+      ],
+      "comparison": {
+        "source_line": 102,
+        "kind": "translation"
+      }
+    },
+    {
+      "id": "MN53-S07",
+      "title": "Jak objaśnić „bezpieczeństwo od jarzma”?",
+      "locus": "MN53:19.1 i 19.5",
+      "priority": "Nieprzejrzysta metafora",
+      "quote": "niezrównanego bezpieczeństwa od jarzma",
+      "pali": "… bhabbo anuttarassa yogakkhemassa adhigamāya.",
+      "risk": "Nie wiadomo, jakie jarzmo ma na myśli tekst. Konstrukcja może sugerować ochronę przed zewnętrznym ciężarem.",
+      "evidence": "MS 19.1 i 19.5; DPD: yogakkhema; Ṭhānissaro Bhikkhu, MN53 przypis 4; pomocniczo AN4.10.",
+      "certainty": "Objaśnienie jest zasadne. „Wolność” jest jawną parafrazą, nie jedynym dosłownym odpowiednikiem.",
+      "dependencies": "Dwa wystąpienia; przypis przy pierwszym. Utrzymać zgodność obrazu w podsumowaniu.",
+      "options": [
+        {
+          "id": "A",
+          "label": "Zachować obraz + przypis — rekomendacja autora",
+          "text": "niezrównanego bezpieczeństwa od jarzma",
+          "effect": "Najmniejsza zmiana; wyjaśnia metaforę bez nowej parafrazy.",
+          "note": "Jarzmo jest obrazem zniewolenia. AN4.10 wymienia jarzma zmysłowości, stawania się, poglądów i niewiedzy; bezpieczeństwo od jarzma oznacza tu wyzwolenie od takiego związania.",
+          "preview_edits": []
+        },
+        {
+          "id": "B",
+          "label": "Naturalniejsza parafraza + przypis",
+          "text": "niezrównanej wolności od jarzma",
+          "effect": "Brzmi naturalniej po polsku; „wolność” interpretuje obraz bezpieczeństwa i wymaga jawnego objaśnienia.",
+          "note": "Jarzmo jest obrazem zniewolenia. AN4.10 wymienia jarzma zmysłowości, stawania się, poglądów i niewiedzy. „Wolność od jarzma” jest tu parafrazą palijskiego yogakkhema, dosłownie bezpieczeństwa od jarzma.",
+          "preview_edits": [
+            {
+              "from": "niezrównanego bezpieczeństwa od jarzma",
+              "to": "niezrównanej wolności od jarzma",
+              "count": 1
+            }
+          ]
+        }
+      ],
+      "situation": "Podsumowanie cech ucznia i wprowadzenie porównania do wysiadywanych jaj. Mówi Ānanda do Mahānāmy.",
+      "context": [
+        {
+          "source_line": 108,
+          "label": "Cały akapit z ocenianym zwrotem",
+          "text": "Kiedy, Mahānāmo, szlachetny uczeń jest w ten sposób doskonały w moralności, w ten sposób strzeże bram zmysłów, w ten sposób zna miarę w jedzeniu, w ten sposób oddaje się czuwaniu, w ten sposób ma siedem dobrych cech i w ten sposób osiąga wedle woli, bez trudności i bez udręki cztery jhāny, związane z wyższym stanem umysłu i będące szczęśliwym przebywaniem już w tym życiu, nazywa się go uczniem, który wkroczył na drogę treningu i osiągnął stan podobny do zdrowego jaja: jest zdolny do przebicia się, zdolny do przebudzenia, zdolny do osiągnięcia niezrównanego bezpieczeństwa od jarzma."
+        },
+        {
+          "source_line": 110,
+          "label": "Następujące po nim porównanie",
+          "text": "To tak, Mahānāmo, jak z ośmioma, dziesięcioma lub dwunastoma jajami kury. Jeśli kura dobrze je wysiaduje, dobrze ogrzewa i dobrze doprowadza do dojrzałości, to nawet gdyby nie powstało w niej życzenie: „Oby moje pisklęta, przebiwszy skorupę czubkiem pazurka lub dziobkiem, wydostały się bezpiecznie”, pisklęta te są zdolne przebić skorupę czubkiem pazurka lub dziobkiem i bezpiecznie się wydostać."
+        }
+      ],
+      "comparison": {
+        "source_line": 108,
+        "kind": "translation"
+      }
+    },
+    {
+      "id": "MN53-S08",
+      "title": "Co oznaczają „skazy” w opisie wyzwolenia?",
+      "locus": "MN53:22.1 i 24.3 · także pierwsze użycie terminu w objaśnieniach",
+      "priority": "Objaśnienie terminu",
+      "quote": "dzięki zniszczeniu skaz",
+      "pali": "āsavānaṁ khayā anāsavaṁ cetovimuttiṁ paññāvimuttiṁ…",
+      "risk": "Słowo „skazy” może znaczyć zwykłe przywary. Tutaj jest terminem związanym z pełnym wyzwoleniem.",
+      "evidence": "CST p12 i p14; MS 22.1 i 24.3; DPD: āsava; pomocniczo AN6.63 w przekładzie Ṭhānissaro Bhikkhu.",
+      "certainty": "Nie ma konieczności zastępowania terminu. Brakuje jego objaśnienia.",
+      "dependencies": "Przypis przy pierwszym rzeczywistym wystąpieniu w dokumencie; sprawdzić tekst i aparat.",
+      "options": [
+        {
+          "id": "A",
+          "label": "Zachować termin + przypis — rekomendacja autora",
+          "text": "dzięki zniszczeniu skaz",
+          "effect": "Uzupełnia wyjaśnienie, zachowując dotychczasowy odpowiednik.",
+          "note": "Skazy (āsava) to tu szczególna nazwa tego, czego zniszczenie wiąże się z pełnym wyzwoleniem. AN6.63 wymienia skazy zmysłowości, stawania się i niewiedzy. Nie chodzi jedynie o przemijające złe samopoczucie lub drobne wady charakteru.",
+          "preview_edits": []
+        }
+      ],
+      "situation": "Opis trzeciej wiedzy w mowie Ānandy, bezpośrednio po zakończeniu opisu drugiego przebicia się.",
+      "context": [
+        {
+          "source_line": 130,
+          "label": "Zakończenie poprzedniego opisu",
+          "text": "Jest to jego drugie przebicie się, jak wydostanie się pisklęcia ze skorupy jaja."
+        },
+        {
+          "source_line": 132,
+          "label": "Cały akapit o zniszczeniu skaz i wyzwoleniu",
+          "text": "Ten szlachetny uczeń, Mahānāmo, opierając się na tej właśnie niezrównanej czystości pomności i równowagi, dzięki zniszczeniu skaz sam bezpośrednio poznaje i urzeczywistnia już w tym życiu wolne od skaz wyzwolenie umysłu i wyzwolenie przez mądrość; osiąga je i w nim przebywa. Jest to jego trzecie przebicie się, jak wydostanie się pisklęcia ze skorupy jaja."
+        }
+      ],
+      "comparison": {
+        "source_line": 132,
+        "kind": "translation"
+      }
+    },
+    {
+      "id": "MN53-S09",
+      "title": "Które rozwinięcia rzeczywiście pochodzą z adaptacji BJT?",
+      "locus": "Przypisy expansions / divine oraz opis podstawy przekładu",
+      "priority": "Dokładność opisu źródeł",
+      "quote": "W tym przekładzie zachowano ich pełne brzmienie na podstawie cyfrowego wydania BJT",
+      "pali": "Dotyczy przypisu źródłowego; nie jest nowym wariantem zdania Pali.",
+      "risk": "Ogólne zdanie może sugerować, że wszystkie rozwinięcia mają tę samą podstawę. Rozwinięcie boskiego oka ma osobno ujawnioną podstawę w DN2/MN4.",
+      "evidence": "CST/MS 8, 18, 20, 21; BJT c57–78, c153–178, c211–241; DN2:95.2 / MN4:29.2; obecne przypisy expansions i divine.",
+      "certainty": "Nieścisły jest zakres ogólnego objaśnienia. Odrębne źródło boskiego oka zostało już ujawnione.",
+      "dependencies": "Powiązane z S10. Uzgodnić oba przypisy i opis metody, bez powtarzania tego samego wyjaśnienia.",
+      "options": [
+        {
+          "id": "A",
+          "label": "Uściślić zakres przypisu — rekomendacja autora",
+          "text": "Rozwinięcia formuł dotyczących zmysłów, jhān i poprzednich żyć sprawdzono w cyfrowej adaptacji BJT. Podstawę rozwinięcia formuły boskiego oka podano w osobnym przypisie.",
+          "effect": "Oddziela podstawy rozwinięć i precyzyjniej nazywa cyfrową adaptację.",
+          "note": "",
+          "preview_edits": [
+            {
+              "from": "W niektórych wydaniach palijskich część powtarzających się formuł została skrócona. W tym przekładzie zachowano ich pełne brzmienie na podstawie cyfrowego wydania BJT (Buddha Jayanti Tripitaka).",
+              "to": "Rozwinięcia formuł dotyczących zmysłów, jhān i poprzednich żyć sprawdzono w cyfrowej adaptacji BJT. Podstawę rozwinięcia formuły boskiego oka podano w osobnym przypisie.",
+              "count": 1
+            }
+          ]
+        }
+      ],
+      "situation": "Uwaga dotyczy przypisu autora przekładu, a nie słów Ānandy. Poniżej miejsce odsyłacza oraz dwa powiązane przypisy; nie są jednym ciągłym fragmentem.",
+      "context": [
+        {
+          "source_line": 62,
+          "label": "Miejsce odsyłacza w przekładzie",
+          "text": "A w jaki sposób, Mahānāmo, szlachetny uczeń strzeże bram zmysłów? Gdy widzi okiem postać, nie chwyta się jej znaku ani szczegółów. Gdyby pozostawiał władzę wzroku bez powściągnięcia, mogłyby go zalać złe, niekorzystne stany: pożądliwość i przygnębienie. Dlatego praktykuje jej powściąganie, strzeże władzy wzroku i utrzymuje ją w powściągnięciu."
+        },
+        {
+          "source_line": 248,
+          "label": "Cały oceniany przypis o rozwinięciach",
+          "text": "W niektórych wydaniach palijskich część powtarzających się formuł została skrócona. W tym przekładzie zachowano ich pełne brzmienie na podstawie cyfrowego wydania BJT (Buddha Jayanti Tripitaka)."
+        },
+        {
+          "source_line": 264,
+          "label": "Powiązany przypis o boskim oku",
+          "text": "Wydanie CST (Chaṭṭha Saṅgāyana Tipiṭaka, tekst związany z Szóstym Soborem Buddyjskim) i Mahāsaṅgīti (cyfrowe wydanie palijskiego kanonu) skracają tę formułę w MN 53:21.1. Przy pierwszym wystąpieniu rozwinięto ją według pełnego palijskiego brzmienia DN 2:95.2, porównanego z MN 4:29.2. Rozwinięcie objaśnia związek postępowania z losem istot."
+        }
+      ],
+      "comparison": {
+        "source_line": 248,
+        "kind": "footnote"
+      }
+    },
+    {
+      "id": "MN53-S10",
+      "title": "Jak wyjaśnić wybór krótszego tekstu CST/MS?",
+      "locus": "MN53:22.1 i 24.3 oraz opis podstawy przekładu",
+      "priority": "Różnica świadectw źródłowych",
+      "quote": "Pełne brzmienia skróconych formuł sprawdzono w cyfrowym wydaniu BJT",
+      "pali": "CST/MS 22.1 i 24.3; dodatkowa formuła w zachowanej adaptacji BJT: c266–284 oraz c345–364.",
+      "risk": "Opis nie wyjaśnia selektywnego wykorzystania BJT. Adaptacja zawiera dodatkową formułę, której nie ma w przyjętej podstawie CST/MS. Nie oznacza to opuszczenia tekstu z tej podstawy.",
+      "evidence": "Zachowane pliki: pełna projekcja BJT, CST p12/p14 i MS 22.1/24.3. Nie zweryfikowano tu drukowanego BJT.",
+      "certainty": "Wysoka dla różnicy zachowanych plików; nieustalona dla wydania drukowanego.",
+      "dependencies": "Powiązane z S09. Żaden wariant tej karty nie upoważnia do dopisania dłuższej formuły do przekładu.",
+      "options": [
+        {
+          "id": "A",
+          "label": "Wyjaśnić w opisie podstawy — rekomendacja autora",
+          "text": "CST/MS pozostają podstawą przekładu. Cyfrową adaptację BJT wykorzystano pomocniczo do wskazanych rozwinięć. W opisie trzeciej wiedzy zachowano krótszy tekst CST/MS; nie przejęto dodatkowej rozbudowanej formuły obecnej w tej adaptacji.",
+          "effect": "Czytelnik poznaje zasadę wyboru źródła w jednym miejscu opisu metody.",
+          "note": "",
+          "preview_edits": [
+            {
+              "from": "Podstawą kontroli był tekst CST porównany z wydaniem Mahāsaṅgīti. Pełne brzmienia skróconych formuł sprawdzono w cyfrowym wydaniu BJT, a formułę boskiego oka także w DN 2 i MN 4.",
+              "to": "CST/MS pozostają podstawą przekładu. Cyfrową adaptację BJT wykorzystano pomocniczo do wskazanych rozwinięć. W opisie trzeciej wiedzy zachowano krótszy tekst CST/MS; nie przejęto dodatkowej rozbudowanej formuły obecnej w tej adaptacji. Formułę boskiego oka sprawdzono także w DN 2 i MN 4.",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "id": "B",
+          "label": "To samo objaśnienie w przypisie przy trzeciej wiedzy",
+          "text": "Zachować główny tekst CST/MS; dodać przypis przy opisie trzeciej wiedzy.",
+          "effect": "Objaśnienie jest blisko różniącego się miejsca; opis metody nadal musi być zgodny z przypisem.",
+          "note": "CST/MS pozostają podstawą przekładu. Cyfrową adaptację BJT wykorzystano pomocniczo do wskazanych rozwinięć. W opisie trzeciej wiedzy zachowano krótszy tekst CST/MS; nie przejęto dodatkowej rozbudowanej formuły obecnej w tej adaptacji.",
+          "preview_edits": [],
+          "preview_source_line": 132
+        }
+      ],
+      "situation": "Sekcja „Jak powstało to tłumaczenie”, napisana przez autora opracowania. Uwaga dotyczy opisu wykorzystania źródeł; niżej także powiązany przypis.",
+      "context": [
+        {
+          "source_line": 179,
+          "label": "Cały oceniany akapit o podstawie przekładu",
+          "text": "Przekład opracowano z pomocą sztucznej inteligencji, a jego aktualną wersję sprawdzono względem tekstu palijskiego. Podstawą kontroli był tekst CST porównany z wydaniem Mahāsaṅgīti. Pełne brzmienia skróconych formuł sprawdzono w cyfrowym wydaniu BJT, a formułę boskiego oka także w DN 2 i MN 4. Korzystano z zachowanych porównań z przekładami Bhikkhu Anīghi (Hillside Hermitage), Bhikkhu Ñāṇamoliego w opracowaniu Bhikkhu Bodhiego oraz Ṭhānissaro Bhikkhu, a trudniejsze pojęcia sprawdzano w słownikach palijskich."
+        },
+        {
+          "source_line": 248,
+          "label": "Powiązany przypis o rozwinięciach",
+          "text": "W niektórych wydaniach palijskich część powtarzających się formuł została skrócona. W tym przekładzie zachowano ich pełne brzmienie na podstawie cyfrowego wydania BJT (Buddha Jayanti Tripitaka)."
+        },
+        {
+          "source_line": 132,
+          "label": "Miejsce proponowanego przypisu w wariancie B — trzecia wiedza",
+          "text": "Ten szlachetny uczeń, Mahānāmo, opierając się na tej właśnie niezrównanej czystości pomności i równowagi, dzięki zniszczeniu skaz sam bezpośrednio poznaje i urzeczywistnia już w tym życiu wolne od skaz wyzwolenie umysłu i wyzwolenie przez mądrość; osiąga je i w nim przebywa. Jest to jego trzecie przebicie się, jak wydostanie się pisklęcia ze skorupy jaja."
+        }
+      ],
+      "comparison": {
+        "source_line": 179,
+        "kind": "method"
+      }
+    }
+  ]
+}
+</script>
+<script>
+(() => {
+  'use strict';
+  const root = document.getElementById('sf-karta-ocen');
+  const el = id => root.querySelector('#sf-' + id);
+  const model = JSON.parse(el('card-model').textContent);
+  const disk = window.suttaflowDisk;
+  const special = new Set(['KEEP', 'CUSTOM', 'DEFER']);
+  const storageKey = `suttaflow:karta:${model.card_id}:${model.source_sha256}`;
+  const recoveryKey = storageKey + ':recovery';
+  const notSaved = 'Nie udało się zapisać automatycznie. Pobierz lub skopiuj wybory przed zamknięciem karty.';
+  let lastChange = -1;
+  let current = 0, choices = {}, blobUrl, recovery = null;
+  function validChoice(issue, value) {
+    return value && typeof value === 'object' && (value.option === '' || special.has(value.option) || issue.options.some(o => o.id === value.option))
+      && (value.preview_scope === undefined || ['fragment','paragraph'].includes(value.preview_scope))
+      && ['text', 'note', 'comment'].every(k => typeof value[k] === 'string' && value[k].length <= (k === 'comment' ? 1200 : 1800));
+  }
+  function restore(saved, apply = true) {
+    if (!saved || saved.card_id !== model.card_id || saved.source_sha256 !== model.source_sha256
+      || !saved.choices || typeof saved.choices !== 'object' || Array.isArray(saved.choices)
+      || (saved.schema && saved.schema !== 'suttaflow-choice-draft-v1')) return false;
+    const timestamp = Date.parse(saved.saved_at) || 0;
+    if (timestamp <= lastChange) return false;
+    if (Object.keys(saved.choices).some(id => !model.issues.some(issue => issue.id === id))) return false;
+    const restored = {};
+    for (const issue of model.issues) {
+      const value = saved.choices[issue.id];
+      if (value === undefined) continue;
+      if (!validChoice(issue, value)) return false;
+      const {option,text,note,comment} = value;
+      restored[issue.id] = {option,text,note,comment,...(value.preview_scope ? {preview_scope:value.preview_scope} : {})};
+    }
+    if (apply) { choices = restored; lastChange = timestamp; }
+    return true;
+  }
+  function persist() {
+    const timestamp = Math.max(Date.now(), lastChange + 1);
+    lastChange = timestamp;
+    const saved = {schema:'suttaflow-choice-draft-v1',card_id:model.card_id,source_sha256:model.source_sha256,saved_at:new Date(timestamp).toISOString(),choices:{...choices}};
+    const json = JSON.stringify(saved);
+    let localSaved = false;
+    try {
+      if (recovery) window.localStorage.setItem(recoveryKey, JSON.stringify(recovery));
+      window.localStorage.setItem(storageKey,json);
+      localSaved = true;
+      el('storage').textContent = 'Zapisano automatycznie w tej przeglądarce.';
+    } catch { el('storage').textContent = notSaved; }
+    if (window.openai?.setWidgetState && new TextEncoder().encode(json).length <= 15000) {
+      if (!localSaved) el('storage').textContent = 'Zapisywanie wyborów w tym czacie…';
+      Promise.resolve().then(() => window.openai.setWidgetState({modelContent:saved,privateContent:null})).then(() => {
+        if (!localSaved && lastChange === timestamp) el('storage').textContent = 'Zapisano automatycznie w tym czacie.';
+      }).catch(() => {if (!localSaved && lastChange === timestamp) el('storage').textContent = notSaved;});
+    } else if (!localSaved && window.openai?.setWidgetState) {
+      el('storage').textContent = 'Wybory przekraczają pamięć widoku czatu. Pobierz je przed zamknięciem lub użyj karty w przeglądarce.';
+    }
+    if (disk) disk.save(saved);
+  }
+  function get(issue) { return choices[issue.id] || {option:'',text:'',note:'',comment:''}; }
+  function updateProgress() {
+    const picked = model.issues.filter(i => get(i).option && get(i).option !== 'DEFER').length;
+    const deferred = model.issues.filter(i => get(i).option === 'DEFER').length;
+    el('progress').textContent = `Wybory: ${picked} z ${model.issues.length}${deferred ? ' · do wyjaśnienia: ' + deferred : ''}`;
+    [...el('issue').options].forEach((o,i) => {const c = get(model.issues[i]); o.textContent = `${String(i+1).padStart(2,'0')} · ${model.issues[i].title}${c.option === 'DEFER' ? ' — do wyjaśnienia' : c.option ? ' — wybrano' : ''}`;});
+    el('current-status').textContent = get(model.issues[current]).option ? 'Wybór roboczy · niewdrożony' : 'Nie wybrano wariantu';
+  }
+  function hideExport() {
+    el('export-panel').hidden = true;
+    el('output').value = '';
+    if (blobUrl) { URL.revokeObjectURL(blobUrl); blobUrl = undefined; }
+    el('download').removeAttribute('href');
+  }
+  function markedText(node, text, terms) {
+    node.replaceChildren();
+    const needles = [...new Set(terms.filter(Boolean))].sort((a,b)=>b.length-a.length);
+    if (!needles.length) {node.textContent=text; return;}
+    const escaped = needles.map(t=>t.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'));
+    text.split(new RegExp('('+escaped.join('|')+')','gu')).forEach((part,index)=>{
+      if (index%2) {const mark=document.createElement('mark');mark.textContent=part;node.append(mark);}
+      else node.append(document.createTextNode(part));
+    });
+  }
+  function preview() {
+    const issue = model.issues[current], choice = get(issue);
+    const selected = issue.options.find(o=>o.id===choice.option);
+    el('custom').hidden = choice.option !== 'CUSTOM';
+    const note = choice.option === 'CUSTOM' ? choice.note : selected?.note;
+    el('preview').hidden = !note;
+    el('preview-note').textContent = note || '';
+    el('comparison').hidden = !choice.option || choice.option === 'DEFER' || (choice.option === 'CUSTOM' && !choice.text.trim());
+    if (el('comparison').hidden) return;
+    const base = issue.context.find(p=>p.source_line===(selected?.preview_source_line || issue.comparison.source_line));
+    const edits = selected?.preview_edits || [];
+    let chosen=base.text, beforeMarks=edits.map(e=>e.from), afterMarks=edits.map(e=>e.to);
+    for (const edit of edits) {
+      if (chosen.split(edit.from).length-1 !== edit.count) {
+        el('comparison-status').textContent='Nie można wiarygodnie zbudować podglądu: zmieniło się zdanie bazowe.';
+        el('current-passage').textContent=base.text; el('chosen-passage').textContent='Podgląd wymaga sprawdzenia.';
+        return;
+      }
+      chosen=chosen.split(edit.from).join(edit.to);
+    }
+    if (choice.option === 'CUSTOM') {
+      const fragment=issue.quote.replace(/(?<!\.)\.$/u,'');
+      const own=choice.text.trim();
+      chosen=choice.preview_scope==='paragraph' ? own : base.text.replace(fragment,()=>own.replace(/(?<!\.)\.$/u,''));
+      beforeMarks=[fragment]; afterMarks=[choice.preview_scope==='paragraph'?own:own.replace(/(?<!\.)\.$/u,'')];
+    }
+    markedText(el('current-passage'),base.text,beforeMarks.length?beforeMarks:[issue.quote]);
+    markedText(el('chosen-passage'),chosen,afterMarks.length?afterMarks:[issue.quote]);
+    const kind=issue.comparison.kind==='footnote'?'Przypis':issue.comparison.kind==='method' && !selected?.preview_source_line?'Opis podstawy':'Tekst przekładu';
+    el('current-label').textContent=kind+' · obecne R9';
+    el('chosen-label').textContent=kind+' · '+(choice.option==='CUSTOM'?'Twój szkic':choice.option==='KEEP'?'zachowane brzmienie':'wariant '+choice.option);
+    el('comparison-status').textContent=choice.option==='CUSTOM'
+      ? 'Podgląd własnego szkicu; dopasowanie składni wymaga oceny. Dyspozycja wpisana zamiast brzmienia nie jest gotowym przekładem.'
+      : choice.option==='KEEP' ? 'Tekst i przypisy pozostają bez zmian.'
+      : chosen===base.text && note ? 'Tekst pozostaje bez zmian; proponowany przypis znajduje się poniżej.'
+      : 'Roboczy podgląd tylko tego miejsca. Zmiany są wyróżnione; MN53 nie jest modyfikowane.';
+  }
+  function changed() { hideExport(); el('error').textContent = ''; preview(); updateProgress(); persist(); }
+  function radio(value, label, wording, effect, parent) {
+    const wrap = document.createElement('label'); wrap.className = 'sf-option cursor-interaction';
+    const input = document.createElement('input'); input.type = 'radio'; input.name = 'sf-choice'; input.value = value; input.checked = get(model.issues[current]).option === value;
+    const body = document.createElement('span'); body.className = 'sf-option-body';
+    const title = document.createElement('span'); title.className = 'sf-option-title'; title.textContent = label; body.append(title);
+    if (wording) {const text = document.createElement('span'); text.className = 'sf-wording'; text.textContent = wording; body.append(text);}
+    if (effect) {const text = document.createElement('span'); text.className = 'sf-effect'; text.textContent = effect; body.append(text);}
+    input.addEventListener('change', () => {const issue = model.issues[current]; choices[issue.id] = {...get(issue),option:value}; changed();});
+    wrap.append(input, body); parent.append(wrap);
+  }
+  function render() {
+    const issue = model.issues[current], choice = get(issue);
+    el('issue').value = String(current);
+    el('title').textContent = issue.title;
+    el('locus').textContent = `${issue.id} · ${issue.priority} · ${issue.locus}`;
+    for (const key of ['quote','pali','risk','evidence','certainty','dependencies']) el(key).textContent = issue[key];
+    el('situation').textContent = issue.situation;
+    el('passages').replaceChildren();
+    for (const passage of issue.context) {
+      const block = document.createElement('div'); block.className = 'sf-passage';
+      const label = document.createElement('span'); label.className = 'sf-label'; label.textContent = passage.label;
+      const paragraph = document.createElement('p'); paragraph.className = 'sf-passage-text';
+      const parts = passage.text.split(issue.quote);
+      parts.forEach((text,index) => {
+        if (index) {const mark = document.createElement('mark'); mark.textContent = issue.quote; paragraph.append(mark);}
+        paragraph.append(document.createTextNode(text));
+      });
+      block.append(label,paragraph); el('passages').append(block);
+    }
+    el('options').replaceChildren();
+    issue.options.forEach(o => radio(o.id,o.label,o.text,o.effect,el('options')));
+    const quick = document.createElement('div'); quick.className = 'sf-quick'; el('options').append(quick);
+    radio('KEEP','Zachowaj R9 bez tej zmiany','','Nie przyjmuję proponowanej poprawki.',quick);
+    radio('CUSTOM','Własny wariant','','Wpiszę tekst lub dyspozycję.',quick);
+    radio('DEFER','Do wyjaśnienia','','Nie rozstrzygam tego miejsca.',quick);
+    el('custom-text').value = choice.text; el('custom-note').value = choice.note; el('comment').value = choice.comment;
+    el('custom-scope').value = choice.preview_scope || 'fragment';
+    el('prev').disabled = current === 0; el('next').disabled = current === model.issues.length - 1;
+    preview(); updateProgress();
+  }
+  function snapshot(draft) {
+    const issues = model.issues.map(issue => {
+      const c = draft ? draft.choices[issue.id] || {option:'',text:'',note:'',comment:''} : get(issue), selected = issue.options.find(o => o.id === c.option);
+      return {id:issue.id,locus:issue.locus,original:issue.quote,option:c.option || 'UNSELECTED',status:!c.option ? 'UNSELECTED' : c.option === 'DEFER' ? 'NEEDS_CLARIFICATION' : 'DRAFT_CHOICE',
+        wording:c.option === 'CUSTOM' ? c.text.trim() : selected?.text || (c.option === 'KEEP' ? issue.quote : ''),
+        note:c.option === 'CUSTOM' ? c.note.trim() : selected?.note || '', comment:c.comment.trim(),...(c.option==='CUSTOM'?{preview_scope:c.preview_scope||'fragment'}:{}),implemented:false};
+    });
+    return {schema:'suttaflow-choice-export-v1',card_id:model.card_id,subject:model.subject,revision:model.revision,source_path:model.source_path,source_sha256:model.source_sha256,audit_path:model.audit_path,audit_sha256:model.audit_sha256,standard_version:model.standard_version,standard_sha256:model.standard_sha256,scope:model.scope,status:'DRAFT_FOR_OWNER_REVIEW',created_at:new Date().toISOString(),approval_evidence:null,issues,...(draft ? {saved_at:draft.saved_at,draft} : {})};
+  }
+  function showExport(data) {
+    const json = JSON.stringify(data,null,2);
+    hideExport(); el('error').textContent=''; el('output').value=json; el('export-panel').hidden=false;
+    blobUrl = URL.createObjectURL(new Blob([json],{type:'application/json;charset=utf-8'})); el('download').href=blobUrl;
+  }
+  el('issue').replaceChildren(...model.issues.map((issue,i) => {const o = document.createElement('option'); o.value=String(i); return o;}));
+  el('issue').addEventListener('change', () => {current = Number(el('issue').value); render();});
+  el('prev').addEventListener('click', () => {if (current > 0) {current--; render();}});
+  el('next').addEventListener('click', () => {if (current < model.issues.length-1) {current++; render();}});
+  for (const [id,key] of [['custom-text','text'],['custom-note','note'],['comment','comment']]) el(id).addEventListener('input', () => {const issue = model.issues[current]; choices[issue.id] = {...get(issue),[key]:el(id).value}; changed();});
+  el('custom-scope').addEventListener('change',()=>{const issue=model.issues[current];choices[issue.id]={...get(issue),preview_scope:el('custom-scope').value};changed();});
+  el('export').addEventListener('click', () => {
+    const empty = model.issues.find(i => get(i).option === 'CUSTOM' && !get(i).text.trim());
+    if (empty) { current=model.issues.indexOf(empty); render(); el('error').textContent=`${empty.id}: uzupełnij własne brzmienie lub wybierz inny sposób rozstrzygnięcia.`; el('custom-text').focus(); return; }
+    showExport(snapshot());
+  });
+  el('recovery-export').addEventListener('click', () => showExport(snapshot(recovery)));
+  el('recovery-restore').addEventListener('click', () => {
+    if (!restore(recovery)) {
+      el('storage').textContent = 'Formularz ma już nowsze zmiany. Zachowaj oba szkice przez eksport przed porównaniem.';
+      return;
+    }
+    recovery = null; el('recovery').hidden = true;
+    hideExport(); render(); persist(); el('issue').focus();
+  });
+  el('source-pin').textContent = 'SHA-256 R9: ' + model.source_sha256;
+  el('decision-path').textContent = model.decision_path;
+  if (disk) {
+    if (!restore(disk.initial)) throw Error('Niepoprawny zapis z pliku JSON; odmowa otwarcia pustej karty.');
+    el('storage').textContent = 'Odczytano JSON z folderu przekładu. Kolejne zmiany zapiszą się w nim automatycznie.';
+    for (const key of [storageKey, recoveryKey]) try {
+      const saved = JSON.parse(window.localStorage.getItem(key));
+      if (restore(saved, false) && (!recovery || Date.parse(saved.saved_at) > Date.parse(recovery.saved_at))) recovery = saved;
+    } catch { /* Disk JSON stays authoritative when auxiliary storage is unavailable or damaged. */ }
+    if (recovery) {
+      el('recovery').hidden = false;
+      el('storage').textContent = 'Odczytano JSON z dysku. Dostępny jest nowszy szkic do odzyskania lub eksportu.';
+    }
+  } else try {
+    const json = window.localStorage.getItem(storageKey);
+    if (json) el('storage').textContent = restore(JSON.parse(json)) ? 'Przywrócono zapisane wybory z tej przeglądarki.' : 'Zapis nie pasuje do tej wersji karty lub ma niepoprawne dane. Nie został zastosowany.';
+  } catch { el('storage').textContent = notSaved; }
+  if (!disk && restore(window.openai?.widgetState?.modelContent)) el('storage').textContent = 'Przywrócono zapisane wybory z tego czatu.';
+  window.addEventListener('openai:set_globals', event => {
+    if (!disk && restore(event.detail?.globals?.widgetState?.modelContent)) {
+      hideExport(); render(); el('storage').textContent = 'Przywrócono zapisane wybory z tego czatu.';
+    }
+  });
+  window.addEventListener('pagehide', () => {if (blobUrl) URL.revokeObjectURL(blobUrl);});
+  render();
+})();
+</script>
+</section>

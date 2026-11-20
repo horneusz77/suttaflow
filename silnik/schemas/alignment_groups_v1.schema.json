@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:suttaflow:alignment-groups:1",
+  "title": "Bidirectional alignment groups v1",
+  "type": "object",
+  "required": [
+    "groups"
+  ],
+  "properties": {
+    "sutta_id": {
+      "type": "string",
+      "pattern": "^mn[1-9][0-9]*$"
+    },
+    "groups": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "pali",
+          "pl",
+          "status"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^[^\\s\\u0000]+$"
+          },
+          "pali": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^[^\\s\\u0000]+$"
+            }
+          },
+          "pl": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^[^\\s\\u0000]+$"
+            }
+          },
+          "status": {
+            "enum": [
+              "OK",
+              "OK_NOTE",
+              "MINOR",
+              "VARIANT",
+              "OPEN",
+              "CHECK_FAILED"
+            ],
+            "description": "CHECK_FAILED is a valid failure marker and always blocks completeness. OPEN/VARIANT/MINOR require decision accounting in Evidence QA."
+          },
+          "issue": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^[^\\s\\u0000]+$"
+          }
+        },
+        "additionalProperties": true,
+        "description": "Extension annotations grant no authority. Runtime rejects duplicate group IDs, unknown source IDs and units mapped twice across groups."
+      }
+    }
+  },
+  "additionalProperties": true
+}
