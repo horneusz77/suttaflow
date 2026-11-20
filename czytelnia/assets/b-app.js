@@ -221,7 +221,7 @@ async function search(query, extra=false, forceText=false) {
  catch{if(version===searchVersion)results.textContent='Nie udało się przeszukać biblioteki. Spróbuj ponownie.';return}
  if(version!==searchVersion)return;
  const {matches,titlesOnly}=found;
- results.innerHTML=`<p class="result-count">Znaleziono: ${matches.length}${matches.length>30?' · pierwszych 30 wyników':''}</p>`+matches.slice(0,30).map(({slug,code,id,text,label})=>`<a class="search-result" href="b.html?tekst=${encodeURIComponent(slug)}${id?'#'+encodeURIComponent(id):''}"><span>${escapeHtml(code)} · ${escapeHtml(label)}</span><p>${escapeHtml(text.slice(0,240))}…</p></a>`).join('')+(!matches.length?'<p class="empty-state">Brak pasujących fragmentów. Spróbuj krótszej frazy albo uwzględnij pāḷi i przypisy.</p>':'');
+ results.innerHTML=`<p class="result-count">Znaleziono: ${matches.length}${matches.length>30?' · pierwszych 30 wyników':''}</p>`+(matches.length?'<ul class="catalog-list">'+matches.slice(0,30).map(SuttaCatalog.searchRows(catalog,'search-result')).join('')+'</ul>':'')+(!matches.length?'<p class="empty-state">Brak pasujących fragmentów. Spróbuj krótszej frazy albo uwzględnij pāḷi i przypisy.</p>':'');
  if(titlesOnly){
   const button=document.createElement('button');button.type='button';button.className='text-button';
   button.textContent='Szukaj też w treści';button.onclick=()=>search(query,extra,true);results.append(button);

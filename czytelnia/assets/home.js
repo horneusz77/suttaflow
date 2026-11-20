@@ -1,6 +1,5 @@
 (()=>{
  const escape=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
- const arrow='<svg class="row-arrow" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m9 5 7 7-7 7"/></svg>';
  const names={DN:'Dīgha Nikāya',MN:'Majjhima Nikāya',SN:'Saṃyutta Nikāya',AN:'Aṅguttara Nikāya',KN:'Khuddaka Nikāya',Vinaya:'Vinaya'};
  const results=document.getElementById('library-results'),input=document.getElementById('library-query');
  let catalog=[],collection='all',view='library',query='',matches=null,version=0,searchState='idle';
@@ -11,16 +10,6 @@
  let forceText=false,includeExtra=false;
  const batchSize=10;
  const more=document.getElementById('library-more');
-
- function catalogRow(d){
-  const id=encodeURIComponent(d.slug),description=d.description?.trim();
-  const pali=d.paliTitle?`<span class="catalog-pali" lang="pi">${escape(d.paliTitle)}</span>`:'';
-  const language=d.hasPali?'Polski + pāḷi':'Polski';
-  return `<li><a class="catalog-link" href="${href(d.slug)}" aria-labelledby="code-${id} title-${id}"${description?` aria-describedby="description-${id}"`:''}>
-   <span class="catalog-heading"><span class="catalog-code" id="code-${id}">${escape(d.code)}</span><strong class="catalog-title" id="title-${id}">${escape(d.title)}</strong>${pali}<span class="catalog-language">${language}</span>${arrow}</span>
-   ${description?`<span class="catalog-description" id="description-${id}">${escape(description)}</span>`:''}
-  </a></li>`;
- }
 
  function showBatches(items,row,emptyMessage){
   const count=document.getElementById('results-count');
@@ -62,12 +51,12 @@
   if(query&&searchState==='error'){document.getElementById('results-count').textContent='';results.innerHTML='<p class="library-state" role="alert">Nie udało się przeszukać tekstów. Sprawdź połączenie i wybierz ponownie „Szukaj”.</p>';return}
   if(query&&matches){
    fullSearch.hidden=!matches.titlesOnly;
-   showBatches(matches.matches,m=>'<li><a class="search-hit" href="'+href(m.slug,m.id)+'"><span>'+escape(m.code)+' · '+escape(m.label)+'</span><strong>'+escape(m.title)+'</strong><p>'+escape(m.text.slice(0,260))+'</p></a></li>','Brak wyników. Spróbuj krótszej frazy, wybierz inny zbiór lub uwzględnij pāḷi i przypisy.');
+   showBatches(matches.matches,SuttaCatalog.searchRows(catalog,'search-hit'),'Brak wyników. Spróbuj krótszej frazy, wybierz inny zbiór lub uwzględnij pāḷi i przypisy.');
    return;
   }
   const docs=catalog.filter(d=>collection==='all'||d.collection===collection);
   if(collection==='all')docs.sort((a,b)=>(b.addedOn||'').localeCompare(a.addedOn||''));
-  showBatches(docs,catalogRow,'Nie ma jeszcze przekładów w tym zbiorze. Wybierz „Wszystkie”, aby wrócić do biblioteki.');
+  showBatches(docs,doc=>SuttaCatalog.row(doc),'Nie ma jeszcze przekładów w tym zbiorze. Wybierz „Wszystkie”, aby wrócić do biblioteki.');
  }
  async function showContinue(){
   const last=read('sf-reader-last-document',null),doc=last&&catalog.find(d=>d.slug===last.slug);if(!doc||typeof last.id!=='string')return;
