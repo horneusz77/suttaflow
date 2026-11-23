@@ -46,3 +46,23 @@ Szkic i ocenę sensu przygotowuje model językowy według standardu. W powyższy
 ## Pochodzenie materiałów
 
 Kod silnika pochodzi z oznaczonego wydania `suttaflow-2.2.0`. Opis na stronie uwzględnia też praktykę redakcyjną późniejszych rewizji. Źródła poszczególnych przekładów podano przy suttach. Dołączone kroje pisma, ikony i biblioteka dzielenia wyrazów mają własne informacje o autorstwie i licencjach w katalogach zasobów.
+
+## Licencje
+
+Poniższe licencje dotyczą publicznego wydania SuttaFlow w zakresie praw przysługujących projektowi. Wzmianka o prywatnym repozytorium w Standardzie 2.2.0 opisuje stan z czasu powstania tego wydania silnika.
+
+| Materiał | Licencja |
+| --- | --- |
+| Kod SuttaFlow, w tym silnik, czytelnia, narzędzia i testy | [GNU Affero General Public License, wyłącznie wersja 3 (AGPL-3.0-only)](LICENSE) |
+| Dokumentacja SuttaFlow, w tym Standard, rejestr reguł, instrukcje redakcyjne i opis metody | [Uznanie autorstwa – Na tych samych warunkach 4.0 (CC BY-SA 4.0)](LICENSES/CC-BY-SA-4.0.txt) |
+| Polskie przekłady, przypisy, interpretacje i objaśnienia opracowane przez redakcję SuttaFlow | [Uznanie autorstwa – Użycie niekomercyjne – Na tych samych warunkach 4.0 (CC BY-NC-SA 4.0)](LICENSES/CC-BY-NC-SA-4.0.txt) |
+
+Przy udostępnianiu przekładu podaj tytuł i sygnaturę sutty, autorstwo wskazane przy tekście, odnośnik do wykorzystanej wersji i licencji oraz informację o swoich zmianach. Te same warunki dotyczą fragmentów przekładu w przykładach, mapach fraz i indeksach wyszukiwania.
+
+Materiały innych autorów zachowują warunki wskazane przy źródle. Dotyczy to również tekstu pāḷi z konkretnego wydania, cytatów, ilustracji, krojów pisma, ikon i bibliotek. Przy polskim przekładzie z angielskiej wersji Hillside Hermitage podaj także autora i źródło tej wersji. Angielskie przekłady w [repozytorium Hillside Hermitage](https://github.com/bkhpanigha/hh-suttas-live#license) są udostępniane na CC BY-NC-SA 4.0.
+
+Hasła i definicje z *Digital Pāḷi Dictionary* (Bodhirasa Bhikkhu) oraz polskie adaptacje tych definicji podlegają [CC BY-NC-SA 4.0](LICENSES/CC-BY-NC-SA-4.0.txt). Przy ich udostępnianiu podaj również wersję słownika i zaznacz wprowadzone zmiany. [Zasady cytowania DPD](https://digitalpalidictionary.github.io/how_to_cite/)
+
+## Kontakt
+
+W sprawach licencji, wykorzystania materiałów na innych warunkach i działania czytelni napisz na [czytelnia@suttaflow.pl](mailto:czytelnia@suttaflow.pl).
